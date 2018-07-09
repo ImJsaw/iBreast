@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">iBreast</string>
+    <string name="loginImageDescription">rabbitImage</string>
+    <string name="account">帳號</string>
+    <string name="password">密碼</string>
+    <string name="login">登入</string>
+    <string name="register">註冊</string>
+    <string name="keepLogin">保持登入</string>
+    <string name="forget">忘記帳號密碼</string>
+    <string name="laugh">笑吧</string>
+    <string name="eat">吃吧</string>
+    <string name="cure">治吧</string>
+    <string name="move">動吧</string>
+    <string name="ask">問吧</string>
+    <string name="note">記吧</string>
+    <string name="talk">說吧</string>
+    <string name="link">連吧</string>
+    <string name="flower">flower</string>
+</resources>

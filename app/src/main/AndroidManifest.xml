@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jsaw.ibreast">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:hardwareAccelerated ="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".welcome"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login"
+            android:label="登入"
+            android:screenOrientation="portrait" />
+        <!--- label = actionBar text -->
+        <activity
+            android:name=".main"
+            android:label="iBreast"
+            android:parentActivityName=".login"
+            android:screenOrientation="portrait" />
+        <!--- parentActivity = where actionBar "back" direct to -->
+        <activity
+            android:name=".laugh.laugh"
+            android:label="笑吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".open_pdf"
+            android:label="iBreast"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".open_movie"
+            android:configChanges="orientation|screenSize"
+            android:label="iBreast"/>
+        <!--- configChange = avoid movie stop when switch -->
+    </application>
+</manifest>
