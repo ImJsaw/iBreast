@@ -32,6 +32,11 @@
             android:screenOrientation="portrait" />
         <!--- label = actionBar text -->
         <activity
+            android:name=".register"
+            android:label="註冊"
+            android:parentActivityName=".login"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".main"
             android:label="iBreast"
             android:parentActivityName=".login"

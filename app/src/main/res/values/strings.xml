@@ -16,4 +16,8 @@
     <string name="talk">說吧</string>
     <string name="link">連吧</string>
     <string name="flower">flower</string>
+    <string name="email">電子信箱</string>
+    <string name="pwConfirm">密碼確認</string>
+    <string name="eamilHint">帳號需為電子信箱格式</string>
+    <string name="pwHint">密碼須為6~12英數字</string>
 </resources>

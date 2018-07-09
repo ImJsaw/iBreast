@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -30,6 +31,7 @@ public class main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
         Btn_laugh= findViewById(R.id.Btn_laugh);
         Btn_laugh.setOnClickListener(new View.OnClickListener() {
@@ -96,11 +98,41 @@ public class main extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menu.add(1,1,1,"關於");
+        menu.add(1,2,2,"個人頁面");
+        menu.add(1,3,3,"登出");
+        menu.add(1,4,4,"退出APP");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case 1:
+                //open about page
+                break;
+            case 2:
+                //open personal page
+                break;
+            case 3:
+                startActivity(new Intent().setClass(main.this, login.class));
+                finish();
+                break;
+            case 4:
+                System.exit(0);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     //雙擊退出
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
+            System.exit(0);
             return;
         }
         this.doubleBackToExitPressedOnce = true;

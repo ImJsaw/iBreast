@@ -1,4 +1,5 @@
 2018/7/9 
-16:00 開始重構
-20:00 login laugh (server交互.註冊頁未實作)
-21:00 fix laugh影片 全屏暫停播放bug
+16:00 start remake
+20:00 login laugh (server register not yet)
+21:00 fix movie restart if fullscreen
+22:17 fix login bug  /implement register page
