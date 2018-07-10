@@ -85,6 +85,7 @@
         app:layout_constraintRight_toRightOf="@id/guidelineMidRight" />
 
     <TextView
+        android:id="@+id/forgotPW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/forget"

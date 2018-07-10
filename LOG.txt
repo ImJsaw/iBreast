@@ -1,5 +1,13 @@
 2018/7/9 
 16:00 start remake
-20:00 login laugh (server register not yet)
+20:00 complete login laugh (server/register not yet)
 21:00 fix movie restart if fullscreen
 22:17 fix login bug  /implement register page
+
+2018/7/10
+9:37 start researching fiebase
+10:18 complete login/register
+11:34 complete forgot password
+13:37 continue
+17:21 complete cure
+17:39 complete eat

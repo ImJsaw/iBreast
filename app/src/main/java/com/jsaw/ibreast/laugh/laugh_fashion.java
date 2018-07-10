@@ -32,7 +32,7 @@ public class laugh_fashion extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(Objects.requireNonNull(getActivity()), open_pdf.class).putExtra("URL",
-                        "http://drive.google.com/viewerng/viewer?embedded=true&url=http://13.231.194.159/laugh_bra.pdf"));
+                        "https://drive.google.com/file/d/14ZXhIv_sk4lTgexErDb8NcrA8jEYoj8A/view"));
             }
         });
 
@@ -41,7 +41,7 @@ public class laugh_fashion extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(Objects.requireNonNull(getActivity()), open_pdf.class).putExtra("URL",
-                        "http://drive.google.com/viewerng/viewer?embedded=true&url=http://13.231.194.159/laugh_bra.pdf"));
+                        "https://drive.google.com/open?id=16XO2N6D9FYfUSzRyBRF7hJUhwM5JXB3e"));
             }
         });
     }

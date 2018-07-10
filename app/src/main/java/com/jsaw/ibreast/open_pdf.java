@@ -12,7 +12,6 @@ import android.webkit.WebViewClient;
 import java.util.Objects;
 
 public class open_pdf extends AppCompatActivity {
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,9 @@ public class open_pdf extends AppCompatActivity {
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
-        //webSettings.setUseWideViewPort(true);
         mWebView.setWebViewClient(new WebViewClient());
         mWebView.loadUrl(this.getIntent().getStringExtra("URL"));//get url from intent
     }
-
     //action bar "back"
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

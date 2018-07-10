@@ -20,4 +20,5 @@
     <string name="pwConfirm">密碼確認</string>
     <string name="eamilHint">帳號需為電子信箱格式</string>
     <string name="pwHint">密碼須為6~12英數字</string>
+    <string name="inputEmail">輸入您的帳號(電子信箱)</string>
 </resources>

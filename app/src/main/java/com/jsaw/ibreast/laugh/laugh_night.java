@@ -36,7 +36,7 @@ public class laugh_night extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(Objects.requireNonNull(getActivity()), open_pdf.class).putExtra("URL",
-                        "http://drive.google.com/viewerng/viewer?embedded=true&url=http://13.231.194.159/laugh_sleep.pdf"));
+                        "https://drive.google.com/open?id=1SUWVa33xHhP0f2Kq5IIF5qLb_FYnwlgb"));
             }
         });
 
@@ -54,7 +54,7 @@ public class laugh_night extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(Objects.requireNonNull(getActivity()), open_pdf.class).putExtra("URL",
-                        "http://drive.google.com/viewerng/viewer?embedded=true&url=http://13.231.194.159/laugh_message.pdf"));
+                        "https://drive.google.com/open?id=1t1KKz3MYfcp9CumDDhokphnleTouQWK6"));
 
             }
         });
@@ -64,7 +64,7 @@ public class laugh_night extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(Objects.requireNonNull(getActivity()), open_pdf.class).putExtra("URL",
-                        "http://drive.google.com/viewerng/viewer?embedded=true&url=http://13.231.194.159/laugh_less.pdf"));
+                        "https://drive.google.com/open?id=1BqkKTwgsJl9xE1WUX57SIlo7aCksQvyC"));
             }
         });
     }

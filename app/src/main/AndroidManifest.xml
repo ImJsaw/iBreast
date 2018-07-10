@@ -48,6 +48,42 @@
             android:parentActivityName=".main"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".cure"
+            android:label="治吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".move"
+            android:label="動吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".eat"
+            android:label="吃吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link"
+            android:label="連吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_economic"
+            android:label="經濟補助"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_center"
+            android:label="癌症中心"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_foundation"
+            android:label="基金會"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_resource"
+            android:label="輔具資源"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".open_pdf"
             android:label="iBreast"
             android:screenOrientation="portrait" />
@@ -55,6 +91,5 @@
             android:name=".open_movie"
             android:configChanges="orientation|screenSize"
             android:label="iBreast"/>
-        <!--- configChange = avoid movie stop when switch -->
     </application>
 </manifest>

@@ -11,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.jsaw.ibreast.laugh.laugh;
+import com.jsaw.ibreast.link.link;
 
 import java.util.Objects;
 
@@ -45,7 +48,7 @@ public class main extends AppCompatActivity {
         Btn_cure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent().setClass(main.this, main.class));
+                startActivity(new Intent().setClass(main.this, cure.class));
             }
         });
 
@@ -53,7 +56,7 @@ public class main extends AppCompatActivity {
         Btn_eat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent().setClass(main.this, main.class));
+                startActivity(new Intent().setClass(main.this, eat.class));
             }
         });
 
@@ -69,7 +72,7 @@ public class main extends AppCompatActivity {
         Btn_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent().setClass(main.this, main.class));
+                startActivity(new Intent().setClass(main.this, link.class));
             }
         });
 
@@ -85,7 +88,7 @@ public class main extends AppCompatActivity {
         Btn_move.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent().setClass(main.this, main.class));
+                startActivity(new Intent().setClass(main.this, move.class));
             }
         });
 
@@ -118,6 +121,7 @@ public class main extends AppCompatActivity {
                 //open personal page
                 break;
             case 3:
+                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent().setClass(main.this, login.class));
                 finish();
                 break;
