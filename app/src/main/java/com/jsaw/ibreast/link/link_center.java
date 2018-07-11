@@ -43,12 +43,6 @@ public class link_center extends AppCompatActivity {
     public static final ArrayList<Center> east=new ArrayList<>();
     private String data;
 
-    public link_center() {
-        // Required empty public constructor
-
-    }
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,8 +126,6 @@ public class link_center extends AppCompatActivity {
         }
     }
 
-
-
     private void addTableRow(TableLayout tl, String name, String phone, String address){
 
         LayoutInflater inflater = this.getLayoutInflater();
@@ -176,17 +168,13 @@ public class link_center extends AppCompatActivity {
                     pDialog.setIndeterminate(false);
                     pDialog.setCancelable(true);
                     pDialog.show();
-
                 }
             });
-
         }
         @Override
         protected String doInBackground(String... params) {
             try {
-                // Enter URL address where your php file resides
                 url = new URL("http://13.231.194.159/link_center.php");
-
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -262,17 +250,14 @@ public class link_center extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-
-            //this method will be running on UI thread
-
             pDialog.dismiss();
             data = result;
             JSONanalyse();
 
-            TableLayout ll = (TableLayout) findViewById(R.id.NorthTable);
-            TableLayout cl = (TableLayout) findViewById(R.id.CenterTable);
-            TableLayout sl = (TableLayout) findViewById(R.id.SouthTable);
-            TableLayout el = (TableLayout) findViewById(R.id.EastTable);
+            TableLayout ll =  findViewById(R.id.NorthTable);
+            TableLayout cl =  findViewById(R.id.CenterTable);
+            TableLayout sl =  findViewById(R.id.SouthTable);
+            TableLayout el =  findViewById(R.id.EastTable);
             for (int i = 0; i <north.size(); i++) {
                 addTableRow(ll,north.get(i).name,north.get(i).phone,north.get(i).address);
             }

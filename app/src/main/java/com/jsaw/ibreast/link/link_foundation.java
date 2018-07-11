@@ -1,5 +1,6 @@
 package com.jsaw.ibreast.link;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,23 +23,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class link_foundation extends AppCompatActivity {
@@ -48,56 +45,62 @@ public class link_foundation extends AppCompatActivity {
         String url;
     }
     public static final ArrayList<Center> foundations=new ArrayList<>();
-    public static final int CONNECTION_TIMEOUT=10000;
-    public static final int READ_TIMEOUT=15000;
-
-    private String data;
-
     private MyAdapter mAdapter;
     private RecyclerView mRecyclerView;
-  
-    public link_foundation() {
-        // Required empty public constructor
-    }
-
+    private ProgressDialog progressDialog;
+    private Boolean isProgressDialogShow = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_link_foundation);
-        new getData(this).execute();
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setMessage("處理中,請稍候...");
+        progressDialog.show();
+        isProgressDialogShow = true;
+        //connect time out
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(isProgressDialogShow){
+                    progressDialog.dismiss();
+                    Toast.makeText(link_foundation.this, "連線逾時", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, 5000);
+        getData();
     }
     
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private List<Center> mData;
         Context mcontext;
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            public TextView mTextView;
-            public TextView mPhoneView;
-            public ImageView imageView;
-            public ViewHolder(View v) {
+        class ViewHolder extends RecyclerView.ViewHolder {
+            TextView mTextView;
+            TextView mPhoneView;
+            ImageView imageView;
+            ViewHolder(View v) {
                 super(v);
-                mTextView = (TextView) v.findViewById(R.id.info_text);
-                imageView=(ImageView)v.findViewById(R.id.info_img);
-                mPhoneView=(TextView)v.findViewById(R.id.info_phonnum);
+                mTextView = v.findViewById(R.id.info_text);
+                imageView= v.findViewById(R.id.info_img);
+                mPhoneView= v.findViewById(R.id.info_phonnum);
             }
         }
 
-        public MyAdapter(List<Center> data, Context context) {
+        MyAdapter(List<Center> data, Context context) {
             mData = data;
             mcontext=context;
         }
 
+        @NonNull
         @Override
-        public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item, parent, false);
-            ViewHolder vh = new ViewHolder(v);
-            return vh;
+            return new ViewHolder(v);
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
             holder.mTextView.setText(foundations.get(position).address);
             holder.mPhoneView.setText(foundations.get(position).phone);
             new DownloadImageTask(holder.imageView)
@@ -117,192 +120,59 @@ public class link_foundation extends AppCompatActivity {
                             .setMessage( s )
                             .create();
                     d.show();
-
                     // Make the textview clickable. Must be called after show()
                     ((TextView)d.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                 }
             });
         }
-
         @Override
         public int getItemCount() {
             return mData.size();
         }
     }
 
-
-
-
-    private class getData extends AsyncTask<String, String, String>
-    {
-        HttpURLConnection conn;
-        URL url = null;
-        ProgressDialog pDialog;
-        private Context mcontext;
-
-        getData(Context context){
-            this.mcontext=context;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    pDialog = new ProgressDialog(mcontext);
-                    pDialog.setMessage("Loading..");
-                    pDialog.setIndeterminate(false);
-                    pDialog.setCancelable(true);
-                    pDialog.show();
-
+    private void getData(){
+        FirebaseDatabase.getInstance().getReference("link/foundation").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot ds) {
+                for(int i = 0; i < ds.getChildrenCount();i++){
+                    Center temp = new Center();
+                    temp.imageurl = Objects.requireNonNull(ds.child(String.valueOf(i)).child("logo").getValue()).toString();
+                    temp.phone = Objects.requireNonNull(ds.child(String.valueOf(i)).child("phone").getValue()).toString();
+                    temp.address = Objects.requireNonNull(ds.child(String.valueOf(i)).child("address").getValue()).toString();
+                    temp.url = Objects.requireNonNull(ds.child(String.valueOf(i)).child("url").getValue()).toString();
+                    foundations.add(temp);
                 }
-            });
+                mAdapter = new MyAdapter(foundations,link_foundation.this);
+                mRecyclerView = findViewById(R.id.list_view);
+                final LinearLayoutManager layoutManager = new LinearLayoutManager(link_foundation.this);
+                layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                mRecyclerView.setLayoutManager(layoutManager);
+                mRecyclerView.setAdapter(mAdapter);
+                //mAdapter.notifyDataSetChanged();
 
-        }
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                // Enter URL address where your php file resides
-                url = new URL("http://13.231.194.159/link_foundation.php");
-
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return "exception";
+                progressDialog.dismiss();
+                isProgressDialogShow = false;
             }
-            try {
-                // Setup HttpURLConnection class to send and receive data from php and mysql
-                conn = (HttpURLConnection)url.openConnection();
-                conn.setReadTimeout(READ_TIMEOUT);
-                conn.setConnectTimeout(CONNECTION_TIMEOUT);
-                conn.setRequestMethod("POST");
-
-                // setDoInput and setDoOutput method depict handling of both send and receive
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
-
-                // Append parameters to URL
-//                Uri.Builder builder = new Uri.Builder()
-//                        .appendQueryParameter("username", params[0])
-//                        .appendQueryParameter("password", params[1]);
-//                String query = builder.build().getEncodedQuery();
-
-                // Open connection for sending data
-                OutputStream os = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
-//                writer.write(query);
-                writer.flush();
-                writer.close();
-                os.close();
-                conn.connect();
-
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-                return "exception";
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
             }
-
-            try {
-
-                int response_code = conn.getResponseCode();
-
-                // Check if successful connection made
-                if (response_code == HttpURLConnection.HTTP_OK) {
-
-                    // Read data sent from server
-                    InputStream input = conn.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                    StringBuilder result = new StringBuilder();
-                    String line;
-
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-
-                    // Pass data to onPostExecute method
-                    return(result.toString());
-
-                }else{
-
-                    return("unsuccessful");
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "exception";
-            } finally {
-                conn.disconnect();
-            }
-
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            //this method will be running on UI thread
-
-            pDialog.dismiss();
-            data = result;
-            JSONanalyse();
-            Log.i("11123",data);
-            mAdapter = new MyAdapter(foundations,mcontext);
-            mRecyclerView = (RecyclerView) findViewById(R.id.list_view);
-            final LinearLayoutManager layoutManager = new LinearLayoutManager(mcontext);
-            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            mRecyclerView.setLayoutManager(layoutManager);
-            mRecyclerView.setAdapter(mAdapter);
-
-        }
-
+        });
     }
 
-
-    private void JSONanalyse(){
-        try{
-            foundations.clear();
-
-                JSONObject jsonObject = new JSONObject(data);
-                //Log.i(TAG, "length: "+jsonObject.toString());
-                    for(int i=0;i<jsonObject.length();i++){
-                        JSONObject data2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                        String number = data2.getString("number");
-                        Center temp = new Center();
-                        temp.imageurl = data2.getString("logo");
-                        temp.phone = data2.getString("phone");
-                        temp.address = data2.getString("address");
-                        temp.url = data2.getString("url");
-                        foundations.add(temp);
-                        Log.i("11123", "123------ >  "+number+"  "+temp.imageurl+"  "+temp.phone+"  "+temp.address+"  "+temp.url);
-                    }
-
-
-
-
-        }
-        catch(JSONException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-
-
+    @SuppressLint("StaticFieldLeak")
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
-        public DownloadImageTask(ImageView bmImage) {
+        DownloadImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
         }
 
         protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
+            String urlDisplay = urls[0];
             Bitmap mIcon11 = null;
             try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
+                InputStream in = new java.net.URL(urlDisplay).openStream();
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
@@ -310,11 +180,8 @@ public class link_foundation extends AppCompatActivity {
             }
             return mIcon11;
         }
-
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
     }
-
-
 }

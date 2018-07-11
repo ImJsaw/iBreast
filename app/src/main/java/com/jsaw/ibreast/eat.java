@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class eat extends AppCompatActivity {
     private String url[] = new String[50];
-    private List<cureData> mData = null;
+    private List<listAdapter.listData> mData = null;
     private listAdapter mAdapter = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class eat extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(int i = 0; i < dataSnapshot.getChildrenCount();i++){
-                    cureData c = new cureData();
+                    listAdapter.listData c = new listAdapter.listData();
                     c.title = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i)).child("title").getValue()).toString();
                     c.url = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i)).child("url").getValue()).toString();
                     url[i] = c.url;
@@ -50,7 +50,7 @@ public class eat extends AppCompatActivity {
             }
         });
 
-        mAdapter = new listAdapter((LinkedList<cureData>) mData, eat.this);
+        mAdapter = new listAdapter((LinkedList<listAdapter.listData>) mData, eat.this);
         listView.setAdapter(mAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

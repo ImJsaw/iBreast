@@ -84,6 +84,11 @@
             android:label="輔具資源"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".talk.talk"
+            android:label="說吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".open_pdf"
             android:label="iBreast"
             android:screenOrientation="portrait" />

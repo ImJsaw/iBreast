@@ -9,12 +9,17 @@ import android.widget.TextView;
 import java.util.LinkedList;
 
 public class listAdapter extends BaseAdapter {
-    private LinkedList<cureData> mData;
+    private LinkedList<listData> mData;
     private Context mContext;
 
-    public listAdapter(LinkedList<cureData> mData, Context mContext) {
+    listAdapter(LinkedList<listData> mData, Context mContext) {
         this.mData = mData;
         this.mContext = mContext;
+    }
+
+    static class listData {
+        String title;
+        String url;
     }
 
     @Override
