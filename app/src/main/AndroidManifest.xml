@@ -17,7 +17,8 @@
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity
             android:name=".welcome"
             android:screenOrientation="portrait">
@@ -63,6 +64,11 @@
             android:parentActivityName=".main"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".note.note"
+            android:label="記吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".link.link"
             android:label="連吧"
             android:parentActivityName=".main"
@@ -96,5 +102,9 @@
             android:name=".open_movie"
             android:configChanges="orientation|screenSize"
             android:label="iBreast"/>
+        <activity
+            android:name=".note.note_my"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="note_my"/>
     </application>
 </manifest>

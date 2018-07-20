@@ -4,4 +4,6 @@
     <color name="colorAccent">#EA90A2</color>
     <color name="windowBackground">#fce4df</color>
     <color name="red">#FF0000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

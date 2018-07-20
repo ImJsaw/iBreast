@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.jsaw.ibreast.laugh.laugh;
 import com.jsaw.ibreast.link.link;
+import com.jsaw.ibreast.note.note;
 import com.jsaw.ibreast.talk.talk;
 
 import java.util.Objects;
@@ -81,7 +82,7 @@ public class main extends AppCompatActivity {
         Btn_note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent().setClass(main.this, main.class));
+                startActivity(new Intent().setClass(main.this, note.class));
             }
         });
 
