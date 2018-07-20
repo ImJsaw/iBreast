@@ -41,4 +41,6 @@
     <string name="horm">荷爾蒙受體：</string>
     <string name="HER">HER-2/neu基因表現：</string>
     <string name="fish">FISH：</string>
+    <string name="add">新增</string>
+    <string name="date">日期：</string>
 </resources>

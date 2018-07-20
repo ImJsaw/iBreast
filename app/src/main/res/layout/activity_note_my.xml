@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -13,16 +13,17 @@
             android:id="@+id/Btn_my"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="12dp"
             android:background="@drawable/button_shape"
             android:shadowRadius="7"
-            android:text="@string/my" />
+            android:text="@string/my"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/Btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="12dp"
             android:shadowRadius="7"
             android:text="@string/edit"
             android:gravity="center"
@@ -78,7 +79,7 @@
             android:id="@+id/txtInputStopBleeding"
             android:text="否"
             android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtStopBleeding"
+            android:layout_toEndOf="@+id/txtStopBleeding"
             android:layout_below="@id/txtInputBirth"
             android:layout_marginTop="10dp"/>
         <TextView
@@ -114,7 +115,7 @@
             android:id="@+id/txtSurgeryMethodName"
             android:text="改良式根除性乳房切除手術、腋窩淋巴清除"
             android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtSurgeryMethod"
+            android:layout_toEndOf="@+id/txtSurgeryMethod"
             android:layout_below="@id/txtSurgeryDate"
             android:layout_marginTop="10dp"/>
         <TextView
@@ -132,7 +133,7 @@
             android:id="@+id/txtCellType"
             android:text="浸潤性腺管癌"
             android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtCell"
+            android:layout_toEndOf="@+id/txtCell"
             android:layout_below="@id/txtSurgeryMethodName"
             android:layout_marginTop="10dp"/>
         <TextView
@@ -150,7 +151,7 @@
             android:id="@+id/txtHormName"
             android:text="ER 陽性、PR 陽性"
             android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtHorm"
+            android:layout_toEndOf="@+id/txtHorm"
             android:layout_below="@id/txtCell"
             android:layout_marginTop="10dp"/>
         <TextView
@@ -168,7 +169,7 @@
             android:id="@+id/txtHERtype"
             android:text="陰性"
             android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtHER"
+            android:layout_toEndOf="@+id/txtHER"
             android:layout_below="@id/txtHorm"
             android:layout_marginTop="10dp"/>
         <TextView
@@ -186,7 +187,7 @@
             android:id="@+id/txtFISHtype"
             android:text="陰性"
             android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtFISH"
+            android:layout_toEndOf="@+id/txtFISH"
             android:layout_below="@id/txtHER"
             android:layout_marginTop="10dp"/>
         <TextView
@@ -204,7 +205,7 @@
             android:id="@+id/txtTreatmentName"
             android:text="化學治療\n放射線治療\n標靶治療\n荷爾蒙治療"
             android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtTreatment"
+            android:layout_toEndOf="@+id/txtTreatment"
             android:layout_below="@id/txtFISH"
             android:layout_marginTop="10dp"/>
     </RelativeLayout>

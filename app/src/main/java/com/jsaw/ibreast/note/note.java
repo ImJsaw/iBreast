@@ -10,8 +10,9 @@ import com.jsaw.ibreast.R;
 import com.jsaw.ibreast.link.link;
 import com.jsaw.ibreast.main;
 
-public class note extends AppCompatActivity{
+public class note extends AppCompatActivity {
     Button mBtnMy;
+    Button mBtnTreat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +20,18 @@ public class note extends AppCompatActivity{
         setContentView(R.layout.activity_note);
 
         mBtnMy = findViewById(R.id.Btn_my);
-
         mBtnMy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent().setClass(note.this, note_my.class));
+            }
+        });
+
+        mBtnTreat = findViewById(R.id.Btn_treat);
+        mBtnTreat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(note.this, note_treat.class));
             }
         });
     }

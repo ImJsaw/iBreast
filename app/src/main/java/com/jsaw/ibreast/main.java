@@ -38,7 +38,7 @@ public class main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
-        Btn_laugh= findViewById(R.id.Btn_laugh);
+        Btn_laugh = findViewById(R.id.Btn_laugh);
         Btn_laugh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +46,7 @@ public class main extends AppCompatActivity {
             }
         });
 
-        Btn_cure= findViewById(R.id.Btn_cure);
+        Btn_cure = findViewById(R.id.Btn_cure);
         Btn_cure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +54,7 @@ public class main extends AppCompatActivity {
             }
         });
 
-        Btn_eat= findViewById(R.id.Btn_eat);
+        Btn_eat = findViewById(R.id.Btn_eat);
         Btn_eat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,15 +62,15 @@ public class main extends AppCompatActivity {
             }
         });
 
-        Btn_ask= findViewById(R.id.Btn_ask);
+        Btn_ask = findViewById(R.id.Btn_ask);
         Btn_ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // startActivity(new Intent().setClass(main.this, main.class));
+                // startActivity(new Intent().setClass(main.this, main.class));
             }
         });
 
-        Btn_link= findViewById(R.id.Btn_link);
+        Btn_link = findViewById(R.id.Btn_link);
         Btn_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +78,7 @@ public class main extends AppCompatActivity {
             }
         });
 
-        Btn_note= findViewById(R.id.Btn_note);
+        Btn_note = findViewById(R.id.Btn_note);
         Btn_note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +86,7 @@ public class main extends AppCompatActivity {
             }
         });
 
-        Btn_move= findViewById(R.id.Btn_move);
+        Btn_move = findViewById(R.id.Btn_move);
         Btn_move.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +94,7 @@ public class main extends AppCompatActivity {
             }
         });
 
-        Btn_talk= findViewById(R.id.Btn_talk);
+        Btn_talk = findViewById(R.id.Btn_talk);
         Btn_talk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,16 +106,16 @@ public class main extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menu.add(1,1,1,"關於");
-        menu.add(1,2,2,"個人頁面");
-        menu.add(1,3,3,"登出");
-        menu.add(1,4,4,"退出APP");
+        menu.add(1, 1, 1, "關於");
+        menu.add(1, 2, 2, "個人頁面");
+        menu.add(1, 3, 3, "登出");
+        menu.add(1, 4, 4, "退出APP");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case 1:
                 //open about page
                 break;
@@ -143,10 +143,10 @@ public class main extends AppCompatActivity {
         }
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "再按一次返回退出APP", Toast.LENGTH_SHORT).show();
-        new Handler().postDelayed( new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000);
     }

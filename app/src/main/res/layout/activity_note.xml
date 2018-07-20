@@ -16,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="@id/first_row"
         app:layout_constraintLeft_toLeftOf="@id/first_column"
         app:layout_constraintRight_toRightOf="@id/first_column"
-        app:layout_constraintTop_toTopOf="@id/first_row" />
+        app:layout_constraintTop_toTopOf="@id/first_row"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_treat"
@@ -27,7 +28,8 @@
         app:layout_constraintTop_toTopOf="@id/first_row"
         app:layout_constraintBottom_toBottomOf="@id/first_row"
         app:layout_constraintLeft_toLeftOf="@id/second_column"
-        app:layout_constraintRight_toRightOf="@id/second_column"/>
+        app:layout_constraintRight_toRightOf="@id/second_column"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_body"
@@ -38,7 +40,8 @@
         app:layout_constraintTop_toTopOf="@id/first_row"
         app:layout_constraintBottom_toBottomOf="@id/first_row"
         app:layout_constraintLeft_toLeftOf="@id/third_column"
-        app:layout_constraintRight_toRightOf="@id/third_column"/>
+        app:layout_constraintRight_toRightOf="@id/third_column"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_food"
@@ -49,7 +52,8 @@
         app:layout_constraintTop_toTopOf="@id/second_row"
         app:layout_constraintBottom_toBottomOf="@id/second_row"
         app:layout_constraintLeft_toLeftOf="@id/first_column"
-        app:layout_constraintRight_toRightOf="@id/first_column"/>
+        app:layout_constraintRight_toRightOf="@id/first_column"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_sport"
@@ -60,7 +64,8 @@
         app:layout_constraintTop_toTopOf="@id/second_row"
         app:layout_constraintBottom_toBottomOf="@id/second_row"
         app:layout_constraintLeft_toLeftOf="@id/second_column"
-        app:layout_constraintRight_toRightOf="@id/second_column"/>
+        app:layout_constraintRight_toRightOf="@id/second_column"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_mood"
@@ -71,7 +76,8 @@
         app:layout_constraintTop_toTopOf="@id/second_row"
         app:layout_constraintBottom_toBottomOf="@id/second_row"
         app:layout_constraintLeft_toLeftOf="@id/third_column"
-        app:layout_constraintRight_toRightOf="@id/third_column"/>
+        app:layout_constraintRight_toRightOf="@id/third_column"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_activity"
@@ -82,7 +88,8 @@
         app:layout_constraintTop_toTopOf="@id/third_row"
         app:layout_constraintBottom_toBottomOf="@id/third_row"
         app:layout_constraintLeft_toLeftOf="@id/first_column"
-        app:layout_constraintRight_toRightOf="@id/first_column"/>
+        app:layout_constraintRight_toRightOf="@id/first_column"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_back"
@@ -93,7 +100,8 @@
         app:layout_constraintTop_toTopOf="@id/third_row"
         app:layout_constraintBottom_toBottomOf="@id/third_row"
         app:layout_constraintLeft_toLeftOf="@id/second_column"
-        app:layout_constraintRight_toRightOf="@id/second_column"/>
+        app:layout_constraintRight_toRightOf="@id/second_column"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/Btn_setting"
@@ -104,7 +112,8 @@
         app:layout_constraintTop_toTopOf="@id/third_row"
         app:layout_constraintBottom_toBottomOf="@id/third_row"
         app:layout_constraintLeft_toLeftOf="@id/third_column"
-        app:layout_constraintRight_toRightOf="@id/third_column"/>
+        app:layout_constraintRight_toRightOf="@id/third_column"
+        android:textColor="@color/white"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/first_row"
