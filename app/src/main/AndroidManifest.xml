@@ -113,6 +113,7 @@
         <activity
             android:name=".note.note_treat_add"
             android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="stateHidden"
             android:label="@string/treat" />
     </application>
 </manifest>

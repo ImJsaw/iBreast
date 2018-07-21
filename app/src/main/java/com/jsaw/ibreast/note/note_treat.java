@@ -13,7 +13,7 @@ public class note_treat extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_note_treat);
+        setContentView(R.layout.activity_note_treat1);
 
         mBtnAdd = findViewById(R.id.Btn_edit);
         mBtnAdd.setOnClickListener(new View.OnClickListener() {

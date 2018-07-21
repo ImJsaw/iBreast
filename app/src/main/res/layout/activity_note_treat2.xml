@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:background="@drawable/button_shape"
             android:text="化療"
-            android:textColor="@color/white" />
+            android:textColor="@color/gray" />
 
         <Button
             android:layout_width="0dp"
@@ -52,7 +52,7 @@
             android:layout_weight="1"
             android:background="@drawable/button_shape"
             android:text="放療"
-            android:textColor="@color/gray" />
+            android:textColor="@color/white" />
 
         <Button
             android:layout_width="0dp"
@@ -90,7 +90,7 @@
         android:layout_height="match_parent">
 
         <ListView
-            android:id="@+id/list_cure"
+            android:id="@+id/list_note"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

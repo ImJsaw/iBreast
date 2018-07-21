@@ -18,11 +18,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Objects;
 
 public class login extends AppCompatActivity {
@@ -33,17 +35,17 @@ public class login extends AppCompatActivity {
     private EditText etPassword;
     private ProgressDialog progressDialog;
     private Boolean isProgressDialogShow = false;
-   // InputMethodManager imm;
-   // private View customView;
+    // InputMethodManager imm;
+    // private View customView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button btn_signUp_main = findViewById(R.id.btn_signup_main);
-       // customView = LayoutInflater.from(login.this).inflate(R.layout.dialog_email, null);
-        etEmail =  findViewById(R.id.email);
-        etPassword =  findViewById(R.id.password);
+        // customView = LayoutInflater.from(login.this).inflate(R.layout.dialog_email, null);
+        etEmail = findViewById(R.id.email);
+        etPassword = findViewById(R.id.password);
         //user
         auth = FirebaseAuth.getInstance();
         authListener = new FirebaseAuth.AuthStateListener() {
@@ -51,8 +53,8 @@ public class login extends AppCompatActivity {
             public void onAuthStateChanged(
                     @NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user!=null) {
-                    Log.d("onAuthStateChanged", "登入:"+ user.getUid());
+                if (user != null) {
+                    Log.d("onAuthStateChanged", "登入:" + user.getUid());
                     if (isProgressDialogShow) {
                         progressDialog.dismiss();
                         isProgressDialogShow = false;
@@ -66,7 +68,7 @@ public class login extends AppCompatActivity {
         btn_signUp_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(login.this,register.class));
+                startActivity(new Intent(login.this, register.class));
             }
         });
 
@@ -88,30 +90,31 @@ public class login extends AppCompatActivity {
 //                        })
 //                        .show();
                 String email = etEmail.getText().toString().trim();
-                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     new AlertDialog.Builder(login.this)
                             .setTitle("提示")
                             .setMessage("帳號格式錯誤!!\n請輸入正確帳號以找回密碼")
                             .setPositiveButton("確認", new DialogInterface.OnClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which) {}
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
                             })
                             .show();
                     etEmail.setText("");
-                }
-                else forgotPassword(email);
+                } else forgotPassword(email);
             }
         });
     }
 
-    private void forgotPassword(String mail){
+    private void forgotPassword(String mail) {
         FirebaseAuth.getInstance().sendPasswordResetEmail(mail);
         new AlertDialog.Builder(login.this)
                 .setTitle("提示")
                 .setMessage("密碼重設信件已發送至您的電子信箱\n請至您的信箱收取信件!")
                 .setPositiveButton("確認", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {}
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
                 })
                 .show();
     }
@@ -125,10 +128,10 @@ public class login extends AppCompatActivity {
         }
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "再按一次返回退出APP", Toast.LENGTH_SHORT).show();
-        new Handler().postDelayed( new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000);
     }
@@ -157,12 +160,12 @@ public class login extends AppCompatActivity {
     public void checkLogin(View view) {
         String mail = etEmail.getText().toString().trim();
         String pw = etPassword.getText().toString().trim();
-        if( !mail.equals("") && !pw.equals("") ) {
-            auth.signInWithEmailAndPassword(mail,pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        if (!mail.equals("") && !pw.equals("")) {
+            auth.signInWithEmailAndPassword(mail, pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (!task.isSuccessful()){
-                        if(isProgressDialogShow) {
+                    if (!task.isSuccessful()) {
+                        if (isProgressDialogShow) {
                             progressDialog.dismiss();
                             isProgressDialogShow = false;
                         }
@@ -171,21 +174,20 @@ public class login extends AppCompatActivity {
                 }
             });
             //waiting dialog
-            progressDialog=new ProgressDialog(this);
+            progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("處理中,請稍候...");
             progressDialog.show();
             isProgressDialogShow = true;
             //connect time out
-            new Handler().postDelayed( new Runnable() {
+            new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(isProgressDialogShow){
+                    if (isProgressDialogShow) {
                         progressDialog.dismiss();
                         Toast.makeText(login.this, "連線逾時", Toast.LENGTH_SHORT).show();
                     }
                 }
             }, 3000);
-        }
-        else Toast.makeText(this, "帳號密碼不可為空", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "帳號密碼不可為空", Toast.LENGTH_SHORT).show();
     }
 }
