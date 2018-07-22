@@ -10,6 +10,8 @@ import com.jsaw.ibreast.R;
 import com.jsaw.ibreast.link.link;
 import com.jsaw.ibreast.main;
 
+import java.util.Objects;
+
 public class note extends AppCompatActivity {
     Button mBtnMy;
     Button mBtnTreat;
@@ -18,7 +20,7 @@ public class note extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
-
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);//display "back" on action bar
         mBtnMy = findViewById(R.id.Btn_my);
         mBtnMy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +33,7 @@ public class note extends AppCompatActivity {
         mBtnTreat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent().setClass(note.this, note_treat.class));
+                startActivity(new Intent().setClass(note.this, note_treat1.class));
             }
         });
     }

@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.jsaw.ibreast.R;
 
-public class note_treat_add extends AppCompatActivity {
+public class note_treat4_add extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

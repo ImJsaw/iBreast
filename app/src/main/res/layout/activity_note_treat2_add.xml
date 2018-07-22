@@ -85,7 +85,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/txtDate"
+            android:id="@+id/txtPart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -97,8 +97,8 @@
             android:id="@+id/list_noteAdd"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_alignLeft="@+id/txtDate"
-            android:layout_below="@+id/txtDate" />
+            android:layout_alignLeft="@+id/txtPart"
+            android:layout_below="@+id/txtPart" />
         <TextView
             android:id="@+id/txtStartDate"
             android:layout_width="wrap_content"
@@ -108,6 +108,49 @@
             android:text="開始日期："
             android:textSize="22sp"
             android:layout_below="@+id/list_noteAdd"/>
+        <EditText
+            android:id="@+id/edtStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtStartDate"
+            android:text="2017/11/19"
+            android:textSize="20sp" />
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="8dp"
+            android:layout_toEndOf="@+id/edtStartDate"
+            android:background="@drawable/calendar" />
+
+        <TextView
+            android:id="@+id/txtEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingTop="10dp"
+            android:text="結束日期："
+            android:textSize="22sp"
+            android:layout_below="@+id/edtStartDate"/>
+        <EditText
+            android:id="@+id/edtEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEndDate"
+            android:text="2017/11/20"
+            android:textSize="20sp" />
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="8dp"
+            android:layout_toEndOf="@+id/edtEndDate"
+            android:background="@drawable/calendar" />
+        <ImageButton
+            android:id="@+id/imgCheack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/check" />
 
     </RelativeLayout>
 
