@@ -107,34 +107,10 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/my" />
         <activity
-            android:name=".note.note_treat1"
+            android:name=".note.note_treat_main"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/treat" />
-        <activity
-            android:name=".note.note_treat2"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/treat" />
-        <activity
-            android:name=".note.note_treat3"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/treat" />
-        <activity
-            android:name=".note.note_treat4"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/treat" />
-        <activity
-            android:name=".note.note_treat5"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/treat" />
-        <activity
-            android:name=".note.note_treat1_add"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden"
-            android:label="@string/treat" />
-        <activity
-            android:name=".note.note_treat2_add"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="stateHidden"
-            android:label="@string/treat" />
+
+
     </application>
 </manifest>

@@ -1,94 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/Btn_treat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@drawable/button_shape"
-            android:shadowRadius="7"
-            android:text="@string/treat"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/Btn_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="12dp"
-            android:gravity="center"
-            android:shadowRadius="7"
-            android:text="@string/add" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:text="化療"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btn2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:text="放療"
-            android:textColor="@color/gray" />
-
-        <Button
-            android:id="@+id/btn3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:text="標靶"
-            android:textColor="@color/gray" />
-
-        <Button
-            android:id="@+id/btn4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:text="荷爾蒙"
-            android:textColor="@color/gray" />
-
-        <Button
-            android:id="@+id/btn5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:text="免疫"
-            android:textColor="@color/gray" />
-    </LinearLayout>
+        android:text="i am fragment"
+        android:textSize="80dp" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -102,6 +24,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
 
