@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:paddingTop="10dp"
-            android:text="部位："
+            android:text="處方："
             android:textSize="22sp" />
 
         <ListView

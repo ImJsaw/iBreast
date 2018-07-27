@@ -99,7 +99,8 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/txtDate"
             android:text="2017/11/19"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="date"/>
 
         <ImageView
             android:id="@+id/imgCal"
