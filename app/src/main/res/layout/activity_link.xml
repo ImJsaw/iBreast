@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/viewPager">
+
+    <ImageButton
+        android:id="@+id/foundation"
+        android:scaleType="fitCenter"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/link_foundation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/foundation_baseline"
+        app:layout_constraintBottom_toBottomOf="@id/foundation_baseline"
+        android:background="@null" />
+
+    <ImageButton
+        android:id="@+id/center"
+        android:scaleType="fitCenter"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/link_center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/center_baseline"
+        app:layout_constraintBottom_toBottomOf="@id/center_baseline"
+        android:background="@null" />
+
+    <ImageButton
+        android:id="@+id/resource"
+        android:scaleType="fitCenter"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/link_resource"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/resource_baseline"
+        app:layout_constraintBottom_toBottomOf="@id/resource_baseline"
+        android:background="@null" />
+
+        <ImageButton
+            android:id="@+id/economic"
+            android:scaleType="fitCenter"
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/link_economic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/economic_baseline"
+            app:layout_constraintBottom_toBottomOf="@id/economic_baseline"
+            android:background="@null" />
+    <android.support.constraint.Guideline
+        android:id="@+id/foundation_baseline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+    <android.support.constraint.Guideline
+        android:id="@+id/center_baseline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+    <android.support.constraint.Guideline
+        android:id="@+id/resource_baseline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+    <android.support.constraint.Guideline
+        android:id="@+id/economic_baseline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+</android.support.constraint.ConstraintLayout>

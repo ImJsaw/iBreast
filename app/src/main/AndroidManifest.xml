@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jsaw.ibreast">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".welcome"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login"
+            android:label="登入"
+            android:screenOrientation="portrait" />
+        <!--- label = actionBar text -->
+        <activity
+            android:name=".register"
+            android:label="註冊"
+            android:parentActivityName=".login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main"
+            android:label="@string/app_name"
+            android:parentActivityName=".login"
+            android:screenOrientation="portrait" />
+        <!--- parentActivity = where actionBar "back" direct to -->
+        <activity
+            android:name=".laugh.laugh"
+            android:label="笑吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".cure"
+            android:label="治吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".move"
+            android:label="動吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".eat"
+            android:label="吃吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.note"
+            android:label="記吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link"
+            android:label="連吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_economic"
+            android:label="經濟補助"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_center"
+            android:label="癌症中心"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_foundation"
+            android:label="基金會"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".link.link_resource"
+            android:label="輔具資源"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".talk.talk"
+            android:label="說吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".open_pdf"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".open_movie"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".note.note_my"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/my" />
+        <activity
+            android:name=".note.note_treat_main"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat" />
+
+
+    </application>
+</manifest>

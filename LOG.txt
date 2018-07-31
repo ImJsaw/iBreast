@@ -1,0 +1,43 @@
+2018/7/9 
+
+16:00 start remake
+
+20:00 complete login laugh (server/register not yet)
+
+21:00 fix movie restart if fullscreen
+
+22:17 fix login bug  /implement register page
+
+
+
+2018/7/10
+
+9:37 start researching fiebase
+
+10:18 complete login/register
+
+11:34 complete forgot password
+
+
+13:37 continue
+
+17:21 complete cure
+
+17:39 complete eat
+
+18:44 move part of database to firebase
+
+
+
+2018/7/11
+
+8:30 start completing link
+
+8:40 //cannot use fragment(api ver)
+
+
+2018/7/31
+22:12  start debug
+22:49  fixlink-foundation bug
+23:32  fix pdf view
+23:58  fix name bug

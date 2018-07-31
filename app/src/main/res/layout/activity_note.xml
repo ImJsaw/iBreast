@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/viewPager">
+
+    <Button
+        android:id="@+id/Btn_my"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my"
+        android:background="@drawable/button_shape"
+
+        app:layout_constraintBottom_toBottomOf="@id/first_row"
+        app:layout_constraintLeft_toLeftOf="@id/first_column"
+        app:layout_constraintRight_toRightOf="@id/first_column"
+        app:layout_constraintTop_toTopOf="@id/first_row"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_treat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/treat"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/first_row"
+        app:layout_constraintBottom_toBottomOf="@id/first_row"
+        app:layout_constraintLeft_toLeftOf="@id/second_column"
+        app:layout_constraintRight_toRightOf="@id/second_column"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/body"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/first_row"
+        app:layout_constraintBottom_toBottomOf="@id/first_row"
+        app:layout_constraintLeft_toLeftOf="@id/third_column"
+        app:layout_constraintRight_toRightOf="@id/third_column"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/food"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/second_row"
+        app:layout_constraintBottom_toBottomOf="@id/second_row"
+        app:layout_constraintLeft_toLeftOf="@id/first_column"
+        app:layout_constraintRight_toRightOf="@id/first_column"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sport"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/second_row"
+        app:layout_constraintBottom_toBottomOf="@id/second_row"
+        app:layout_constraintLeft_toLeftOf="@id/second_column"
+        app:layout_constraintRight_toRightOf="@id/second_column"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_mood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mood"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/second_row"
+        app:layout_constraintBottom_toBottomOf="@id/second_row"
+        app:layout_constraintLeft_toLeftOf="@id/third_column"
+        app:layout_constraintRight_toRightOf="@id/third_column"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/third_row"
+        app:layout_constraintBottom_toBottomOf="@id/third_row"
+        app:layout_constraintLeft_toLeftOf="@id/first_column"
+        app:layout_constraintRight_toRightOf="@id/first_column"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/third_row"
+        app:layout_constraintBottom_toBottomOf="@id/third_row"
+        app:layout_constraintLeft_toLeftOf="@id/second_column"
+        app:layout_constraintRight_toRightOf="@id/second_column"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/Btn_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/setting"
+        android:background="@drawable/button_shape"
+        app:layout_constraintTop_toTopOf="@id/third_row"
+        app:layout_constraintBottom_toBottomOf="@id/third_row"
+        app:layout_constraintLeft_toLeftOf="@id/third_column"
+        app:layout_constraintRight_toRightOf="@id/third_column"
+        android:textColor="@color/white"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/first_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.195" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/second_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.485" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/third_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.775" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/first_column"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.175" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/second_column"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/third_column"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.825" />
+
+</android.support.constraint.ConstraintLayout>

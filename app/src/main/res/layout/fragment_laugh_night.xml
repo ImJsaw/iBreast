@@ -1,0 +1,85 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/firstButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.2"/>
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/secondButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.4"/>
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/thirdButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.6"/>
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/fourthButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.8"/>
+
+                <ImageButton
+                    android:id="@+id/btn_sleep"
+                    android:scaleType="fitCenter"
+                    android:layout_width="240dp"
+                    android:layout_height="80dp"
+                    app:srcCompat="@drawable/laugh_night_sleep"
+                    android:background="@null"
+                    app:layout_constraintTop_toTopOf="@+id/firstButton"
+                    app:layout_constraintBottom_toBottomOf="@id/firstButton"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/btn_relax"
+                    android:scaleType="fitCenter"
+                    android:layout_width="240dp"
+                    android:layout_height="80dp"
+                    app:srcCompat="@drawable/laugh_night_relax"
+                    android:background="@null"
+                    app:layout_constraintTop_toTopOf="@+id/secondButton"
+                    app:layout_constraintBottom_toBottomOf="@+id/secondButton"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_message"
+                    android:scaleType="fitCenter"
+                    android:layout_width="240dp"
+                    android:layout_height="80dp"
+                    app:srcCompat="@drawable/laugh_night_massage"
+                    android:background="@null"
+                    app:layout_constraintTop_toTopOf="@+id/thirdButton"
+                    app:layout_constraintBottom_toBottomOf="@+id/thirdButton"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_mind"
+                    android:scaleType="fitCenter"
+                    android:layout_width="240dp"
+                    android:layout_height="80dp"
+                    app:srcCompat="@drawable/laugh_night_mind"
+                    android:background="@null"
+                    app:layout_constraintTop_toTopOf="@+id/fourthButton"
+                    app:layout_constraintBottom_toBottomOf="@+id/fourthButton"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+</FrameLayout>
