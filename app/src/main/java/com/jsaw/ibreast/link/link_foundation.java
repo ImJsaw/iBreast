@@ -53,9 +53,7 @@ public class link_foundation extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("link","onCreate");
         setContentView(R.layout.fragment_link_foundation);
-        Log.d("link","setContent");
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("處理中,請稍候...");
         progressDialog.show();
@@ -71,7 +69,7 @@ public class link_foundation extends AppCompatActivity {
             }
         }, 5000);
         getData();
-        Log.d("link","getData");
+        Log.d("link","foundation getData");
     }
     
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
