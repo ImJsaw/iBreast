@@ -107,9 +107,14 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/my" />
         <activity
-            android:name=".note.note_treat_main"
+            android:name=".note.treat.note_treat_main"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/treat" />
+
+        <activity
+            android:name=".note.body.note_body"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/body" />
 
 
     </application>

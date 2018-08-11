@@ -7,15 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.jsaw.ibreast.R;
-import com.jsaw.ibreast.link.link;
-import com.jsaw.ibreast.main;
+import com.jsaw.ibreast.note.body.note_body;
+import com.jsaw.ibreast.note.treat.note_treat_main;
 
 import java.util.Objects;
 
 public class note extends AppCompatActivity {
     Button mBtnMy;
     Button mBtnTreat;
-
+    Button mBtnBody;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,14 @@ public class note extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent().setClass(note.this, note_treat_main.class));
+            }
+        });
+
+        mBtnBody = findViewById(R.id.Btn_body);
+        mBtnBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(note.this, note_body.class));
             }
         });
     }

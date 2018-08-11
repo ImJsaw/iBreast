@@ -9,6 +9,6 @@ public class note_mood extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_note_my);
+        setContentView(R.layout.note_my);
     }
 }

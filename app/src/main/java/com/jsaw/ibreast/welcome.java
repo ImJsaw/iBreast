@@ -14,7 +14,7 @@ public class welcome extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                startActivity(new Intent().setClass(welcome.this, login.class));
+                startActivity(new Intent().setClass(welcome.this, main.class));
                 finish();
             }
         }, 2000);//2秒跳轉

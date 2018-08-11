@@ -1,119 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/viewPager">
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/Btn_my"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-
+        android:text="@string/my"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/first_row"
         app:layout_constraintLeft_toLeftOf="@id/first_column"
         app:layout_constraintRight_toRightOf="@id/first_column"
         app:layout_constraintTop_toTopOf="@id/first_row"
-        android:textColor="@color/white"/>
+        />
 
     <Button
         android:id="@+id/Btn_treat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/treat"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/first_row"
+        android:text="@string/treat"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/first_row"
         app:layout_constraintLeft_toLeftOf="@id/second_column"
         app:layout_constraintRight_toRightOf="@id/second_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/first_row" />
 
     <Button
         android:id="@+id/Btn_body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/body"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/first_row"
+        android:text="@string/body"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/first_row"
         app:layout_constraintLeft_toLeftOf="@id/third_column"
         app:layout_constraintRight_toRightOf="@id/third_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/first_row" />
 
     <Button
         android:id="@+id/Btn_food"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/food"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/second_row"
+        android:text="@string/food"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/second_row"
         app:layout_constraintLeft_toLeftOf="@id/first_column"
         app:layout_constraintRight_toRightOf="@id/first_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/second_row" />
 
     <Button
         android:id="@+id/Btn_sport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sport"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/second_row"
+        android:text="@string/sport"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/second_row"
         app:layout_constraintLeft_toLeftOf="@id/second_column"
         app:layout_constraintRight_toRightOf="@id/second_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/second_row" />
 
     <Button
         android:id="@+id/Btn_mood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mood"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/second_row"
+        android:text="@string/mood"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/second_row"
         app:layout_constraintLeft_toLeftOf="@id/third_column"
         app:layout_constraintRight_toRightOf="@id/third_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/second_row" />
 
     <Button
         android:id="@+id/Btn_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/third_row"
+        android:text="@string/activity"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/third_row"
         app:layout_constraintLeft_toLeftOf="@id/first_column"
         app:layout_constraintRight_toRightOf="@id/first_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/third_row" />
 
     <Button
         android:id="@+id/Btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/third_row"
+        android:text="@string/back"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/third_row"
         app:layout_constraintLeft_toLeftOf="@id/second_column"
         app:layout_constraintRight_toRightOf="@id/second_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/third_row" />
 
     <Button
         android:id="@+id/Btn_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/setting"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:textSize="25sp"
         android:background="@drawable/button_shape"
-        app:layout_constraintTop_toTopOf="@id/third_row"
+        android:text="@string/setting"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/third_row"
         app:layout_constraintLeft_toLeftOf="@id/third_column"
         app:layout_constraintRight_toRightOf="@id/third_column"
-        android:textColor="@color/white"/>
+        app:layout_constraintTop_toTopOf="@id/third_row" />
 
     <android.support.constraint.Guideline
         android:id="@+id/first_row"
