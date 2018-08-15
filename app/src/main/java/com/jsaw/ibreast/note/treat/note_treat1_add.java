@@ -36,7 +36,7 @@ public class note_treat1_add extends Fragment {
     private EditText edtDate;
     private EditText edtOther;
 
-    @SuppressLint("ClickableViewAccessibility")
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

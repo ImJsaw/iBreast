@@ -2,13 +2,10 @@ package com.jsaw.ibreast.note.treat;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,32 +31,27 @@ public class note_treat2_add extends Fragment implements View.OnClickListener{
     private static final String[] STRINGS = new String[]{"checkbox", "item"};
     private EditText edtStartDate;
     private EditText edtEndDate;
-    private ImageButton imgCalStart;
-    private ImageButton imgCalEnd;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.note_treat2_add, container, false);
-        edtStartDate = getActivity().findViewById(R.id.edtStartDate);
-        edtEndDate = getActivity().findViewById(R.id.edtEndDate);
-
-        imgCalStart = getActivity().findViewById(R.id.imgCal_t1);
+        edtStartDate = view.findViewById(R.id.edtStartDate);
+        edtEndDate = view.findViewById(R.id.edtEndDate);
+        ImageButton imgCalStart = view.findViewById(R.id.imgCalStart);
+        ImageButton imgCalEnd = view.findViewById(R.id.imgCalEnd);
         imgCalStart.setOnClickListener(this);
-        imgCalEnd = getActivity().findViewById(R.id.imgCalEnd);
         imgCalEnd.setOnClickListener(this);
+
         firebaseGetData(view);
 
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
 
-    }
+
 
     public void onClick(final View view) {
         Calendar calendar = Calendar.getInstance();
@@ -107,7 +99,6 @@ public class note_treat2_add extends Fragment implements View.OnClickListener{
                             item.put("item", data.getValue().toString());
                             items.add(item);
                         }
-
                     }
 //                1. Context context 執行環境
 //                2. List<? extends Map<String, ?>> data 帶入的資料

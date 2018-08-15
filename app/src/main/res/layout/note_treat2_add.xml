@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
-        android:background="@color/colorPrimary">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_margin="30dp"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:scrollbars="horizontal">-->
 
         <TextView
             android:id="@+id/txtPart"
@@ -30,33 +31,34 @@
             android:divider="@null" />
 
         <LinearLayout
+        android:id="@+id/OtherLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_noteAdd"
+        android:layout_alignStart="@+id/list_noteAdd"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/ckbOther"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/txtStartDate"
-            android:layout_alignStart="@+id/list_noteAdd"
-            android:orientation="horizontal">
+            android:buttonTint="@color/black" />
 
-            <CheckBox
-                android:id="@+id/ckbOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/black" />
+        <TextView
+            android:id="@+id/txtOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他:"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/txtOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其他:"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/edtOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:singleLine="true"
-                android:textSize="20sp" />
+        <EditText
+            android:id="@+id/edtOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -64,7 +66,7 @@
             android:id="@+id/txtStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/edtStartDate"
+            android:layout_below="@+id/OtherLayout"
             android:layout_marginStart="10dp"
             android:paddingTop="10dp"
             android:text="開始日期："
@@ -74,7 +76,8 @@
             android:id="@+id/edtStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/txtEndDate"
+            android:layout_alignStart="@+id/txtStartDate"
+            android:layout_below="@+id/txtStartDate"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:hint="yyyy/MM/dd"
@@ -86,17 +89,18 @@
             android:id="@+id/imgCalStart"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_above="@+id/txtEndDate"
+            android:layout_alignBottom="@+id/edtStartDate"
             android:layout_margin="8dp"
             android:layout_toEndOf="@+id/edtStartDate"
             android:background="@drawable/calendar"
-            android:onClick="onClick"/>
+            android:onClick="onClick" />
 
         <TextView
             android:id="@+id/txtEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/edtEndDate"
+            android:layout_below="@+id/OtherLayout"
+            android:layout_toEndOf="@+id/imgCalStart"
             android:layout_marginStart="10dp"
             android:paddingTop="10dp"
             android:text="結束日期："
@@ -106,8 +110,8 @@
             android:id="@+id/edtEndDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txtEndDate"
+            android:layout_toEndOf="@+id/imgCalStart"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:hint="yyyy/MM/dd"
@@ -119,11 +123,11 @@
             android:id="@+id/imgCalEnd"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_alignBottom="@+id/edtEndDate"
             android:layout_margin="8dp"
             android:layout_toEndOf="@+id/edtEndDate"
+            android:layout_below="@+id/txtEndDate"
             android:background="@drawable/calendar"
-            android:onClick="onClick"/>
+            android:onClick="onClick" />
 
         <ImageButton
             android:id="@+id/imgCheack"
@@ -133,7 +137,7 @@
             android:layout_alignParentEnd="true"
             android:background="@drawable/check" />
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
-</LinearLayout>
+</RelativeLayout>
 

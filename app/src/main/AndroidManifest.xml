@@ -105,16 +105,20 @@
         <activity
             android:name=".note.note_my"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/my" />
+            android:label="@string/my"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".note.treat.note_treat_main"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/treat" />
+            android:label="@string/treat"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".note.body.note_body"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/body" />
+            android:label="@string/body"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
 
 
     </application>
