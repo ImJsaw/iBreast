@@ -10,6 +10,8 @@
 
 
 
+6:17
+
 2018/7/10
 
 9:37 start researching fiebase
@@ -29,6 +31,8 @@
 
 
 
+6:23
+
 2018/7/11
 
 8:30 start completing link
@@ -42,5 +46,16 @@
 23:32  fix pdf view
 23:58  fix name bug
 
+1:46
+
 2018/8/2
 14:00  start rebuild "link"
+16:31 complete link rebuild & move all data to firebase
+
+2:31
+
+2018/8/16
+10:00	start ask
+11:19 	pause
+21:37 	start
+22:20	template complete

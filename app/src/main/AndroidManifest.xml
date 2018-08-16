@@ -110,7 +110,11 @@
             android:name=".note.note_treat_main"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/treat" />
-
+        <activity
+            android:name=".ask"
+            android:label="問吧"
+            android:parentActivityName=".main"
+            android:screenOrientation="portrait" />
 
     </application>
 </manifest>
