@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">e粉紅護照</string>
+    <string name="loginImageDescription">rabbitImage</string>
+    <string name="account">帳號</string>
+    <string name="password">密碼</string>
+    <string name="login">登入</string>
+    <string name="register">註冊</string>
+    <string name="keepLogin">保持登入</string>
+    <string name="forget">忘記密碼</string>
+    <string name="laugh">笑吧</string>
+    <string name="eat">吃吧</string>
+    <string name="cure">治吧</string>
+    <string name="move">動吧</string>
+    <string name="ask">問吧</string>
+    <string name="note">記吧</string>
+    <string name="talk">說吧</string>
+    <string name="link">連吧</string>
+    <string name="flower">flower</string>
+    <string name="email">電子信箱</string>
+    <string name="pwConfirm">密碼確認</string>
+    <string name="eamilHint">帳號需為電子信箱格式</string>
+    <string name="pwHint">密碼須為6~12英數字</string>
+    <string name="inputEmail">輸入您的帳號(電子信箱)</string>
+    <string name="my_record">自我紀錄</string>
+    <string name="my">我的</string>
+    <string name="treat">治療</string>
+    <string name="body">身體</string>
+    <string name="food">飲食</string>
+    <string name="sport">運動</string>
+    <string name="mood">心情</string>
+    <string name="activity">活動</string>
+    <string name="back">回診</string>
+    <string name="setting">設定</string>
+    <string name="edit">編輯</string>
+    <string name="birth">生日：</string>
+    <string name="height">身高：</string>
+    <string name="StopBleeding">是否停經：</string>
+    <string name="surgery">手術年月：</string>
+    <string name="surgeryMethod">術式：</string>
+    <string name="cell">細胞類型：</string>
+    <string name="horm">荷爾蒙受體：</string>
+    <string name="HER">HER-2/neu基因表現：</string>
+    <string name="fish">FISH：</string>
+    <string name="add">新增</string>
+    <string name="date">日期：</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
