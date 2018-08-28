@@ -1,88 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtDate"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:paddingTop="10dp"
-        android:text="@string/date"
-        android:textSize="22sp" />
+        android:orientation="horizontal"
+        android:layout_marginStart="8dp">
 
-    <EditText
-        android:id="@+id/edtDate"
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="10dp"
+            android:text="@string/date"
+            android:textSize="28sp" />
+
+        <EditText
+            android:id="@+id/edtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="yyyy/MM/dd"
+            android:inputType="date"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/imgCal"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/calendar" />
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/txtDate"
-        android:inputType="date"
-        android:text="2017/11/19"
-        android:textSize="20sp" />
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/imgCal"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_margin="8dp"
-        android:layout_toEndOf="@+id/edtDate"
-        android:background="@drawable/calendar" />
+        <TextView
+            android:id="@+id/txtWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="體重："
+            android:textSize="28sp" />
 
-    <TextView
-        android:id="@+id/txtWeight"
+        <EditText
+            android:id="@+id/edtWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="45"
+            android:inputType="number"
+            android:textSize="22sp"
+            android:minWidth="30dp"/>
+
+        <TextView
+            android:id="@+id/txtKilo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="公斤"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtKilo"
-        android:layout_alignLeft="@+id/txtDate"
-        android:text="體重："
-        android:textSize="22sp" />
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/edtWeight"
+        <TextView
+            android:id="@+id/txtBmi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BMI："
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/txtBMI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/edtDate"
-        android:layout_below="@+id/edtDate"
-        android:autoSizeMaxTextSize="10pt"
-        android:inputType="date"
-        android:text="60"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal">
 
-        android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="結果："
+            android:textSize="28sp" />
 
-    <TextView
-        android:id="@+id/txtKilo"
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/imgCal"
-        android:layout_below="@id/imgCal"
-        android:text="公斤"
-        android:textSize="22sp" />
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/txtBmi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/txtWeight"
-        android:layout_below="@id/txtWeight"
-        android:layout_marginTop="30sp"
-        android:text="BMI："
-        android:textSize="22sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="建議："
+            android:textSize="28sp" />
 
-    <TextView
-        android:id="@+id/txtBMI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtBmi"
-        android:layout_toEndOf="@+id/txtBmi"
-        android:text="23.1"
-        android:textSize="30sp" />
+        <TextView
+            android:id="@+id/txtAdvice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp" />
+    </LinearLayout>
 
     <ImageButton
-        android:id="@+id/imgCheack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/check" />
-</RelativeLayout>
+        android:id="@+id/btnCheack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/check"
+        android:layout_gravity="end|bottom" />
+</LinearLayout>

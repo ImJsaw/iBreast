@@ -3,6 +3,7 @@ package com.jsaw.ibreast;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -24,7 +25,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class login extends AppCompatActivity {
@@ -35,8 +42,21 @@ public class login extends AppCompatActivity {
     private EditText etPassword;
     private ProgressDialog progressDialog;
     private Boolean isProgressDialogShow = false;
+    private DatabaseReference mDatabase;
+    private FirebaseUser user;
+    public String email;
+    private String Uid;
     // InputMethodManager imm;
     // private View customView;
+
+    public static class Users {
+        public String email;
+        public String weight = "";
+        public String height = "";
+        Users(String email) {
+            this.email = email;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +66,34 @@ public class login extends AppCompatActivity {
         // customView = LayoutInflater.from(login.this).inflate(R.layout.dialog_email, null);
         etEmail = findViewById(R.id.email);
         etPassword = findViewById(R.id.password);
+        mDatabase = FirebaseDatabase.getInstance().getReference("Users");
         //user
         auth = FirebaseAuth.getInstance();
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(
                     @NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Log.d("onAuthStateChanged", "登入:" + user.getUid());
+                    Log.d("onAuthStateChanged", "登入:" + user.getEmail());
+                    Log.d("onAuthStateChanged", "登入:" + auth.getUid());
+                    Uid = user.getUid();
+                    mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            //如果DB沒有User，則建立
+                            if (!dataSnapshot.hasChild(Uid)){
+                                Users users = new Users(user.getEmail());
+                                mDatabase.child(Uid).setValue(users);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
                     if (isProgressDialogShow) {
                         progressDialog.dismiss();
                         isProgressDialogShow = false;
@@ -148,7 +187,7 @@ public class login extends AppCompatActivity {
         auth.removeAuthStateListener(authListener);
     }
 
-//    //hide keyboard
+    //    //hide keyboard
 //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
 //        if(event.getAction() == MotionEvent.ACTION_DOWN && getCurrentFocus()!=null && getCurrentFocus().getWindowToken()!=null){
@@ -156,6 +195,13 @@ public class login extends AppCompatActivity {
 //        }
 //        return super.onTouchEvent(event);
 //    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public void checkLogin(View view) {
         String mail = etEmail.getText().toString().trim();
@@ -190,4 +236,7 @@ public class login extends AppCompatActivity {
             }, 3000);
         } else Toast.makeText(this, "帳號密碼不可為空", Toast.LENGTH_SHORT).show();
     }
+
+
 }
+

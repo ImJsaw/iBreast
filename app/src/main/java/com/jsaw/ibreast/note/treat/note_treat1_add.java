@@ -2,7 +2,9 @@ package com.jsaw.ibreast.note.treat;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,12 +20,14 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
+import com.jsaw.ibreast.cure;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,7 +39,28 @@ public class note_treat1_add extends Fragment {
     private static final String[] STRINGS = new String[]{"checkbox", "engName", "chiName"};
     private EditText edtDate;
     private EditText edtOther;
+    private Boolean isProgressDialogShow = false;
+    private ProgressDialog progressDialog;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("處理中,請稍候...");
+        progressDialog.show();
+        isProgressDialogShow = true;
+        //connect time out
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isProgressDialogShow) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getContext(), "連線逾時", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, 5000);
+    }
 
     @Nullable
     @Override
@@ -43,32 +68,20 @@ public class note_treat1_add extends Fragment {
         final View view = inflater.inflate(R.layout.note_treat1_add, container, false);
         edtDate = view.findViewById(R.id.edtDate);
         edtOther = view.findViewById(R.id.edtOther);
-//        edtOther.setOnTouchListener(onTouch);
 //        edtOther.setOnEditorActionListener(onEditor);
         firebaseGetData(view);
 //        設定小日曆選擇時間
-        ImageButton selectDate = view.findViewById(R.id.imgCal_t1);
+        ImageButton selectDate = view.findViewById(R.id.imgCal);
         selectDate.setOnClickListener(imgCalOnClick);
         return view;
     }
 
 
-    private View.OnTouchListener onTouch = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            edtOther.setTranslationY(-600f);
-            return false;
-        }
-    };
-
     private TextView.OnEditorActionListener onEditor = new TextView.OnEditorActionListener() {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                InputMethodManager in = (InputMethodManager) getContext().getSystemService
-                        (getContext().INPUT_METHOD_SERVICE);
-                in.hideSoftInputFromWindow(edtOther.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-            }
+            TextView test = getView().findViewById(R.id.txtOther);
+            test.setText(v.getText().toString());
             return false;
         }
     };
@@ -80,26 +93,24 @@ public class note_treat1_add extends Fragment {
                 List<HashMap<String, Object>> items = new ArrayList<>();
                 ListView listView = view.findViewById(R.id.list_noteAdd);
 
+                dataSnapshot = dataSnapshot.child("treat1_add");
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        HashMap<String, Object> item = new HashMap<>();
+                        item.put("engName", data.child("engName").getValue().toString());
+                        item.put("chiName", data.child("chiName").getValue().toString());
+                        items.add(item);
 
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (ds.getKey().equals("treat1_add")) {
-                        for (DataSnapshot data : ds.getChildren()) {
-                            HashMap<String, Object> item = new HashMap<>();
-                            item.put("engName", data.child("engName").getValue().toString());
-                            item.put("chiName", data.child("chiName").getValue().toString());
-                            items.add(item);
-                        }
-
-                    }
+                }
 //                1. Context context 執行環境
 //                2. List<? extends Map<String, ?>> data 帶入的資料
 //                3. int resource Layout位置
 //                4. String[] from data帶入資料的Key
 //                5. int[] to Key的值要帶到哪個元件
-                    SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.note_list_view,
-                            STRINGS, IDS);
-                    listView.setAdapter(sa);
-                }
+                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.note_list_view,
+                        STRINGS, IDS);
+                listView.setAdapter(sa);
+                progressDialog.dismiss();
+                isProgressDialogShow = false;
             }
 
             @Override

@@ -6,20 +6,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:alignmentMode="alignBounds"
+        android:columnCount="4"
+        android:orientation="horizontal">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="日期"
+            android:textSize="22sp" />
 
-        <ListView
-            android:id="@+id/list_note"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtWeight"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="體重(kg)"
+            android:textSize="22sp" />
 
-    </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/txtBmi"
+            android:layout_width="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="BMI"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="結果"
+            android:textSize="22sp" />
+
+        <ScrollView
+            android:layout_columnSpan="4"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_marginBottom="50dp">
+
+            <ListView
+                android:id="@+id/list_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+    </GridLayout>
 </LinearLayout>
 
