@@ -29,6 +29,5 @@ public class note_my extends AppCompatActivity{
 
             }
         });
-
     }
 }

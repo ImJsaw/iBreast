@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iBreast</string>
+    <string name="app_name">e粉紅護照</string>
     <string name="loginImageDescription">rabbitImage</string>
     <string name="account">帳號</string>
     <string name="password">密碼</string>
@@ -47,7 +47,7 @@
         <item>管腔A型</item>
         <item>管腔B型</item>
         <item>三陰性</item>
-        <itme>HER過度表現型</itme>
+        <item>HER過度表現型</item>
     </string-array>
     <string-array name="spinYN">
         <item>陽性</item>
@@ -57,7 +57,7 @@
         <item>0</item>
         <item>1+</item>
         <item>2+</item>
-        <itme>3+</itme>
+        <item>3+</item>
     </string-array>
     <string-array name="spinPm">
         <item>+</item>
@@ -65,4 +65,28 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- ask -->
+    <string-array name="ask_title">
+        <item>
+            乳癌手術化療後血液中CEA指數一直保持7左右，請問大於5是表示什麼意思?要注意什麼?
+        </item>
+        <item>
+            自從吃復乳納至今有九個多月，每天全身會又刺又癢又熱，請問醫師這種症狀如果不能解除，是否可以一直忍受5年而不會對身體造成不良的結果?
+        </item>
+        <item>
+            我是乳癌第一期，開刀滿一年，開刀後吃8個月泰莫西芬(Tamoxifen)但子宮內膜增厚，請問該怎麼辦?
+        </item>
+    </string-array>
+
+    <string-array name="ask_ans">
+        <item>
+            CEA指數7是稍高，醫師會再安排詳細追蹤。有些人CEA稍高是因慢性肝炎或抽煙、喝酒或腸胃道有病變等原因，持續追蹤即可，並不一定表示轉移。但要與您回診之醫師討論，如有漸轉高，則要注意。
+        </item>
+        <item>
+            復乳納的確會帶來一些不舒服像關節酸痛等，開始服用時身體不適的症狀較明顯，忍受幾個月後，不適的症狀減緩。若症狀還是極為難忍受，可和醫師討論更改藥物如諾曼癌素，另外規律而持續性的運動對關節酸痛之症狀解除有幫助。
+        </item>
+        <item>
+            吃泰莫西芬(Tamoxifen)有子宮內膜增厚的情形，如果不是很嚴重，繼續服用。造成子宮內膜癌的機率相當低，半年或一年定期至婦產科追蹤，服用的益處大於它的副作用，所以建議不要稍許之副作用或不適而中斷服用。
+        </item>
+    </string-array>
 </resources>
