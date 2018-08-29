@@ -43,7 +43,12 @@
     <string name="fish">FISH：</string>
     <string name="add">新增</string>
     <string name="date">日期：</string>
-
+    <string-array name="spinCell">
+        <item>管腔A型</item>
+        <item>管腔B型</item>
+        <item>三陰性</item>
+        <itme>HER過度表現型</itme>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

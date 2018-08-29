@@ -25,23 +25,10 @@ public class note_my extends AppCompatActivity{
         mBtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                int year  = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day   = calendar.get(Calendar.DAY_OF_MONTH);
+                setContentView(R.layout.note_my_add);
 
-                DatePickerDialog dialog = new DatePickerDialog(note_my.this,
-                        mDateSetListener, year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
             }
         });
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month += 1;
-//                System.out.print( "onDateSet :yyyy/MM/dd" + year + "/" + month + "/" + day);
-            }
-        };
+
     }
 }
