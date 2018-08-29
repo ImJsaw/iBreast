@@ -49,6 +49,20 @@
         <item>三陰性</item>
         <itme>HER過度表現型</itme>
     </string-array>
+    <string-array name="spinYN">
+        <item>陽性</item>
+        <item>陰性</item>
+    </string-array>
+    <string-array name="spinHer">
+        <item>0</item>
+        <item>1+</item>
+        <item>2+</item>
+        <itme>3+</itme>
+    </string-array>
+    <string-array name="spinPm">
+        <item>+</item>
+        <item>-</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
