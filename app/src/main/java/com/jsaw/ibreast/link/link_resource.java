@@ -3,8 +3,9 @@ package com.jsaw.ibreast.link;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
@@ -16,24 +17,15 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class link_resource extends AppCompatActivity {
-
     class Center{
         String name;
         String phone;
@@ -41,25 +33,33 @@ public class link_resource extends AppCompatActivity {
         String url;
         String info;
     }
-    private String TAG = "link_resource";
-    public static final int CONNECTION_TIMEOUT=10000;
-    public static final int READ_TIMEOUT=15000;
     public static final ArrayList<Center> wig=new ArrayList<>();
     public static final ArrayList<Center> bra=new ArrayList<>();
     public static final ArrayList<Center> cuff=new ArrayList<>();
     public static final ArrayList<Center> home=new ArrayList<>();
-
-    private String data;
-
-    public link_resource() {
-        // Required empty public constructor
-    }
+    private ProgressDialog progressDialog;
+    private Boolean isProgressDialogShow = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_link_resource);
-        new getData(this).execute();
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setMessage("處理中,請稍候...");
+        progressDialog.show();
+        isProgressDialogShow = true;
+        //connect time out
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(isProgressDialogShow){
+                    progressDialog.dismiss();
+                    Toast.makeText(link_resource.this, "連線逾時", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, 5000);
+        getData();
+        Log.d("link","resource getData");
     }
 
     private void addTableRow(final Context context, TableLayout tl, final String name, final String phone, final String address, final String url, final String info){
@@ -108,224 +108,54 @@ public class link_resource extends AppCompatActivity {
         tl.addView(tr);
     }
 
-    private class getData extends AsyncTask<String, String, String>
-    {
-        HttpURLConnection conn;
-        URL url = null;
-        ProgressDialog pDialog;
-        private Context mcontext;
-
-        getData(Context context){
-            this.mcontext=context;
+    private void dataProcess(DataSnapshot data, ArrayList<Center> target){
+        for (int i = 0; i < data.getChildrenCount(); i++) {
+            Center temp = new Center();
+            temp.name = String.valueOf(data.child(String.valueOf(i)).child("unit").getValue());
+            temp.phone = String.valueOf(data.child(String.valueOf(i)).child("phone").getValue());
+            temp.address = String.valueOf(data.child(String.valueOf(i)).child("address").getValue());
+            temp.url = String.valueOf(data.child(String.valueOf(i)).child("url").getValue());
+            temp.info = String.valueOf(data.child(String.valueOf(i)).child("intro").getValue());
+            target.add(temp);
         }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    pDialog = new ProgressDialog(mcontext);
-                    pDialog.setMessage("Loading..");
-                    pDialog.setIndeterminate(false);
-                    pDialog.setCancelable(true);
-                    pDialog.show();
-
-                }
-            });
-
-        }
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                // Enter URL address where your php file resides
-                url = new URL("http://13.231.194.159/link_resource.php");
-
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return "exception";
-            }
-            try {
-                // Setup HttpURLConnection class to send and receive data from php and mysql
-                conn = (HttpURLConnection)url.openConnection();
-                conn.setReadTimeout(READ_TIMEOUT);
-                conn.setConnectTimeout(CONNECTION_TIMEOUT);
-                conn.setRequestMethod("POST");
-
-                // setDoInput and setDoOutput method depict handling of both send and receive
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
-
-                // Append parameters to URL
-//                Uri.Builder builder = new Uri.Builder()
-//                        .appendQueryParameter("username", params[0])
-//                        .appendQueryParameter("password", params[1]);
-//                String query = builder.build().getEncodedQuery();
-
-                // Open connection for sending data
-                OutputStream os = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
-//                writer.write(query);
-                writer.flush();
-                writer.close();
-                os.close();
-                conn.connect();
-
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-                return "exception";
-            }
-
-            try {
-
-                int response_code = conn.getResponseCode();
-
-                // Check if successful connection made
-                if (response_code == HttpURLConnection.HTTP_OK) {
-
-                    // Read data sent from server
-                    InputStream input = conn.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                    StringBuilder result = new StringBuilder();
-                    String line;
-
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-
-                    // Pass data to onPostExecute method
-                    return(result.toString());
-
-                }else{
-
-                    return("unsuccessful");
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "exception";
-            } finally {
-                conn.disconnect();
-            }
-
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            //this method will be running on UI thread
-
-            pDialog.dismiss();
-            data = result;
-            JSONanalyse();
-
-
-            TableLayout ll = (TableLayout) findViewById(R.id.WigTable);
-            TableLayout cl = (TableLayout) findViewById(R.id.BraTable);
-            TableLayout sl = (TableLayout) findViewById(R.id.CuffTable);
-            TableLayout hl = (TableLayout) findViewById(R.id.HomeTable);
-            for (int i = 0; i <wig.size(); i++)
-                addTableRow(mcontext,ll,wig.get(i).name,wig.get(i).phone,wig.get(i).address,wig.get(i).url,wig.get(i).info);
-
-            for (int i = 0; i <bra.size(); i++)
-                addTableRow(mcontext,cl,bra.get(i).name,bra.get(i).phone,bra.get(i).address,bra.get(i).url,bra.get(i).info);
-
-            for (int i = 0; i < cuff.size(); i++)
-                addTableRow(mcontext,sl,cuff.get(i).name,cuff.get(i).phone,cuff.get(i).address,cuff.get(i).url,cuff.get(i).info);
-
-            for (int i = 0; i < home.size(); i++)
-                addTableRow(mcontext,hl,home.get(i).name,home.get(i).phone,home.get(i).address,home.get(i).url,home.get(i).info);
-
-
-        }
-
     }
 
+    private void getData(){
+        FirebaseDatabase.getInstance().getReference("link/resource").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot ds) {
+                Log.d("link",ds.child(String.valueOf(0)).child(String.valueOf(0)).toString());
+                wig.clear();
+                bra.clear();
+                cuff.clear();
+                home.clear();
+                for(int k=0;k<ds.getChildrenCount();k++) {
+                    DataSnapshot areaData = ds.child(String.valueOf(k));
+                   // Log.i("link_res", String.valueOf(ds.child(String.valueOf(k)))+ k);
+                    if (k == 0) dataProcess(areaData,wig);
+                    else if(k==1) dataProcess(areaData,bra);
+                    else if(k==2) dataProcess(areaData,cuff);
+                    else if(k==3) dataProcess(areaData,home);
+                }
 
-    private void JSONanalyse(){
-        try{
-            wig.clear();
-            bra.clear();
-            cuff.clear();
-            home.clear();
-            JSONArray jsonArray = new JSONArray(data);
-            for(int k=0;k<jsonArray.length();k++) {
-                //Log.i(TAG, jsonArray.getString(i));
-                if (k == 0)
-                    Log.i(TAG, "北區+++++++");
-                else if (k == 1)
-                    Log.i(TAG, "中區+++++++");
-                else if (k == 2)
-                    Log.i(TAG, "南區+++++++");
-
-                JSONObject jsonObject = new JSONObject(jsonArray.getString(k));
-                //Log.i(TAG, "length: "+jsonObject.toString());
-                if (k == 0) {
-                    for (int i = 0; i < jsonObject.length(); i++) {
-                        JSONObject data2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                        Center temp = new Center();
-                        String number = data2.getString("number");
-                        temp.name = data2.getString("unit");
-                        temp.phone = data2.getString("phone");
-                        temp.address = data2.getString("address");
-                        temp.url = data2.getString("url");
-                        temp.info = data2.getString("intro");
-                        wig.add(temp);
-                        Log.i(TAG, "123------ >  " + number + "  " + temp.name + "  " + temp.phone + "  " + temp.address);
-                    }
-                }
-                else if(k==1){
-                    for (int i = 0; i < jsonObject.length(); i++) {
-                        JSONObject data2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                        Center temp = new Center();
-                        String number = data2.getString("number");
-                        temp.name = data2.getString("unit");
-                        temp.phone = data2.getString("phone");
-                        temp.address = data2.getString("address");
-                        temp.url = data2.getString("url");
-                        temp.info = data2.getString("intro");
-                        bra.add(temp);
-                        Log.i(TAG, "123------ >  " + number + "  " + temp.name + "  " + temp.phone + "  " + temp.address);
-                    }
-                }
-                else if(k==2) {
-                    for (int i = 0; i < jsonObject.length(); i++) {
-                        JSONObject data2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                        Center temp = new Center();
-                        String number = data2.getString("number");
-                        temp.name = data2.getString("unit");
-                        temp.phone = data2.getString("phone");
-                        temp.address = data2.getString("address");
-                        temp.url = data2.getString("url");
-                        temp.info = data2.getString("intro");
-                        cuff.add(temp);
-                        Log.i(TAG, "123------ >  " + number + "  " + temp.name + "  " + temp.phone + "  " + temp.address);
-                    }
-                }
-                else if(k==3) {
-                    for (int i = 0; i < jsonObject.length(); i++) {
-                        JSONObject data2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                        Center temp = new Center();
-                        String number = data2.getString("number");
-                        temp.name = data2.getString("unit");
-                        temp.phone = data2.getString("phone");
-                        temp.address = data2.getString("address");
-                        temp.url = data2.getString("url");
-                        temp.info = data2.getString("intro");
-                        home.add(temp);
-                        Log.i(TAG, "123------ >  " + number + "  " + temp.name + "  " + temp.phone + "  " + temp.address);
-                    }
-                }
+                TableLayout ll =  findViewById(R.id.WigTable);
+                TableLayout cl =  findViewById(R.id.BraTable);
+                TableLayout sl =  findViewById(R.id.CuffTable);
+                TableLayout hl =  findViewById(R.id.HomeTable);
+                for (int i = 0; i < wig.size(); i++)
+                    addTableRow(link_resource.this,ll,wig.get(i).name,wig.get(i).phone,wig.get(i).address,wig.get(i).url,wig.get(i).info);
+                for (int i = 0; i < bra.size(); i++)
+                    addTableRow(link_resource.this,cl,bra.get(i).name,bra.get(i).phone,bra.get(i).address,bra.get(i).url,bra.get(i).info);
+                for (int i = 0; i <  cuff.size(); i++)
+                    addTableRow(link_resource.this,sl,cuff.get(i).name,cuff.get(i).phone,cuff.get(i).address,cuff.get(i).url,cuff.get(i).info);
+                for (int i = 0; i < home.size(); i++)
+                    addTableRow(link_resource.this,hl,home.get(i).name,home.get(i).phone,home.get(i).address,home.get(i).url,home.get(i).info);
+                progressDialog.dismiss();
+                isProgressDialogShow = false;
             }
-        }
-        catch(JSONException e) {
-            e.printStackTrace();
-        }
-
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
-
 }

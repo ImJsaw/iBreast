@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
+
 import java.util.Objects;
 
 public class login extends AppCompatActivity {
@@ -93,7 +94,6 @@ public class login extends AppCompatActivity {
 
                         }
                     });
-
                     if (isProgressDialogShow) {
                         progressDialog.dismiss();
                         isProgressDialogShow = false;
@@ -187,7 +187,7 @@ public class login extends AppCompatActivity {
         auth.removeAuthStateListener(authListener);
     }
 
-    //    //hide keyboard
+    ////hide keyboard
 //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
 //        if(event.getAction() == MotionEvent.ACTION_DOWN && getCurrentFocus()!=null && getCurrentFocus().getWindowToken()!=null){
@@ -236,7 +236,4 @@ public class login extends AppCompatActivity {
             }, 3000);
         } else Toast.makeText(this, "帳號密碼不可為空", Toast.LENGTH_SHORT).show();
     }
-
-
 }
-

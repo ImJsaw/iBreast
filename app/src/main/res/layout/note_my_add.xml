@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,201 +14,324 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@drawable/button_shape"
+            android:onClick="myClick"
             android:shadowRadius="7"
             android:text="@string/my"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/Btn_edit"
+            android:id="@+id/Btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:layout_margin="12dp"
-            android:shadowRadius="7"
-            android:text="@string/edit"
             android:gravity="center"
-            android:layout_gravity="end"/>
+            android:shadowRadius="7"
+            android:text="儲存" />
     </FrameLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<ScrollView-->
+        <!--android:id="@+id/scrollView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:fillViewport="true">-->
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/birth"
-            android:id="@+id/txtBirth"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/txtInputBirth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/txtBirth"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:singleLine="true"
-            android:textSize="20sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHeight"
-            android:text="@string/height"
-            android:textSize="20sp"
-            android:layout_marginStart="50dp"
-            android:layout_toLeftOf="@id/txtInputHeight"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtInputHeight"
-            android:text="165 公分"
-            android:textSize="20sp"
-            android:layout_alignParentEnd="true"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtStopBleeding"
-            android:text="@string/StopBleeding"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/txtBirth"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtInputStopBleeding"
-            android:text="否"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtStopBleeding"
-            android:layout_below="@id/txtInputBirth"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgery"
-            android:text="@string/surgery"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtStopBleeding"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgeryDate"
-            android:text="106年7月"
-            android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtSurgery"
-            android:layout_below="@id/txtInputStopBleeding"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgeryMethod"
-            android:text="@string/surgeryMethod"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtSurgery"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgeryMethodName"
-            android:text="改良式根除性乳房切除手術、腋窩淋巴清除"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtSurgeryMethod"
-            android:layout_below="@id/txtSurgeryDate"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtCell"
-            android:text="@string/cell"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtSurgeryMethodName"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtCellType"
-            android:text="浸潤性腺管癌"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtCell"
-            android:layout_below="@id/txtSurgeryMethodName"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHorm"
-            android:text="@string/horm"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtCell"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHormName"
-            android:text="ER 陽性、PR 陽性"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtHorm"
-            android:layout_below="@id/txtCell"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHER"
-            android:text="@string/HER"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtHorm"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHERtype"
-            android:text="陰性"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtHER"
-            android:layout_below="@id/txtHorm"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtFISH"
-            android:text="@string/fish"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtHER"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtFISHtype"
-            android:text="陰性"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtFISH"
-            android:layout_below="@id/txtHER"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTreatment"
-            android:text="我的療程："
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtFISH"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTreatmentName"
-            android:text="化學治療\n放射線治療\n標靶治療\n荷爾蒙治療"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtTreatment"
-            android:layout_below="@id/txtFISH"
-            android:layout_marginTop="10dp"/>
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/birth"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="yyyy/MM"
+                    android:inputType="date"
+                    android:minWidth="100sp"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBirth"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/calendar"
+                    android:onClick="onImgClick" />
+
+                <TextView
+                    android:id="@+id/txtHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/height"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:minWidth="100sp"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtStopBleeding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/StopBleeding"
+                    android:textSize="20sp" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdbYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdbNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="否"
+                        android:textSize="20sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtSurgery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/surgery"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="yyyy/MM"
+                    android:inputType="date"
+                    android:minWidth="100sp"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/imgCal"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/calendar"
+                    android:onClick="onImgClick" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtSurgeryMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/surgeryMethod"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/list_method"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:divider="@null"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtCell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/cell"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spinnerCell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/spinCell">
+
+                </Spinner>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtHorm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/horm"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ER:"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerEr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/spinYN" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PR:"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerPr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/spinYN" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtHer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/HER"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spinnerHer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/spinHer" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtFish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/fish"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spinnerFish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/spinPm" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtTreatment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="我的療程計畫："
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/list_program"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:divider="@null" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    <!--</ScrollView>-->
 </LinearLayout>

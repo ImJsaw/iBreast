@@ -69,6 +69,7 @@ public class link_foundation extends AppCompatActivity {
             }
         }, 5000);
         getData();
+        Log.d("link","foundation getData");
     }
     
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -135,12 +136,14 @@ public class link_foundation extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("link/foundation").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot ds) {
+                Log.d("link",ds.toString());
                 for(int i = 0; i < ds.getChildrenCount();i++){
                     Center temp = new Center();
                     temp.imageurl = Objects.requireNonNull(ds.child(String.valueOf(i)).child("logo").getValue()).toString();
                     temp.phone = Objects.requireNonNull(ds.child(String.valueOf(i)).child("phone").getValue()).toString();
                     temp.address = Objects.requireNonNull(ds.child(String.valueOf(i)).child("address").getValue()).toString();
                     temp.url = Objects.requireNonNull(ds.child(String.valueOf(i)).child("url").getValue()).toString();
+                    Log.d("link",temp.toString());
                     foundations.add(temp);
                 }
                 mAdapter = new MyAdapter(foundations,link_foundation.this);
