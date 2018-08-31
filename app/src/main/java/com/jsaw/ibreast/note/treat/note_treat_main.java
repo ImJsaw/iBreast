@@ -37,6 +37,7 @@ public class note_treat_main extends AppCompatActivity {
 
     //換頁的按鈕設定
     public void onClick(View view) {
+        transaction = getSupportFragmentManager().beginTransaction();
         //傳回被按的button
         switch (view.getId()) {
             case R.id.btn1:
