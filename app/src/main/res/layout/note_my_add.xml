@@ -26,15 +26,16 @@
             android:layout_gravity="end"
             android:layout_margin="12dp"
             android:gravity="center"
+            android:onClick="myClick"
             android:shadowRadius="7"
             android:text="儲存" />
     </FrameLayout>
 
-    <!--<ScrollView-->
-        <!--android:id="@+id/scrollView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:fillViewport="true">-->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -179,8 +180,8 @@
                     <ListView
                         android:id="@+id/list_method"
                         android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:divider="@null"/>
+                        android:layout_height="wrap_content"
+                        android:divider="@null" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -333,5 +334,5 @@
             </LinearLayout>
 
         </LinearLayout>
-    <!--</ScrollView>-->
+    </ScrollView>
 </LinearLayout>

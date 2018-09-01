@@ -19,13 +19,13 @@
             android:textColor="@color/white" />
 
         <Button
-            android:onClick="myClick"
             android:id="@+id/Btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_margin="12dp"
             android:gravity="center"
+            android:onClick="myClick"
             android:shadowRadius="7"
             android:text="@string/edit" />
     </FrameLayout>

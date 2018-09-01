@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -31,7 +32,9 @@ public class note_body1 extends Fragment {
     private static final String[] STRINGS = new String[]{"Date", "Weight", "BMI", "Result"};
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-
+    private ArrayList<String> names = new ArrayList<>();
+    private ArrayList<String> numbers = new ArrayList<>();
+    private CheckBox checkBox;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +56,7 @@ public class note_body1 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.note_body1, container, false);
         firebaseGetData(view);
@@ -67,6 +70,7 @@ public class note_body1 extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> items = new ArrayList<>();
                 ListView listView = view.findViewById(R.id.list_body);
+                checkBox = view.findViewById(R.id.checkbox_listview);
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
@@ -78,9 +82,8 @@ public class note_body1 extends Fragment {
                     item.put("Result", data.child("Result").getValue().toString());
                     item.put("Weight", data.child("Weight").getValue().toString());
                     items.add(item);
-
-
                 }
+
 //                1. Context context 執行環境
 //                2. List<? extends Map<String, ?>> data 帶入的資料
 //                3. int resource Layout位置

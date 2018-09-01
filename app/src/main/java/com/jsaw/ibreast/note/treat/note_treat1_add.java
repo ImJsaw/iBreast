@@ -62,7 +62,7 @@ public class note_treat1_add extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.note_treat1_add, container, false);
+        final View view = inflater.inflate(R.layout.activity_note_treat1_add, container, false);
         edtDate = view.findViewById(R.id.edtDate);
         edtOther = view.findViewById(R.id.edtOther);
 //        edtOther.setOnEditorActionListener(onEditor);
