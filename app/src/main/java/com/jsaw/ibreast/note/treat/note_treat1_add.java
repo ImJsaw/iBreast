@@ -10,10 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -27,7 +25,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
-import com.jsaw.ibreast.cure;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,7 +62,7 @@ public class note_treat1_add extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.note_treat1_add, container, false);
+        final View view = inflater.inflate(R.layout.activity_note_treat1_add, container, false);
         edtDate = view.findViewById(R.id.edtDate);
         edtOther = view.findViewById(R.id.edtOther);
 //        edtOther.setOnEditorActionListener(onEditor);

@@ -10,7 +10,6 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/Btn_my"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -26,13 +25,15 @@
             android:layout_gravity="end"
             android:layout_margin="12dp"
             android:gravity="center"
+            android:onClick="myClick"
             android:shadowRadius="7"
             android:text="@string/edit" />
     </FrameLayout>
 
     <ScrollView
+        android:id="@+id/test"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout
@@ -49,7 +50,7 @@
                     android:id="@+id/txtBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/birth"
                     android:textSize="20sp" />
 
@@ -86,7 +87,7 @@
                     android:id="@+id/txtStopBleeding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/StopBleeding"
                     android:textSize="20sp" />
 
@@ -107,7 +108,7 @@
                     android:id="@+id/txtSurgery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/surgery"
                     android:textSize="20sp" />
 
@@ -128,7 +129,7 @@
                     android:id="@+id/txtSurgeryMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/surgeryMethod"
                     android:textSize="20sp" />
 
@@ -149,7 +150,7 @@
                     android:id="@+id/txtCell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/cell"
                     android:textSize="20sp" />
 
@@ -170,7 +171,7 @@
                     android:id="@+id/txtHorm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/horm"
                     android:textSize="20sp" />
 
@@ -191,7 +192,7 @@
                     android:id="@+id/txtHER"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/HER"
                     android:textSize="20sp" />
 
@@ -212,7 +213,7 @@
                     android:id="@+id/txtFISH"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/fish"
                     android:textSize="20sp" />
 
@@ -233,8 +234,8 @@
                     android:id="@+id/txtTreatment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="我的療程："
+                    android:layout_marginStart="10dp"
+                    android:text="我的療程計畫："
                     android:textSize="20sp" />
 
                 <TextView

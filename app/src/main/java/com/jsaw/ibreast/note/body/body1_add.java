@@ -44,7 +44,7 @@ public class body1_add extends Fragment {
     private ProgressDialog progressDialog;
 
 
-    static class Record {
+    private static class Record {
         public String BMI;
         public String Weight;
         public String Result;
@@ -159,6 +159,7 @@ public class body1_add extends Fragment {
         }
     };
 
+    // 儲存資料
     private void setData(String bmi, String weight, String result, String date) {
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
         final Record record = new Record(bmi, weight, result, date);

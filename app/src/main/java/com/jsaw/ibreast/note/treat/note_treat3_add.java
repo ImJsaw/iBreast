@@ -34,8 +34,6 @@ public class note_treat3_add extends Fragment implements View.OnClickListener {
     private static final String[] STRINGS = new String[]{"checkbox", "engName", "chiName"};
     private EditText edtStartDate;
     private EditText edtEndDate;
-    private ImageButton imgCalStart;
-    private ImageButton imgCalEnd;
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
 
@@ -65,8 +63,8 @@ public class note_treat3_add extends Fragment implements View.OnClickListener {
         final View view = inflater.inflate(R.layout.note_treat2_add, container, false);
         edtStartDate = view.findViewById(R.id.edtStartDate);
         edtEndDate = view.findViewById(R.id.edtEndDate);
-        imgCalStart = view.findViewById(R.id.imgCalStart);
-        imgCalEnd = view.findViewById(R.id.imgCalEnd);
+        ImageButton imgCalStart = view.findViewById(R.id.imgCalStart);
+        ImageButton imgCalEnd = view.findViewById(R.id.imgCalEnd);
         imgCalStart.setOnClickListener(this);
         imgCalEnd.setOnClickListener(this);
 

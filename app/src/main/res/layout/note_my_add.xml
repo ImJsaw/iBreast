@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <FrameLayout
@@ -15,24 +14,27 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@drawable/button_shape"
+            android:onClick="myClick"
             android:shadowRadius="7"
             android:text="@string/my"
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/Btn_edit"
+            android:id="@+id/Btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_margin="12dp"
             android:gravity="center"
+            android:onClick="myClick"
             android:shadowRadius="7"
-            android:text="@string/edit" />
+            android:text="儲存" />
     </FrameLayout>
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout
@@ -49,7 +51,7 @@
                     android:id="@+id/txtBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/birth"
                     android:textSize="20sp" />
 
@@ -59,15 +61,24 @@
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
+                    android:hint="yyyy/MM"
+                    android:inputType="date"
                     android:minWidth="100sp"
                     android:singleLine="true"
                     android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/imgBirth"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/calendar"
+                    android:onClick="onImgClick" />
 
                 <TextView
                     android:id="@+id/txtHeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
                     android:text="@string/height"
                     android:textSize="20sp" />
 
@@ -75,8 +86,7 @@
                     android:id="@+id/edtHeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
+                    android:inputType="number"
                     android:minWidth="100sp"
                     android:singleLine="true"
                     android:textSize="20sp" />
@@ -91,7 +101,7 @@
                     android:id="@+id/txtStopBleeding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/StopBleeding"
                     android:textSize="20sp" />
 
@@ -111,9 +121,9 @@
                         android:id="@+id/rdbNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="否"
-                        android:textSize="20sp"
-                        android:checked="true"/>
+                        android:textSize="20sp" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -126,7 +136,7 @@
                     android:id="@+id/txtSurgery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/surgery"
                     android:textSize="20sp" />
 
@@ -136,6 +146,8 @@
                     android:layout_height="wrap_content"
                     android:hint="yyyy/MM"
                     android:inputType="date"
+                    android:minWidth="100sp"
+                    android:singleLine="true"
                     android:textSize="20sp" />
 
                 <ImageButton
@@ -143,7 +155,8 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/calendar" />
+                    android:background="@drawable/calendar"
+                    android:onClick="onImgClick" />
             </LinearLayout>
 
             <LinearLayout
@@ -155,22 +168,20 @@
                     android:id="@+id/txtSurgeryMethod"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/surgeryMethod"
                     android:textSize="20sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <ListView
-                        android:id="@+id/list_view"
+                        android:id="@+id/list_method"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:divider="@null">
-
-                    </ListView>
+                        android:divider="@null" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -183,7 +194,7 @@
                     android:id="@+id/txtCell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/cell"
                     android:textSize="20sp" />
 
@@ -199,41 +210,61 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtHorm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/horm"
                     android:textSize="20sp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ER"
-                    android:textSize="20sp" />
+                    android:orientation="vertical">
 
-                <Spinner
-                    android:layout_marginStart="5dp"
-                    android:id="@+id/spinnerEr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/spinYN"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PR"
-                    android:textSize="20sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ER:"
+                            android:textSize="20sp" />
 
-                <Spinner
-                    android:layout_marginStart="5dp"
-                    android:id="@+id/spinnerPr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/spinYN"/>
+                        <Spinner
+                            android:id="@+id/spinnerEr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/spinYN" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PR:"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerPr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/spinYN" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -245,7 +276,7 @@
                     android:id="@+id/txtHer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/HER"
                     android:textSize="20sp" />
 
@@ -253,7 +284,7 @@
                     android:id="@+id/spinnerHer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/spinHer"/>
+                    android:entries="@array/spinHer" />
             </LinearLayout>
 
             <LinearLayout
@@ -264,7 +295,7 @@
                     android:id="@+id/txtFish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:text="@string/fish"
                     android:textSize="20sp" />
 
@@ -272,31 +303,34 @@
                     android:id="@+id/spinnerFish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/spinPm"/>
+                    android:entries="@array/spinPm" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtTreatment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/txtFISH"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="我的療程："
+                    android:layout_marginStart="10dp"
+                    android:text="我的療程計畫："
                     android:textSize="20sp" />
 
-                <ListView
-                    android:id="@+id/list_Treatment"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@null">
+                    android:orientation="vertical">
 
-                </ListView>
+                    <ListView
+                        android:id="@+id/list_program"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:divider="@null" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
