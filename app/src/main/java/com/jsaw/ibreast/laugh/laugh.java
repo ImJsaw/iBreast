@@ -47,7 +47,7 @@ public class laugh extends AppCompatActivity {
                     fragment = new laugh_fashion();
                     break;
                 case 2:
-                    fragment = new laugh_fashion();
+                    fragment = new laugh_mind();
                     break;
                 case 3:
                     fragment = new laugh_fashion();
