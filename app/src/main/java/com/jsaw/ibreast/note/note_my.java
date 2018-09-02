@@ -129,7 +129,7 @@ public class note_my extends AppCompatActivity {
 
                 break;
             case R.id.Btn_edit:
-                setContentView(R.layout.note_my_add);
+                setContentView(R.layout.test);
                 onEdit();
                 break;
             case R.id.Btn_save:
