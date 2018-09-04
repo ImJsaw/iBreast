@@ -8,9 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.firebase.database.collection.LLRBNode;
 import com.jsaw.ibreast.R;
 
 import java.util.HashMap;
@@ -25,10 +23,10 @@ public class note_treat_main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_treat);
+        setContentView(R.layout.activity_note_treat);
         transaction = getSupportFragmentManager().beginTransaction();
 
-//         first fragment is note_treat1
+//         first fragment is activity_note_treat1
         transaction.replace(R.id.center, new note_treat1(), "fragment1");
         transaction.commit();
         setMyView();

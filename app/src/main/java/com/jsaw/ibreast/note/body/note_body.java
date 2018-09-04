@@ -26,10 +26,10 @@ public class note_body extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_body);
+        setContentView(R.layout.activity_note_body);
         transaction = getSupportFragmentManager().beginTransaction();
 
-//         first fragment is note_treat1
+//         first fragment is activity_note_treat1
         transaction.replace(R.id.center, new note_body1(), "fragment1");
         transaction.commit();
         setMyView();
@@ -73,6 +73,8 @@ public class note_body extends AppCompatActivity{
             case R.id.Btn_edit:
                 // 目前所在fragment
                 Log.d("body_main", String.valueOf(btnC));
+//                Button btnEdit = findViewById(R.id.Btn_edit);
+//                btnEdit.setText("儲存");
                 transaction.replace(R.id.center, myView.get(btnC));
                 break;
         }

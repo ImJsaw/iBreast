@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
-import com.jsaw.ibreast.login;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,9 +30,6 @@ public class note_body1 extends Fragment {
     private static final String[] STRINGS = new String[]{"Date", "Weight", "BMI", "Result"};
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-    private ArrayList<String> names = new ArrayList<>();
-    private ArrayList<String> numbers = new ArrayList<>();
-    private CheckBox checkBox;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +53,8 @@ public class note_body1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.note_body1, container, false);
+        View view = inflater.inflate(R.layout.activity_note_body1, container, false);
+
         firebaseGetData(view);
 
         return view;
@@ -70,7 +66,6 @@ public class note_body1 extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> items = new ArrayList<>();
                 ListView listView = view.findViewById(R.id.list_body);
-                checkBox = view.findViewById(R.id.checkbox_listview);
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
@@ -89,7 +84,7 @@ public class note_body1 extends Fragment {
 //                3. int resource Layout位置
 //                4. String[] from data帶入資料的Key
 //                5. int[] to Key的值要帶到哪個元件
-                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.body_list_view,
+                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.body_listview_item,
                         STRINGS, IDS);
                 listView.setAdapter(sa);
 
@@ -103,5 +98,4 @@ public class note_body1 extends Fragment {
             }
         });
     }
-
 }

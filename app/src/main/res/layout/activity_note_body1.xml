@@ -4,29 +4,44 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:alignmentMode="alignBounds"
-    android:columnCount="2"
-    android:layout_marginBottom="4dp"
+    android:columnCount="4"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_margin="5dp"
-        android:gravity="left"
+        android:gravity="center"
         android:text="日期"
         android:textSize="22sp" />
 
     <TextView
         android:id="@+id/txtWeight"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:text="化療處方"
+        android:text="體重(kg)"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/txtBmi"
+        android:layout_width="50dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="BMI"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="80dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="結果"
         android:textSize="22sp" />
 
     <ListView
         android:id="@+id/list_body"
         android:layout_height="match_parent"
-        android:layout_columnSpan="2"/>
+        android:layout_columnSpan="4" />
 </GridLayout>
 

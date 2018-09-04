@@ -1,8 +1,10 @@
 package com.jsaw.ibreast.note;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +35,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class note_my extends AppCompatActivity {
     private EditText edtBirth;
@@ -48,37 +52,19 @@ public class note_my extends AppCompatActivity {
     private Map<String, String> map = new HashMap<>();
 
     private static class Record {
-        public String Birth;
-        public String Height;
-        public String StopBleed;
-        public String SugeryDate;
-        public String SugeryMethod;
-        public String Cell;
-        public String Horm;
-        public String Her;
-        public String Fish;
-        public String Program;
 
-        Record(HashMap<String, String> record) {
-            this.Birth = record.get("birth");
-            this.Height = record.get("height");
-            this.StopBleed = record.get("stopBleed");
-            this.SugeryDate = record.get("sugeryDate");
-            this.SugeryMethod = record.get("sugeryMethod");
-            this.Cell = record.get("cell");
-            this.Horm = record.get("horm");
-            this.Her = record.get("her");
-            this.Fish = record.get("fish");
-            this.Program = record.get("program");
+        public List<String> record;
+
+        Record(List<String> record) {
+            this.record = record;
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_my);
-
-
+        setContentView(R.layout.activity_note_my);
+        readData();
     }
 
     // 設定小日曆選擇時間
@@ -118,28 +104,27 @@ public class note_my extends AppCompatActivity {
 
     public void myClick(View v) {
         switch (v.getId()) {
-            case R.id.Btn_my:
-                // 空白，回到note_my
-                if (!checkBlank()) {
-                    setContentView(R.layout.note_my);
+            case R.id.Btn_Info:
+                if (!checkBlank()) { //沒有空白欄位
+                    setContentView(R.layout.activity_note_my);
+                    readData();
                 } else {
-                    // 有資料則跳 dialog 詢問是否儲存
-                    Toast.makeText(note_my.this, "是否要儲存", Toast.LENGTH_SHORT).show();
+                    Leave();
                 }
-
                 break;
             case R.id.Btn_edit:
-                setContentView(R.layout.test);
+                setContentView(R.layout.activity_note_my_add);
                 onEdit();
                 break;
             case R.id.Btn_save:
                 //儲存資料
                 if (checkBlank()) {
-                    Toast.makeText(note_my.this, "ready to save", Toast.LENGTH_SHORT).show();
+                    setData();
                     setDialog();
-
-                    setContentView(R.layout.note_my); //儲存完回到 note_my
-                } else {
+                    saveData();
+                    setContentView(R.layout.activity_note_my); //儲存完回到 activity_note_my
+                    readData();
+                } else {    // 欄位有空白不能儲存
                     Toast.makeText(note_my.this, message, Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -162,7 +147,6 @@ public class note_my extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> method_items = new ArrayList<>();
                 ListView listMethod = findViewById(R.id.list_method);
-
                 dataSnapshot = dataSnapshot.child("method");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = new HashMap<>();
@@ -181,7 +165,7 @@ public class note_my extends AppCompatActivity {
                             public void onClick(View vv) {
                                 map.put("isSelect", ((CheckBox) vv).isChecked());
                                 if (((CheckBox) vv).isChecked()) {
-                                    Toast.makeText(note_my.this, "選中了" + map.get("chiName"), Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(activity_note_my.this, "選中了" + map.get("chiName"), Toast.LENGTH_SHORT).show();
                                     method.add((String) map.get("chiName"));
                                 } else {
                                     method.remove(map.get("chiName"));
@@ -208,7 +192,6 @@ public class note_my extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> program_items = new ArrayList<>();
                 ListView listProgram = findViewById(R.id.list_program);
-
                 dataSnapshot = dataSnapshot.child("program");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = new HashMap<>();
@@ -228,7 +211,7 @@ public class note_my extends AppCompatActivity {
                             public void onClick(View vv) {
                                 map.put("isSelect", ((CheckBox) vv).isChecked());
                                 if (((CheckBox) vv).isChecked()) {
-                                    Toast.makeText(note_my.this, "選中了" + map.get("chiName"), Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(activity_note_my.this, "選中了" + map.get("chiName"), Toast.LENGTH_SHORT).show();
                                     program.add((String) map.get("chiName"));
                                 } else {
                                     program.remove(map.get("chiName"));
@@ -266,28 +249,27 @@ public class note_my extends AppCompatActivity {
         }, 5000);
     }
 
-    private void saveData(){
-        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
-        final Record record = null;
+    private void saveData() {
+        final DatabaseReference mSavadata = FirebaseDatabase.getInstance().getReference("Users");
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser users = auth.getCurrentUser();
+        String user = users.getUid();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            mSavadata.child(user).child(key).setValue(value);
+        }
+        Record method_record = new Record(method);
+        Record program_record = new Record(program);
+        mSavadata.child(user).child("surgeryMethod").setValue(method_record);
+        mSavadata.child(user).child("program").setValue(program_record);
 
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                FirebaseAuth auth = FirebaseAuth.getInstance();
-                FirebaseUser users = auth.getCurrentUser();
-                String user = users.getUid();
-                String count = String.valueOf(dataSnapshot.child(user).child("weight").getChildrenCount() + 1);
-                mDatabase.child(user).child("weight").child(count).setValue(record);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        progressDialog.dismiss();
+        isProgressDialogShow = false;
+//        Toast.makeText(activity_note_my.this, "儲存成功", Toast.LENGTH_SHORT).show();
     }
 
-    //將資料製作成 Map
+    //將儲存的資料製作成 Map
     private void setData() {
         RadioButton rdbYes = findViewById(R.id.rdbYes);
         Spinner spCell = findViewById(R.id.spinnerCell);
@@ -300,12 +282,20 @@ public class note_my extends AppCompatActivity {
         map.put("birth", edtBirth.getText().toString());
         map.put("height", edtHeight.getText().toString());
         map.put("stopBleed", rdbYes.isChecked() ? "是" : "否");
-        map.put("sugeryMethod", edtDate.getText().toString());
-        map.put("cell", spCell.toString());
+        map.put("surgeryDate", edtDate.getText().toString());
+        map.put("cell", spCell.getSelectedItem().toString());
+        map.put("er", spEr.getSelectedItem().toString());
+        map.put("pr", spPr.getSelectedItem().toString());
+        map.put("her", spHer.getSelectedItem().toString());
+        map.put("fish", spFish.getSelectedItem().toString());
 
     }
 
     // 是否有為填選欄位
+
+    /**
+     * @return true:沒有空白欄位
+     */
     private boolean checkBlank() {
         if (edtBirth.getText().toString().trim().equals("")) {
             message = "生日欄位不可為空白";
@@ -325,5 +315,81 @@ public class note_my extends AppCompatActivity {
         } else {
             return true;
         }
+    }
+
+    //詢問是否儲存 Dialog
+    private void Leave() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("是否未儲存離開?")
+                .setPositiveButton("否", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 右方按鈕方法
+                        // 繼續編輯
+                    }
+                })
+                .setNegativeButton("是", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 左方按鈕方法
+                        setContentView(R.layout.activity_note_my);
+                        readData();
+                    }
+                });
+        AlertDialog about_dialog = builder.create();
+        about_dialog.show();
+    }
+
+    //讀取資料
+    private void readData() {
+        setDialog();
+        final Map<String, TextView> myTextView = new HashMap<>();
+
+
+        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                myTextView.put("birth", (TextView) findViewById(R.id.txtInputBirth));
+                myTextView.put("height", (TextView) findViewById(R.id.txtInputHeight));
+                myTextView.put("stopBleed", (TextView) findViewById(R.id.txtInputStopBleeding));
+                myTextView.put("surgeryDate", (TextView) findViewById(R.id.txtSurgeryDate));
+                myTextView.put("surgeryMethod", (TextView) findViewById(R.id.txtSurgeryMethodName));
+                myTextView.put("cell", (TextView) findViewById(R.id.txtCellType));
+                myTextView.put("er", (TextView) findViewById(R.id.txtEr));
+                myTextView.put("pr", (TextView) findViewById(R.id.txtPr));
+                myTextView.put("her", (TextView) findViewById(R.id.txtHerType));
+                myTextView.put("fish", (TextView) findViewById(R.id.txtFishType));
+                myTextView.put("program", (TextView) findViewById(R.id.txtProgramName));
+                dataSnapshot = dataSnapshot.child("Users");
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                FirebaseUser users = auth.getCurrentUser();
+                String user = users.getUid();
+                dataSnapshot = dataSnapshot.child(user);
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    String dataName = data.getKey();
+                    if (myTextView.containsKey(dataName)) {
+                        if (dataName.equals("surgeryMethod") || dataName.equals("program")) {
+                            StringBuilder str = new StringBuilder();
+                            for (DataSnapshot ds : data.child("record").getChildren()) {
+                                str.append(ds.getValue()).append("\n");
+                            }
+                            myTextView.get(dataName).setText(str.toString());
+                        } else {
+                            String dataValue = Objects.requireNonNull(data.getValue()).toString();
+                            myTextView.get(dataName).setText(dataValue);
+                        }
+
+                    }
+                }
+                progressDialog.dismiss();
+                isProgressDialogShow = false;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

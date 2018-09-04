@@ -1,212 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/Btn_my"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@drawable/button_shape"
             android:shadowRadius="7"
             android:text="@string/my"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/Btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:layout_margin="12dp"
+            android:gravity="center"
+            android:onClick="myClick"
             android:shadowRadius="7"
             android:text="@string/edit"
-            android:gravity="center"
-            android:layout_gravity="end"/>
+            android:textSize="18sp" />
     </FrameLayout>
 
-    <RelativeLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/birth"
-            android:id="@+id/txtBirth"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/txtBirth"
-            android:id="@+id/txtInputBirth"
-            android:textSize="20sp"
-            android:text="85年11月"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHeight"
-            android:text="@string/height"
-            android:textSize="20sp"
-            android:layout_marginStart="50dp"
-            android:layout_toLeftOf="@id/txtInputHeight"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtInputHeight"
-            android:text="165 公分"
-            android:textSize="20sp"
-            android:layout_alignParentEnd="true"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtStopBleeding"
-            android:text="@string/StopBleeding"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/txtBirth"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtInputStopBleeding"
-            android:text="否"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtStopBleeding"
-            android:layout_below="@id/txtInputBirth"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgery"
-            android:text="@string/surgery"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtStopBleeding"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgeryDate"
-            android:text="106年7月"
-            android:textSize="20sp"
-            android:layout_toRightOf="@+id/txtSurgery"
-            android:layout_below="@id/txtInputStopBleeding"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgeryMethod"
-            android:text="@string/surgeryMethod"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtSurgery"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtSurgeryMethodName"
-            android:text="改良式根除性乳房切除手術、腋窩淋巴清除"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtSurgeryMethod"
-            android:layout_below="@id/txtSurgeryDate"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtCell"
-            android:text="@string/cell"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtSurgeryMethodName"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtCellType"
-            android:text="浸潤性腺管癌"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtCell"
-            android:layout_below="@id/txtSurgeryMethodName"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHorm"
-            android:text="@string/horm"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtCell"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHormName"
-            android:text="ER 陽性、PR 陽性"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtHorm"
-            android:layout_below="@id/txtCell"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHER"
-            android:text="@string/HER"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtHorm"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtHERtype"
-            android:text="陰性"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtHER"
-            android:layout_below="@id/txtHorm"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtFISH"
-            android:text="@string/fish"
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtHER"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtFISHtype"
-            android:text="陰性"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtFISH"
-            android:layout_below="@id/txtHER"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTreatment"
-            android:text="我的療程："
-            android:textSize="20sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/txtFISH"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtTreatmentName"
-            android:text="化學治療\n放射線治療\n標靶治療\n荷爾蒙治療"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/txtTreatment"
-            android:layout_below="@id/txtFISH"
-            android:layout_marginTop="10dp"/>
-    </RelativeLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtBirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/birth"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtInputBirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
+                app:layout_constraintStart_toEndOf="@+id/txtBirth"
+                app:layout_constraintTop_toTopOf="@+id/txtBirth"/>
+
+            <TextView
+                android:id="@+id/txtHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/height"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtBirth"
+                />
+
+            <TextView
+                android:id="@+id/txtInputHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtHeight"
+                app:layout_constraintStart_toEndOf="@+id/txtHeight"
+                app:layout_constraintTop_toTopOf="@+id/txtHeight" />
+
+            <TextView
+                android:id="@+id/txtStopBleeding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/StopBleeding"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtHeight" />
+
+            <TextView
+                android:id="@+id/txtInputStopBleeding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/txtStopBleeding"
+                app:layout_constraintTop_toTopOf="@id/txtStopBleeding"
+                app:layout_constraintBottom_toBottomOf="@id/txtStopBleeding"/>
+
+            <TextView
+                android:id="@+id/txtSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/surgery"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtStopBleeding" />
+
+            <TextView
+                android:id="@+id/txtSurgeryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtSurgery"
+                app:layout_constraintStart_toEndOf="@+id/txtSurgery"
+                app:layout_constraintTop_toTopOf="@+id/txtSurgery" />
+
+            <TextView
+                android:id="@+id/txtSurgeryMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/surgeryMethod"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtSurgery" />
+
+            <TextView
+                android:id="@+id/txtSurgeryMethodName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/txtSurgeryMethod"
+                app:layout_constraintTop_toTopOf="@id/txtSurgeryMethod"/>
+            <TextView
+                android:id="@+id/txtCell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/cell"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtSurgeryMethodName" />
+            <TextView
+                android:id="@+id/txtCellType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/txtCell"
+                app:layout_constraintStart_toEndOf="@id/txtCell"
+                app:layout_constraintTop_toTopOf="@id/txtCell"/>
+
+            <TextView
+                android:id="@+id/txtHorm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/horm"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtCell" />
+
+            <TextView
+                android:id="@+id/txtEr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ER:"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/txtHorm"
+                app:layout_constraintStart_toEndOf="@id/txtHorm"
+                app:layout_constraintTop_toTopOf="@id/txtHorm" />
+
+            <TextView
+                android:id="@+id/txtInputEr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/txtEr"
+                app:layout_constraintStart_toEndOf="@id/txtEr"
+                app:layout_constraintTop_toTopOf="@id/txtEr" />
+
+            <TextView
+                android:id="@+id/txtPr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PR:"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/txtHorm"
+                app:layout_constraintTop_toBottomOf="@id/txtEr" />
+
+            <TextView
+                android:id="@+id/txtInputPr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/txtPr"
+                app:layout_constraintStart_toEndOf="@id/txtPr"
+                app:layout_constraintTop_toTopOf="@id/txtPr" />
+
+            <TextView
+                android:id="@+id/txtHer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/HER"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtPr" />
+            <TextView
+                android:id="@+id/txtHerType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/txtHer"
+                app:layout_constraintStart_toEndOf="@id/txtHer"
+                app:layout_constraintTop_toTopOf="@id/txtHer"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/txtFish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/fish"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtHer" />
+
+            <TextView
+                android:id="@+id/txtFishType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/txtFish"
+                app:layout_constraintStart_toEndOf="@id/txtFish"
+                app:layout_constraintTop_toTopOf="@id/txtFish"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtProgram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="我的療程："
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtFish" />
+            <TextView
+                android:id="@+id/txtProgramName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/txtProgram"
+                app:layout_constraintTop_toTopOf="@id/txtProgram"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </LinearLayout>

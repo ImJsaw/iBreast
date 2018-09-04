@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtPart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="部位："
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/txtPartName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_marginStart="8dp"
+        android:text="右側屁股"
+        app:layout_constraintTop_toTopOf="@id/txtPart"
+        app:layout_constraintStart_toEndOf="@id/txtPart"/>
+    <TextView
+        android:id="@+id/txtSDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="開始日期："
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPart"
+        />
+    <TextView
+        android:id="@+id/txtStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="22sp"
+        app:layout_constraintTop_toTopOf="@+id/txtSDate"
+        app:layout_constraintStart_toEndOf="@+id/txtSDate"
+        app:layout_constraintTop_toBottomOf="@+id/txtPart"
+        />
+    <TextView
+        android:id="@+id/txtEDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="結束日期："
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSDate"
+        />
+    <TextView
+        android:id="@+id/txtEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="22sp"
+        app:layout_constraintTop_toTopOf="@+id/txtEDate"
+        app:layout_constraintStart_toEndOf="@+id/txtEDate"
+        app:layout_constraintTop_toBottomOf="@+id/txtSDate"
+        />
+
+</android.support.constraint.ConstraintLayout>

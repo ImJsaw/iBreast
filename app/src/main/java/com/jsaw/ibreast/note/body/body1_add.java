@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
-import com.jsaw.ibreast.login;
 
 import java.util.Calendar;
 
-import static android.content.ContentValues.TAG;
 
 public class body1_add extends Fragment {
     private EditText edtDate;
@@ -82,7 +79,7 @@ public class body1_add extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.note_body1_add, container, false);
+        final View view = inflater.inflate(R.layout.activity_note_body1_add, container, false);
 
         edtDate = view.findViewById(R.id.edtDate);
         edtWeight = view.findViewById(R.id.edtWeight);
@@ -90,7 +87,6 @@ public class body1_add extends Fragment {
         txtResult = view.findViewById(R.id.txtResult);
         txtAdvice = view.findViewById(R.id.txtAdvice);
         btnCheck = view.findViewById(R.id.btnCheack);
-
         btnCheck.setOnClickListener(mBtnCheck);
 
         // 監聽按下確認鍵寫入textView
@@ -106,8 +102,8 @@ public class body1_add extends Fragment {
                     txtBMI.setText(BMIstr);
                     txtResult.setText(getResult(Double.parseDouble(BMIstr)));
                     txtAdvice.setText(getAdvice(Double.parseDouble(BMIstr)));
+                    edtDate.clearFocus();
                 }
-
                 return false;
             }
         });
@@ -128,10 +124,11 @@ public class body1_add extends Fragment {
     private View.OnClickListener mBtnCheck = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            setData(txtBMI.getText().toString(), edtWeight.getText().toString(),
+            saveData(txtBMI.getText().toString(), edtWeight.getText().toString(),
                     txtResult.getText().toString(), edtDate.getText().toString());
+            isProgressDialogShow = false;
+            progressDialog.dismiss();
             Toast.makeText(getContext(), "儲存成功", Toast.LENGTH_SHORT).show();
-
         }
     };
 
@@ -160,27 +157,27 @@ public class body1_add extends Fragment {
     };
 
     // 儲存資料
-    private void setData(String bmi, String weight, String result, String date) {
+    private void saveData(String bmi, String weight, String result, String date) {
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
         final Record record = new Record(bmi, weight, result, date);
+        if (!bmi.equals("")) {
+            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                    FirebaseUser users = auth.getCurrentUser();
+                    String user = users.getUid();
+                    String count = String.valueOf(dataSnapshot.child(user).child("weight").getChildrenCount() + 1);
+                    mDatabase.child(user).child("weight").child(count).setValue(record);
+                }
 
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                FirebaseAuth auth = FirebaseAuth.getInstance();
-                FirebaseUser users = auth.getCurrentUser();
-                String user = users.getUid();
-                String count = String.valueOf(dataSnapshot.child(user).child("weight").getChildrenCount() + 1);
-                mDatabase.child(user).child("weight").child(count).setValue(record);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "儲存失敗", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // 顯示結果

@@ -60,7 +60,7 @@ public class note_treat5_add extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.note_treat2_add, container, false);
+        final View view = inflater.inflate(R.layout.activity_note_treat2_add, container, false);
         edtStartDate = view.findViewById(R.id.edtStartDate);
         edtEndDate = view.findViewById(R.id.edtEndDate);
         ImageButton imgCalStart = view.findViewById(R.id.imgCalStart);

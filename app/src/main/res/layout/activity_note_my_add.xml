@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,16 +9,19 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/Btn_Info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@drawable/button_shape"
+            android:onClick="myClick"
             android:shadowRadius="7"
-            android:text="@string/my"
-            android:textColor="@color/white" />
+            android:text="資訊頁"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
 
         <Button
-            android:id="@+id/Btn_edit"
+            android:id="@+id/Btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -27,14 +29,17 @@
             android:gravity="center"
             android:onClick="myClick"
             android:shadowRadius="7"
-            android:text="@string/edit" />
+            android:text="儲存"
+            android:textSize="18sp" />
     </FrameLayout>
 
     <ScrollView
-        android:id="@+id/test"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,28 +59,41 @@
                     android:text="@string/birth"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtInputBirth"
+                <EditText
+                    android:id="@+id/edtBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="85年11月"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="yyyy/MM"
+                    android:inputType="date"
+                    android:minWidth="100sp"
+                    android:singleLine="true"
                     android:textSize="20sp" />
 
+                <ImageButton
+                    android:id="@+id/imgBirth"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/calendar"
+                    android:onClick="onImgClick" />
+
                 <TextView
+                    android:id="@+id/txtHeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
                     android:text="@string/height"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtInputHeight"
+                <EditText
+                    android:id="@+id/edtHeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="165 公分"
+                    android:inputType="number"
+                    android:minWidth="100sp"
+                    android:singleLine="true"
                     android:textSize="20sp" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -91,12 +109,26 @@
                     android:text="@string/StopBleeding"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtInputStopBleeding"
+                <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="否"
-                    android:textSize="20sp" />
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdbYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdbNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="否"
+                        android:textSize="20sp" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -112,12 +144,23 @@
                     android:text="@string/surgery"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtSurgeryDate"
+                <EditText
+                    android:id="@+id/edtDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="106年7月"
+                    android:hint="yyyy/MM"
+                    android:inputType="date"
+                    android:minWidth="100sp"
+                    android:singleLine="true"
                     android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/imgCal"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/calendar"
+                    android:onClick="onImgClick" />
             </LinearLayout>
 
             <LinearLayout
@@ -133,12 +176,17 @@
                     android:text="@string/surgeryMethod"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtSurgeryMethodName"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="改良式根除性乳房切除手術、腋窩淋巴清除"
-                    android:textSize="20sp" />
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/list_method"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:divider="@null" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -154,18 +202,20 @@
                     android:text="@string/cell"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtCellType"
+                <Spinner
+                    android:id="@+id/spinnerCell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="浸潤性腺管癌"
-                    android:textSize="20sp" />
+                    android:entries="@array/spinCell">
+
+                </Spinner>
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtHorm"
@@ -175,12 +225,50 @@
                     android:text="@string/horm"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtHormName"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ER 陽性、PR 陽性"
-                    android:textSize="20sp" />
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ER:"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerEr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/spinYN" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PR:"
+                            android:textSize="20sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerPr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/spinYN" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -189,20 +277,18 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtHER"
+                    android:id="@+id/txtHer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="@string/HER"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtHERtype"
+                <Spinner
+                    android:id="@+id/spinnerHer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="陰性"
-                    android:textSize="20sp" />
-
+                    android:entries="@array/spinHer" />
             </LinearLayout>
 
             <LinearLayout
@@ -210,25 +296,25 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/txtFISH"
+                    android:id="@+id/txtFish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="@string/fish"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtFISHtype"
+                <Spinner
+                    android:id="@+id/spinnerFish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="陰性"
-                    android:textSize="20sp" />
+                    android:entries="@array/spinPm" />
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtTreatment"
@@ -238,21 +324,19 @@
                     android:text="我的療程計畫："
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txtTreatmentName"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="化學治療\n放射線治療\n標靶治療\n荷爾蒙治療"
-                    android:textSize="20sp" />
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/list_program"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:divider="@null" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-    </RelativeLayout>
 </LinearLayout>

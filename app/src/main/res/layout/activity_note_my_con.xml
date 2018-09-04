@@ -7,23 +7,21 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/Btn_my"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@drawable/button_shape"
-            android:onClick="myClick"
             android:shadowRadius="7"
             android:text="@string/my"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="22sp" />
 
         <Button
-            android:id="@+id/Btn_save"
+            android:id="@+id/Btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -31,7 +29,8 @@
             android:gravity="center"
             android:onClick="myClick"
             android:shadowRadius="7"
-            android:text="儲存" />
+            android:text="@string/edit"
+            android:textSize="18sp" />
     </FrameLayout>
 
     <ScrollView
@@ -56,35 +55,14 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/edtBirth"
+            <TextView
+                android:id="@+id/txtInputBirth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:hint="XX年X月"
-                android:inputType="date"
-                android:minWidth="100sp"
-                android:singleLine="true"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
                 app:layout_constraintStart_toEndOf="@+id/txtBirth"
-                app:layout_constraintTop_toTopOf="@+id/txtBirth" />
-
-            <ImageButton
-                android:id="@+id/imgBirth"
-                android:layout_width="35dp"
-                android:layout_height="36dp"
-                android:layout_margin="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/calendar"
-                android:onClick="onImgClick"
-                app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
-                app:layout_constraintEnd_toStartOf="@+id/txtHeight"
-                app:layout_constraintStart_toEndOf="@+id/edtBirth"
-                app:layout_constraintTop_toTopOf="@+id/txtBirth" />
+                app:layout_constraintTop_toTopOf="@+id/txtBirth"/>
 
             <TextView
                 android:id="@+id/txtHeight"
@@ -94,97 +72,59 @@
                 android:layout_marginStart="8dp"
                 android:text="@string/height"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
-                app:layout_constraintStart_toEndOf="@+id/imgBirth"
-                app:layout_constraintTop_toTopOf="@+id/txtBirth" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtBirth"
+                />
 
-            <EditText
-                android:id="@+id/edtHeight"
+            <TextView
+                android:id="@+id/txtInputHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:inputType="number"
-                android:minWidth="100sp"
-                android:singleLine="true"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/edtBirth"
+                app:layout_constraintBottom_toBottomOf="@+id/txtHeight"
                 app:layout_constraintStart_toEndOf="@+id/txtHeight"
-                app:layout_constraintTop_toTopOf="@+id/edtBirth"
-                tools:ignore="LabelFor" />
+                app:layout_constraintTop_toTopOf="@+id/txtHeight" />
 
             <TextView
                 android:id="@+id/txtStopBleeding"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/StopBleeding"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtBirth" />
+                app:layout_constraintTop_toBottomOf="@+id/txtHeight" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
+            <TextView
+                android:id="@+id/txtInputStopBleeding"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@+id/txtStopBleeding"
-                app:layout_constraintStart_toEndOf="@+id/txtStopBleeding"
-                app:layout_constraintTop_toTopOf="@+id/txtStopBleeding">
-
-                <RadioButton
-                    android:id="@+id/rdbYes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="是"
-                    android:textSize="20sp" />
-
-                <RadioButton
-                    android:id="@+id/rdbNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="否"
-                    android:textSize="20sp" />
-            </RadioGroup>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/txtStopBleeding"
+                app:layout_constraintTop_toTopOf="@id/txtStopBleeding"
+                app:layout_constraintEnd_toEndOf="@id/txtStopBleeding"/>
 
             <TextView
                 android:id="@+id/txtSurgery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/surgery"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtStopBleeding" />
 
-            <EditText
-                android:id="@+id/edtDate"
+            <TextView
+                android:id="@+id/txtSurgeryDate"
                 android:layout_width="wrap_content"
-                android:layout_height="51dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:hint="XX年X月"
-                android:inputType="date"
-                android:minWidth="100sp"
-                android:singleLine="true"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/txtSurgery"
-                app:layout_constraintStart_toEndOf="@id/txtSurgery"
+                app:layout_constraintStart_toEndOf="@+id/txtSurgery"
                 app:layout_constraintTop_toTopOf="@+id/txtSurgery" />
-
-            <ImageButton
-                android:id="@+id/imgCal"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_margin="8dp"
-                android:background="@drawable/calendar"
-                android:onClick="onImgClick"
-                app:layout_constraintBottom_toBottomOf="@+id/edtDate"
-                app:layout_constraintStart_toEndOf="@id/edtDate"
-                app:layout_constraintTop_toTopOf="@id/edtDate" />
 
             <TextView
                 android:id="@+id/txtSurgeryMethod"
@@ -195,26 +135,16 @@
                 android:text="@string/surgeryMethod"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtDate" />
+                app:layout_constraintTop_toBottomOf="@+id/txtSurgery" />
 
-            <!--<LinearLayout-->
-                <!--android:id="@+id/linearLayout"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--app:layout_constraintStart_toEndOf="@id/txtSurgeryMethod"-->
-                <!--app:layout_constraintTop_toTopOf="@id/txtSurgeryMethod">-->
-
-                <ListView
-                    android:id="@+id/list_method"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:divider="@null"
-                    app:layout_constraintStart_toEndOf="@id/txtSurgeryMethod"
-                    app:layout_constraintTop_toTopOf="@id/txtSurgeryMethod"
-                    tools:ignore="NestedScrolling" />
-            <!--</LinearLayout>-->
-
+            <TextView
+                android:id="@+id/txtSurgeryMethodName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="改良式根除性乳房切除手術\n腋窩淋巴清除"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/txtSurgeryMethod"
+                app:layout_constraintTop_toTopOf="@id/txtSurgeryMethod"/>
             <TextView
                 android:id="@+id/txtCell"
                 android:layout_width="wrap_content"
@@ -224,16 +154,16 @@
                 android:text="@string/cell"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_method" />
-
-            <Spinner
-                android:id="@+id/spinnerCell"
+                app:layout_constraintTop_toBottomOf="@+id/txtSurgeryMethodName" />
+            <TextView
+                android:id="@+id/txtCellType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/spinCell"
+                android:text="浸潤性腺管癌"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/txtCell"
                 app:layout_constraintStart_toEndOf="@id/txtCell"
-                app:layout_constraintTop_toTopOf="@id/txtCell" />
+                app:layout_constraintTop_toTopOf="@id/txtCell"/>
 
             <TextView
                 android:id="@+id/txtHorm"
@@ -256,11 +186,11 @@
                 app:layout_constraintStart_toEndOf="@id/txtHorm"
                 app:layout_constraintTop_toTopOf="@id/txtHorm" />
 
-            <Spinner
-                android:id="@+id/spinnerEr"
+            <TextView
+                android:id="@+id/txtInputEr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/spinYN"
+                android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="@id/txtEr"
                 app:layout_constraintStart_toEndOf="@id/txtEr"
                 app:layout_constraintTop_toTopOf="@id/txtEr" />
@@ -274,11 +204,11 @@
                 app:layout_constraintStart_toEndOf="@id/txtHorm"
                 app:layout_constraintTop_toBottomOf="@id/txtEr" />
 
-            <Spinner
-                android:id="@+id/spinnerPr"
+            <TextView
+                android:id="@+id/txtInputPr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/spinYN"
+                android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="@id/txtPr"
                 app:layout_constraintStart_toEndOf="@id/txtPr"
                 app:layout_constraintTop_toTopOf="@id/txtPr" />
@@ -293,15 +223,16 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtPr" />
-
-            <Spinner
-                android:id="@+id/spinnerHer"
+            <TextView
+                android:id="@+id/txtHerType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/spinHer"
+                android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="@id/txtHer"
                 app:layout_constraintStart_toEndOf="@id/txtHer"
-                app:layout_constraintTop_toTopOf="@id/txtHer" />
+                app:layout_constraintTop_toTopOf="@id/txtHer"
+                android:textSize="20sp" />
+
 
             <TextView
                 android:id="@+id/txtFish"
@@ -314,14 +245,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtHer" />
 
-            <Spinner
-                android:id="@+id/spinnerFish"
+            <TextView
+                android:id="@+id/txtFishType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/spinPm"
+                android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="@id/txtFish"
                 app:layout_constraintStart_toEndOf="@id/txtFish"
-                app:layout_constraintTop_toTopOf="@id/txtFish" />
+                app:layout_constraintTop_toTopOf="@id/txtFish"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/txtTreatment"
@@ -329,27 +261,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="我的療程計畫："
+                android:text="我的療程："
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtFish" />
+            <TextView
+                android:id="@+id/txtTreatmentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="化學治療\n放射線治療\n標靶治療\n荷爾蒙治療"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/txtTreatment"
+                app:layout_constraintTop_toTopOf="@id/txtTreatment"/>
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--app:layout_constraintStart_toEndOf="@+id/txtTreatment"-->
-                <!--app:layout_constraintTop_toTopOf="@id/txtTreatment">-->
-
-                <ListView
-                    android:id="@+id/list_program"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:divider="@null"
-                    app:layout_constraintStart_toEndOf="@+id/txtTreatment"
-                    app:layout_constraintTop_toTopOf="@id/txtTreatment"
-                    tools:ignore="NestedScrolling" />
-            <!--</LinearLayout>-->
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </LinearLayout>
