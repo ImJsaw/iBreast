@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="10dp"
+            android:text="@string/date"
+            android:textSize="28sp" />
+
+        <EditText
+            android:id="@+id/edtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="yyyy/MM/dd"
+            android:inputType="date"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/imgCal"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/calendar" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="時間："
+            android:textSize="28sp" />
+
+        <EditText
+            android:id="@+id/edtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="08:00"
+            android:inputType="time"
+            android:minWidth="30dp"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="體溫："
+            android:textSize="28sp" />
+
+        <EditText
+            android:id="@+id/edtTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="36"
+            android:inputType="time"
+            android:minWidth="30dp"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="度"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnCheack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="end|bottom"
+        android:background="@drawable/check" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="※體溫高於38度，建議到急診評估處理!!"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:textColor="@color/red"/>
+</LinearLayout>

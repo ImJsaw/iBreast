@@ -98,7 +98,7 @@ public class note_body extends AppCompatActivity{
 
     public void setMyView() {
         myView.put(1, new body1_add());
-        myView.put(2, new note_treat2_add());
+        myView.put(2, new body2_add());
         myView.put(3, new note_treat3_add());
         myView.put(4, new note_treat4_add());
         myView.put(5, new note_treat5_add());

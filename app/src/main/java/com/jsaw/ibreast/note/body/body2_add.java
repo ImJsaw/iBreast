@@ -30,28 +30,24 @@ import com.jsaw.ibreast.R;
 import java.util.Calendar;
 
 
-public class body1_add extends Fragment {
+public class body2_add extends Fragment {
     private EditText edtDate;
-    private EditText edtWeight;
-    private TextView txtBMI;
-    private TextView txtResult;
-    private TextView txtAdvice;
+    private EditText edtTemp;
+    private EditText edtTime;
     private ImageButton btnCheck;
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-    private double height = 160;
+
 
     private static class Record {
-        public String BMI;
-        public String Weight;
-        public String Result;
-        public String Date;
+        public String date;
+        public String time;
+        public String temp;
 
-        Record(String bmi, String weight, String result, String date) {
-            this.BMI = bmi;
-            this.Weight = weight;
-            this.Result = result;
-            this.Date = date;
+        Record(String date, String time, String temp) {
+            this.date = date;
+            this.time = time;
+            this.temp = temp;
         }
     }
 
@@ -79,35 +75,13 @@ public class body1_add extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.activity_note_body1_add, container, false);
+        final View view = inflater.inflate(R.layout.activity_note_body2_add, container, false);
+
         edtDate = view.findViewById(R.id.edtDate);
-        edtWeight = view.findViewById(R.id.edtWeight);
-        txtBMI = view.findViewById(R.id.txtBMI);
-        txtResult = view.findViewById(R.id.txtResult);
-        txtAdvice = view.findViewById(R.id.txtAdvice);
+        edtTemp = view.findViewById(R.id.edtTemp);
+        edtTime = view.findViewById(R.id.edtTime);
         btnCheck = view.findViewById(R.id.btnCheack);
         btnCheck.setOnClickListener(mBtnCheck);
-        getHeight();
-        // 監聽按下確認鍵寫入textView
-        edtWeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                String weight = edtWeight.getText().toString();
-                if (!weight.isEmpty()) {
-                    height = height / 100;
-                    double BMI = Integer.parseInt(weight) / Math.pow(height, 2);
-                    String BMIstr = String.valueOf(BMI);
-                    // 取小數第一位
-                    BMIstr = BMIstr.substring(0, BMIstr.indexOf(".") + 2);
-                    txtBMI.setText(BMIstr);
-                    txtResult.setText(getResult(Double.parseDouble(BMIstr)));
-                    txtAdvice.setText(getAdvice(Double.parseDouble(BMIstr)));
-                    edtDate.clearFocus();
-                }
-                return false;
-            }
-        });
-
 
         // 設定小日曆選擇時間
         ImageButton selectDate = view.findViewById(R.id.imgCal);
@@ -124,8 +98,8 @@ public class body1_add extends Fragment {
     private View.OnClickListener mBtnCheck = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            saveData(txtBMI.getText().toString(), edtWeight.getText().toString(),
-                    txtResult.getText().toString(), edtDate.getText().toString());
+            saveData(edtDate.getText().toString(), edtTime.getText().toString(),
+                    edtTemp.getText().toString());
             isProgressDialogShow = false;
             progressDialog.dismiss();
             Toast.makeText(getContext(), "儲存成功", Toast.LENGTH_SHORT).show();
@@ -151,24 +125,22 @@ public class body1_add extends Fragment {
 //                顯示從目前時間開始選
 //                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
             datePickerDialog.show();
-
-
         }
     };
 
     // 儲存資料
-    private void saveData(String bmi, String weight, String result, String date) {
+    private void saveData(String date, String time, String temp) {
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
-        final Record record = new Record(bmi, weight, result, date);
-        if (!bmi.equals("")) {
+        final Record record = new Record(date, time, temp);
+        if (!date.equals("")) {
             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     FirebaseAuth auth = FirebaseAuth.getInstance();
                     FirebaseUser users = auth.getCurrentUser();
                     String user = users.getUid();
-                    String count = String.valueOf(dataSnapshot.child(user).child("weight").getChildrenCount() + 1);
-                    mDatabase.child(user).child("weight").child(count).setValue(record);
+                    String count = String.valueOf(dataSnapshot.child(user).child("體溫").getChildrenCount() + 1);
+                    mDatabase.child(user).child("體溫").child(count).setValue(record);
                 }
 
                 @Override
@@ -180,51 +152,4 @@ public class body1_add extends Fragment {
         }
     }
 
-    // 顯示結果
-    private String getResult(double bmi) {
-        if (bmi >= 0 & bmi < 18.5) {
-            return "體重過輕";
-        } else if (bmi >= 18.5 & bmi < 24) {
-            return "體重正常";
-        } else if (bmi >= 24 & bmi < 27) {
-            return "體重過重";
-        } else if (bmi >= 27 & bmi < 30) {
-            return "輕度肥胖";
-        } else if (bmi >= 30 & bmi < 35) {
-            return "中度肥胖";
-        } else {
-            return "重度肥胖";
-        }
-    }
-
-    // 顯示建議
-    private String getAdvice(double bmi) {
-        if (bmi >= 0 & bmi < 18.5) {
-            return "您需要再吃營養些，讓自己重一些！";
-        } else if (bmi >= 18.5 & bmi < 24) {
-            return "很不錯喔，很標準，請您繼續保持！";
-        } else if (bmi >= 24 & bmi < 27) {
-            return "您得控制一下飲食了，請加油！";
-        } else {
-            return "肥胖容易引起疾病，您得要多多注意自己的健康囉！";
-        }
-    }
-
-    private void getHeight(){
-        DatabaseReference mGetHeight = FirebaseDatabase.getInstance().getReference("Users");
-        mGetHeight.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                FirebaseAuth auth = FirebaseAuth.getInstance();
-                FirebaseUser users = auth.getCurrentUser();
-                String user = users.getUid();
-                dataSnapshot = dataSnapshot.child(user).child("height");
-                height = Double.parseDouble((String) dataSnapshot.getValue());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
 }

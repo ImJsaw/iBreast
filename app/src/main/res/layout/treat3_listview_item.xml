@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="部位："
+        android:text="處方："
         android:textColor="#842b00"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"

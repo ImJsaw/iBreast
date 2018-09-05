@@ -26,21 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class note_treat2 extends Fragment {
-    private static final int[] IDS = new int[]{R.id.txtPart, R.id.txtPartName, R.id.txtSDate, R.id.txtStartDate,
-            R.id.txtEDate, R.id.txtEndDate};
-    private static final String[] STRINGS = new String[]{"Part", "PartName", "SDate", "StartDate",
-            "EDate", "EndDate"};
+    private static final int[] IDS = new int[]{R.id.txtPartName, R.id.txtStartDate, R.id.txtEndDate};
+    private static final String[] STRINGS = new String[]{"partName", "startDate", "endDate"};
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-
-    private static class Record {
-
-        public List<String> part;
-
-        Record(List<String> part) {
-            this.part = part;
-        }
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,9 +55,8 @@ public class note_treat2 extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_note_treat2, container, false);
 
-//        firebaseGetData(view);
-        progressDialog.dismiss();
-        isProgressDialogShow = false;
+        firebaseGetData(view);
+
         return view;
     }
 
@@ -77,26 +65,22 @@ public class note_treat2 extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> items = new ArrayList<>();
-                ListView listView = view.findViewById(R.id.list_body);
+                ListView listView = view.findViewById(R.id.list_treat2);
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
                 dataSnapshot = dataSnapshot.child(user).child("放療");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = new HashMap<>();
-                    if (data.getKey().equals("endDate")) {
-                        item.put("endDate", data.getValue().toString());
-                    } else if (data.getKey().equals("startDate")) {
-                        item.put("Part", data.getValue().toString());
-                    } else {    // record
-                        item.put("startDate", data.getValue());
+                    item.put("startDate", data.child("startDate").getValue().toString());
+                    item.put("endDate", data.child("endDate").getValue().toString());
+                    StringBuilder str = new StringBuilder();
+                    for (DataSnapshot ds : data.child("part").getChildren()) {
+                        str.append(ds.getValue()).append(", ");
                     }
-                    item.put("EDate", "結束日期：");
-                    item.put("part", "部位：");
-                    item.put("SDate", "開始日期：");
-
-
-
+                    // 刪除最後一個,
+                    str = str.deleteCharAt(str.length()-2);
+                    item.put("partName", str);
                     items.add(item);
                 }
 
