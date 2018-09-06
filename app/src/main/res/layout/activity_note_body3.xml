@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/center"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:alignmentMode="alignBounds"
-    android:columnCount="3"
+    android:columnCount="4"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="120dp"
+        android:layout_width="90dp"
         android:layout_margin="5dp"
-        android:gravity="left"
+        android:gravity="center"
         android:text="日期"
         android:textSize="22sp" />
 
     <TextView
-        android:id="@+id/txtWeight"
-        android:layout_width="90dp"
+        android:id="@+id/txtWbc"
+        android:layout_width="80dp"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:text="時間"
+        android:text="白血球(WBC)"
         android:textSize="22sp" />
 
     <TextView
-        android:id="@+id/txtResult"
-        android:layout_width="100dp"
+        android:id="@+id/txtHb"
+        android:layout_width="80dp"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:text="體溫(℃)"
+        android:text="血紅素(Hb)"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/txtPlt"
+        android:layout_width="80dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="血小板(PLT)"
         android:textSize="22sp" />
 
     <ListView
         android:id="@+id/list_body"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
-        android:layout_columnSpan="3" />
+        android:layout_columnSpan="4" />
 </GridLayout>
 
