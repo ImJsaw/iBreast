@@ -8,12 +8,14 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +35,7 @@ public class body3_add extends Fragment {
     private EditText edtWbc;
     private EditText edtHb;
     private EditText edtPlt;
+    private TextView txtWarn;
     private ImageButton btnCheck;
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
@@ -77,14 +80,27 @@ public class body3_add extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_note_body3_add, container, false);
-
+        txtWarn = view.findViewById(R.id.txtWarn);
         edtDate = view.findViewById(R.id.edtDate);
         edtWbc = view.findViewById(R.id.edtWbc);
         edtHb = view.findViewById(R.id.edtHb);
         edtPlt = view.findViewById(R.id.edtPlt);
         btnCheck = view.findViewById(R.id.btnCheack);
         btnCheck.setOnClickListener(mBtnCheck);
-
+        edtWbc.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (!edtWbc.getText().toString().isEmpty()) {
+                    int wbcWarn = Integer.valueOf(edtWbc.getText().toString());
+                    if (wbcWarn <= 3000) {
+                        txtWarn.setVisibility(View.VISIBLE);
+                    } else {
+                        txtWarn.setVisibility(View.INVISIBLE);
+                    }
+                }
+                return false;
+            }
+        });
         // 設定小日曆選擇時間
         ImageButton selectDate = view.findViewById(R.id.imgCal);
         selectDate.setOnClickListener(imgCalOnClick);

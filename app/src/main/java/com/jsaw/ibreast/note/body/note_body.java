@@ -1,6 +1,7 @@
 package com.jsaw.ibreast.note.body;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,12 +11,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.jsaw.ibreast.R;
-import com.jsaw.ibreast.note.treat.note_treat2_add;
-import com.jsaw.ibreast.note.treat.note_treat3_add;
-import com.jsaw.ibreast.note.treat.note_treat4_add;
 import com.jsaw.ibreast.note.treat.note_treat5_add;
 
+import java.sql.Array;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class note_body extends AppCompatActivity{
@@ -83,15 +84,21 @@ public class note_body extends AppCompatActivity{
     }
 
     public void setColor(int btnC) {
-        int countFragment = 5;
+        int countFragment = 6;
         Button btn[] = new Button[]{findViewById(R.id.btn1), findViewById(R.id.btn2),
-                findViewById(R.id.btn3), findViewById(R.id.btn4), findViewById(R.id.btn5)};
+                findViewById(R.id.btn3), findViewById(R.id.btn4), findViewById(R.id.btn5), findViewById(R.id.btn6)};
+
+        List<Integer> chosen = Arrays.asList(R.drawable.body1, R.drawable.body2, R.drawable.body3,
+                R.drawable.body4, R.drawable.body5, R.drawable.body6);
+
+        List<Integer> unchosen = Arrays.asList(R.drawable.body11, R.drawable.body12, R.drawable.body13,
+                R.drawable.body14, R.drawable.body15, R.drawable.body16);
 
         for (int i = 0; i < countFragment; i++) {
             if (i == btnC - 1) {
-                btn[i].setTextColor(Color.WHITE);
+                btn[i].setBackgroundResource(chosen.get(i));
             } else {
-                btn[i].setTextColor(Color.GRAY);
+                btn[i].setBackgroundResource(unchosen.get(i));
             }
         }
     }
@@ -100,7 +107,7 @@ public class note_body extends AppCompatActivity{
         myView.put(1, new body1_add());
         myView.put(2, new body2_add());
         myView.put(3, new body3_add());
-        myView.put(4, new note_treat4_add());
+        myView.put(4, new body4_add());
         myView.put(5, new note_treat5_add());
         myView.put(6, new note_treat5_add());
     }

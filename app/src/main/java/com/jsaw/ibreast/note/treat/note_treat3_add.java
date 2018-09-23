@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class note_treat3_add extends Fragment implements View.OnClickListener {
     private EditText edtOther;
     private CheckBox ckbOther;
     private String message;
-
+    private TextView txtPart;
     private static class Record {
         public List<String> part;
 
@@ -66,11 +67,13 @@ public class note_treat3_add extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_note_treat2_add, container, false);
         setDialog();
+        txtPart = view.findViewById(R.id.txtPart);
         edtStartDate = view.findViewById(R.id.edtStartDate);
         edtEndDate = view.findViewById(R.id.edtEndDate);
         checkBtn = view.findViewById(R.id.imgCheack);
         ckbOther = view.findViewById(R.id.ckbOther);
         edtOther = view.findViewById(R.id.edtOther);
+        txtPart.setText("處方：");
         ckbOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,6 +179,7 @@ public class note_treat3_add extends Fragment implements View.OnClickListener {
                     }
                 };
                 listView.setAdapter(sa);
+                setListViewHeightBasedOnChildren(listView);
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
             }
@@ -248,6 +252,29 @@ public class note_treat3_add extends Fragment implements View.OnClickListener {
         } else {
             return true;
         }
+    }
+
+    /**
+     * scrollView 中嵌listView造成View高度異常，根據子View高度重置listVIew高度。
+     *
+     * @param listView
+     */
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        if (listView == null) return;
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
     }
 }
 

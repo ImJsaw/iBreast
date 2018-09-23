@@ -11,7 +11,9 @@ import android.widget.Button;
 
 import com.jsaw.ibreast.R;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class note_treat_main extends AppCompatActivity {
@@ -77,12 +79,17 @@ public class note_treat_main extends AppCompatActivity {
         int countFragment = 5;
         Button btn[] = new Button[]{findViewById(R.id.btn1), findViewById(R.id.btn2),
                 findViewById(R.id.btn3), findViewById(R.id.btn4), findViewById(R.id.btn5)};
+        List<Integer> chosen = Arrays.asList(R.drawable.cure1, R.drawable.cure2, R.drawable.cure3,
+                R.drawable.cure4, R.drawable.cure5);
+
+        List<Integer> unchosen = Arrays.asList(R.drawable.cure11, R.drawable.cure12, R.drawable.cure13,
+                R.drawable.cure14, R.drawable.cure15);
 
         for (int i = 0; i < countFragment; i++) {
             if (i == btnC - 1) {
-                btn[i].setTextColor(Color.WHITE);
+                btn[i].setBackgroundResource(chosen.get(i));
             } else {
-                btn[i].setTextColor(Color.GRAY);
+                btn[i].setBackgroundResource(unchosen.get(i));
             }
         }
     }

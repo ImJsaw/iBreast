@@ -3,6 +3,7 @@ package com.jsaw.ibreast.note.body;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -15,7 +16,9 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +40,7 @@ public class body2_add extends Fragment {
     private ImageButton btnCheck;
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-
+    private TextView txtWarn;
 
     private static class Record {
         public String date;
@@ -76,17 +79,38 @@ public class body2_add extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_note_body2_add, container, false);
-
+        txtWarn = view.findViewById(R.id.txtWarn);
         edtDate = view.findViewById(R.id.edtDate);
         edtTemp = view.findViewById(R.id.edtTemp);
         edtTime = view.findViewById(R.id.edtTime);
         btnCheck = view.findViewById(R.id.btnCheack);
         btnCheck.setOnClickListener(mBtnCheck);
+        edtTemp.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (!edtTemp.getText().toString().isEmpty()) {
+                    double wbcWarn = Double.valueOf(edtTemp.getText().toString());
+                    if (wbcWarn >= 38) {
+                        txtWarn.setVisibility(View.VISIBLE);
+                    } else {
+                        txtWarn.setVisibility(View.INVISIBLE);
+                    }
+                }
+                return false;
+            }
+        });
+
+        //自動帶入時間
+        Calendar calendar = Calendar.getInstance();
+        String time = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)) + ":" + String.valueOf(calendar.get(Calendar.MINUTE));
+        edtTime.setText(time);
 
         // 設定小日曆選擇時間
         ImageButton selectDate = view.findViewById(R.id.imgCal);
         selectDate.setOnClickListener(imgCalOnClick);
 
+        ImageButton imgTime = view.findViewById(R.id.imgTime);
+        imgTime.setOnClickListener(imgTimeOnClick);
         isProgressDialogShow = false;
         progressDialog.dismiss();
 
@@ -125,6 +149,20 @@ public class body2_add extends Fragment {
 //                顯示從目前時間開始選
 //                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
             datePickerDialog.show();
+        }
+    };
+
+    private View.OnClickListener imgTimeOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Calendar calendar = Calendar.getInstance();
+            TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    edtTime.setText(hourOfDay + ":" + minute);
+                }
+            }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+            timePickerDialog.show();
         }
     };
 

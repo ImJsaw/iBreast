@@ -78,7 +78,7 @@ public class note_treat2 extends Fragment {
                     for (DataSnapshot ds : data.child("part").getChildren()) {
                         str.append(ds.getValue()).append(", ");
                     }
-                    // 刪除最後一個,
+                    // 刪除最後一個","
                     str = str.deleteCharAt(str.length()-2);
                     item.put("partName", str);
                     items.add(item);

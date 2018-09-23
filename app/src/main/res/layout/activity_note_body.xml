@@ -4,20 +4,119 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/Btn_treat"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="12dp"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:shadowRadius="7"-->
+            <!--android:text="@string/body"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="22sp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/Btn_edit"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="end"-->
+            <!--android:layout_margin="12dp"-->
+            <!--android:gravity="center"-->
+            <!--android:onClick="onClick"-->
+            <!--android:shadowRadius="7"-->
+            <!--android:text="@string/add"-->
+            <!--android:textSize="18sp" />-->
+    <!--</FrameLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="12dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:onClick="onClick"-->
+            <!--android:text="體重"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="18sp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn2"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:onClick="onClick"-->
+            <!--android:text="體溫"-->
+            <!--android:textColor="@color/gray"-->
+            <!--android:textSize="18sp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn3"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:onClick="onClick"-->
+            <!--android:text="血液"-->
+            <!--android:textColor="@color/gray"-->
+            <!--android:textSize="18sp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn4"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:onClick="onClick"-->
+            <!--android:text="手臂"-->
+            <!--android:textColor="@color/gray"-->
+            <!--android:textSize="18sp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn5"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:onClick="onClick"-->
+            <!--android:text="症狀"-->
+            <!--android:textColor="@color/gray"-->
+            <!--android:textSize="18sp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn6"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="12dp"-->
+            <!--android:layout_marginTop="12dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:onClick="onClick"-->
+            <!--android:text="其他"-->
+            <!--android:textColor="@color/gray"-->
+            <!--android:textSize="18sp" />-->
+    <!--</LinearLayout>-->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/Btn_treat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@drawable/button_shape"
-            android:shadowRadius="7"
-            android:text="@string/body"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
 
         <Button
             android:id="@+id/Btn_edit"
@@ -28,7 +127,7 @@
             android:gravity="center"
             android:onClick="onClick"
             android:shadowRadius="7"
-            android:text="@string/add"
+            android:background="@drawable/create"
             android:textSize="18sp" />
     </FrameLayout>
 
@@ -43,10 +142,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:layout_weight="1"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/body1"
             android:onClick="onClick"
-            android:text="體重"
-            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <Button
@@ -56,10 +153,8 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/body12"
             android:onClick="onClick"
-            android:text="體溫"
-            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <Button
@@ -69,10 +164,8 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/body13"
             android:onClick="onClick"
-            android:text="血液"
-            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <Button
@@ -82,10 +175,8 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/body14"
             android:onClick="onClick"
-            android:text="手臂"
-            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <Button
@@ -95,10 +186,8 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/body15"
             android:onClick="onClick"
-            android:text="症狀"
-            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <Button
@@ -108,10 +197,8 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/body16"
             android:onClick="onClick"
-            android:text="其他"
-            android:textColor="@color/gray"
             android:textSize="18sp" />
     </LinearLayout>
 

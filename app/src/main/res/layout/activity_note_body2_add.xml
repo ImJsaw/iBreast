@@ -58,6 +58,12 @@
             android:inputType="time"
             android:minWidth="30dp"
             android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/imgTime"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/clock" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,9 +83,8 @@
             android:id="@+id/edtTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="36"
-            android:inputType="time"
-            android:minWidth="30dp"
+            android:hint="36.8"
+            android:inputType="numberDecimal"
             android:textSize="22sp" />
 
         <TextView
@@ -96,11 +101,14 @@
         android:layout_height="60dp"
         android:layout_gravity="end|bottom"
         android:background="@drawable/check" />
+
     <TextView
+        android:id="@+id/txtWarn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="※體溫高於38度，建議到急診評估處理!!"
-        android:textSize="20sp"
         android:layout_gravity="center"
-        android:textColor="@color/red"/>
+        android:text="※體溫高於38度，建議到急診評估處理!!"
+        android:textColor="@color/red"
+        android:visibility="invisible"
+        android:textSize="20sp" />
 </LinearLayout>

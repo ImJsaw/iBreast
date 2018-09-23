@@ -88,7 +88,7 @@ public class note_treat1 extends Fragment {
 //                3. int resource Layout位置
 //                4. String[] from data帶入資料的Key
 //                5. int[] to Key的值要帶到哪個元件
-                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.body_listview_item,
+                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.treat1_listview_item,
                         STRINGS, IDS);
                 listView.setAdapter(sa);
 

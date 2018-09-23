@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,7 +18,7 @@
             android:background="@drawable/button_shape"
             android:onClick="myClick"
             android:shadowRadius="7"
-            android:text="資訊頁"
+            android:text="回資訊頁"
             android:textColor="@color/white"
             android:textSize="22sp" />
 
@@ -33,310 +35,304 @@
             android:textSize="18sp" />
     </FrameLayout>
 
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:fillViewport="true">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtBirth"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/birth"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtBirth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/birth"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/edtBirth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:hint="yyyy/MM"
-                    android:inputType="date"
-                    android:minWidth="100sp"
-                    android:singleLine="true"
-                    android:textSize="20sp" />
-
-                <ImageButton
-                    android:id="@+id/imgBirth"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/calendar"
-                    android:onClick="onImgClick" />
-
-                <TextView
-                    android:id="@+id/txtHeight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/height"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/edtHeight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:minWidth="100sp"
-                    android:singleLine="true"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/edtBirth"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="XX年X月"
+                android:inputType="date"
+                android:minWidth="100sp"
+                android:singleLine="true"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
+                app:layout_constraintStart_toEndOf="@+id/txtBirth"
+                app:layout_constraintTop_toTopOf="@+id/txtBirth" />
 
-                <TextView
-                    android:id="@+id/txtStopBleeding"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/StopBleeding"
-                    android:textSize="20sp" />
+            <ImageButton
+                android:id="@+id/imgBirth"
+                android:layout_width="35dp"
+                android:layout_height="36dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/calendar"
+                android:onClick="onImgClick"
+                app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
+                app:layout_constraintEnd_toStartOf="@+id/txtHeight"
+                app:layout_constraintStart_toEndOf="@+id/edtBirth"
+                app:layout_constraintTop_toTopOf="@+id/txtBirth" />
 
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rdbYes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="是"
-                        android:textSize="20sp" />
-
-                    <RadioButton
-                        android:id="@+id/rdbNo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="否"
-                        android:textSize="20sp" />
-                </RadioGroup>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtHeight"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/height"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
+                app:layout_constraintStart_toEndOf="@+id/imgBirth"
+                app:layout_constraintTop_toTopOf="@+id/txtBirth" />
 
-                <TextView
-                    android:id="@+id/txtSurgery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/surgery"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/edtDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="yyyy/MM"
-                    android:inputType="date"
-                    android:minWidth="100sp"
-                    android:singleLine="true"
-                    android:textSize="20sp" />
-
-                <ImageButton
-                    android:id="@+id/imgCal"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/calendar"
-                    android:onClick="onImgClick" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/edtHeight"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="8dp"
+                android:inputType="number"
+                android:minWidth="100sp"
+                android:singleLine="true"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtBirth"
+                app:layout_constraintStart_toEndOf="@+id/txtHeight"
+                app:layout_constraintTop_toTopOf="@+id/edtBirth"
+                tools:ignore="LabelFor" />
 
-                <TextView
-                    android:id="@+id/txtSurgeryMethod"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/surgeryMethod"
-                    android:textSize="20sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ListView
-                        android:id="@+id/list_method"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:divider="@null" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtStopBleeding"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/StopBleeding"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtBirth" />
 
-                <TextView
-                    android:id="@+id/txtCell"
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/txtStopBleeding"
+                app:layout_constraintStart_toEndOf="@+id/txtStopBleeding"
+                app:layout_constraintTop_toTopOf="@+id/txtStopBleeding">
+
+                <RadioButton
+                    android:id="@+id/rdbYes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/cell"
+                    android:text="是"
                     android:textSize="20sp" />
 
-                <Spinner
-                    android:id="@+id/spinnerCell"
+                <RadioButton
+                    android:id="@+id/rdbNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/spinCell">
+                    android:checked="true"
+                    android:text="否"
+                    android:textSize="20sp" />
+            </RadioGroup>
 
-                </Spinner>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtSurgery"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/surgery"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtStopBleeding" />
 
-                <TextView
-                    android:id="@+id/txtHorm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/horm"
-                    android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_marginStart="8dp"
+                android:hint="XX年X月"
+                android:inputType="date"
+                android:minWidth="100sp"
+                android:singleLine="true"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtSurgery"
+                app:layout_constraintStart_toEndOf="@id/txtSurgery"
+                app:layout_constraintTop_toTopOf="@+id/txtSurgery" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/imgCal"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/calendar"
+                android:onClick="onImgClick"
+                app:layout_constraintBottom_toBottomOf="@+id/edtDate"
+                app:layout_constraintStart_toEndOf="@id/edtDate"
+                app:layout_constraintTop_toTopOf="@id/edtDate" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ER:"
-                            android:textSize="20sp" />
-
-                        <Spinner
-                            android:id="@+id/spinnerEr"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/spinYN" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="PR:"
-                            android:textSize="20sp" />
-
-                        <Spinner
-                            android:id="@+id/spinnerPr"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/spinYN" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtSurgeryMethod"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/surgeryMethod"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtDate" />
 
-                <TextView
-                    android:id="@+id/txtHer"
+                <ListView
+                    android:id="@+id/list_method"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/HER"
-                    android:textSize="20sp" />
+                    android:divider="@null"
+                    app:layout_constraintStart_toEndOf="@id/txtSurgeryMethod"
+                    app:layout_constraintTop_toTopOf="@id/txtSurgeryMethod"
+                    tools:ignore="NestedScrolling" />
 
-                <Spinner
-                    android:id="@+id/spinnerHer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/spinHer" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/txtFish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/fish"
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/spinnerFish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/spinPm" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtCell"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/cell"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_method" />
 
-                <TextView
-                    android:id="@+id/txtTreatment"
+            <Spinner
+                android:id="@+id/spinnerCell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/spinCell"
+                app:layout_constraintBottom_toBottomOf="@id/txtCell"
+                app:layout_constraintStart_toEndOf="@id/txtCell"
+                app:layout_constraintTop_toTopOf="@id/txtCell" />
+
+            <TextView
+                android:id="@+id/txtHorm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/horm"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtCell" />
+
+            <TextView
+                android:id="@+id/txtEr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ER:"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/txtHorm"
+                app:layout_constraintStart_toEndOf="@id/txtHorm"
+                app:layout_constraintTop_toTopOf="@id/txtHorm" />
+
+            <Spinner
+                android:id="@+id/spinnerEr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/spinYN"
+                app:layout_constraintBottom_toBottomOf="@id/txtEr"
+                app:layout_constraintStart_toEndOf="@id/txtEr"
+                app:layout_constraintTop_toTopOf="@id/txtEr" />
+
+            <TextView
+                android:id="@+id/txtPr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PR:"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/txtHorm"
+                app:layout_constraintTop_toBottomOf="@id/txtEr" />
+
+            <Spinner
+                android:id="@+id/spinnerPr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/spinYN"
+                app:layout_constraintBottom_toBottomOf="@id/txtPr"
+                app:layout_constraintStart_toEndOf="@id/txtPr"
+                app:layout_constraintTop_toTopOf="@id/txtPr" />
+
+            <TextView
+                android:id="@+id/txtHer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/HER"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtPr" />
+
+            <Spinner
+                android:id="@+id/spinnerHer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/spinHer"
+                app:layout_constraintBottom_toBottomOf="@id/txtHer"
+                app:layout_constraintStart_toEndOf="@id/txtHer"
+                app:layout_constraintTop_toTopOf="@id/txtHer" />
+
+            <TextView
+                android:id="@+id/txtFish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/fish"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtHer" />
+
+            <Spinner
+                android:id="@+id/spinnerFish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/spinPm"
+                app:layout_constraintBottom_toBottomOf="@id/txtFish"
+                app:layout_constraintStart_toEndOf="@id/txtFish"
+                app:layout_constraintTop_toTopOf="@id/txtFish" />
+
+            <TextView
+                android:id="@+id/txtTreatment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="我的療程計畫："
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtFish" />
+
+                <ListView
+                    android:id="@+id/list_program"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="我的療程計畫："
-                    android:textSize="20sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ListView
-                        android:id="@+id/list_program"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:divider="@null" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
+                    android:divider="@null"
+                    app:layout_constraintStart_toEndOf="@+id/txtTreatment"
+                    app:layout_constraintTop_toTopOf="@id/txtTreatment"
+                    tools:ignore="NestedScrolling" />
+        </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </LinearLayout>

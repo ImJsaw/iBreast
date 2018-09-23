@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +41,7 @@ public class body1_add extends Fragment {
     private ImageButton btnCheck;
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-    private double height = 160;
+    private double height = 1;
 
     private static class Record {
         public String BMI;
@@ -87,26 +89,26 @@ public class body1_add extends Fragment {
         txtAdvice = view.findViewById(R.id.txtAdvice);
         btnCheck = view.findViewById(R.id.btnCheack);
         btnCheck.setOnClickListener(mBtnCheck);
+        edtWeight.addTextChangedListener(mEdtAct);
         getHeight();
-        // 監聽按下確認鍵寫入textView
-        edtWeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                String weight = edtWeight.getText().toString();
-                if (!weight.isEmpty()) {
-                    height = height / 100;
-                    double BMI = Integer.parseInt(weight) / Math.pow(height, 2);
-                    String BMIstr = String.valueOf(BMI);
-                    // 取小數第一位
-                    BMIstr = BMIstr.substring(0, BMIstr.indexOf(".") + 2);
-                    txtBMI.setText(BMIstr);
-                    txtResult.setText(getResult(Double.parseDouble(BMIstr)));
-                    txtAdvice.setText(getAdvice(Double.parseDouble(BMIstr)));
-                    edtDate.clearFocus();
-                }
-                return false;
-            }
-        });
+//        // 監聽按下確認鍵寫入textView
+//        edtWeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                String weight = edtWeight.getText().toString();
+//                if (!weight.isEmpty() ) {
+//                    double BMI = Double.parseDouble(weight) / Math.pow(height / 100, 2);
+//                    String BMIstr = String.valueOf(BMI);
+//                    // 取小數第一位
+//                    BMIstr = BMIstr.substring(0, BMIstr.indexOf(".") + 2);
+//                    txtBMI.setText(BMIstr);
+//                    txtResult.setText(getResult(Double.parseDouble(BMIstr)));
+//                    txtAdvice.setText(getAdvice(Double.parseDouble(BMIstr)));
+//                    edtDate.clearFocus();
+//                }
+//                return false;
+//            }
+//        });
 
 
         // 設定小日曆選擇時間
@@ -119,6 +121,40 @@ public class body1_add extends Fragment {
         return view;
 
     }
+
+    //TextChange
+    private TextWatcher mEdtAct = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String weight = edtWeight.getText().toString();
+            if (!weight.isEmpty() && weight.length() >=2 ) {
+                if (height != 1) {
+                    double BMI = Double.parseDouble(weight) / Math.pow(height / 100, 2);
+                    String BMIstr = String.valueOf(BMI);
+                    // 取小數第一位
+                    BMIstr = BMIstr.substring(0, BMIstr.indexOf(".") + 2);
+                    txtBMI.setText(BMIstr);
+                    txtResult.setText(getResult(Double.parseDouble(BMIstr)));
+                    txtAdvice.setText(getAdvice(Double.parseDouble(BMIstr)));
+                }
+            } else {
+                txtBMI.setText("");
+                txtResult.setText("");
+                txtAdvice.setText("");
+            }
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     // 確認按鈕
     private View.OnClickListener mBtnCheck = new View.OnClickListener() {
@@ -210,7 +246,7 @@ public class body1_add extends Fragment {
         }
     }
 
-    private void getHeight(){
+    private void getHeight() {
         DatabaseReference mGetHeight = FirebaseDatabase.getInstance().getReference("Users");
         mGetHeight.addValueEventListener(new ValueEventListener() {
             @Override
@@ -218,8 +254,12 @@ public class body1_add extends Fragment {
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
-                dataSnapshot = dataSnapshot.child(user).child("height");
-                height = Double.parseDouble((String) dataSnapshot.getValue());
+                if (dataSnapshot.child(user).hasChild("height")) {
+                    dataSnapshot = dataSnapshot.child(user).child("height");
+                    height = Double.parseDouble((String) dataSnapshot.getValue());
+                } else {
+                    Toast.makeText(getContext(), "請先至'記吧 > 我的'頁面輸入身高。", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override

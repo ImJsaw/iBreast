@@ -9,9 +9,9 @@
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_margin="5dp"
-        android:gravity="left"
+        android:gravity="center_horizontal"
         android:text="日期"
         android:textSize="22sp" />
 

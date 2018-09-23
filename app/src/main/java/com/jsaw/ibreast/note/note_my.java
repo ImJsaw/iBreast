@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
@@ -105,7 +106,7 @@ public class note_my extends AppCompatActivity {
     public void myClick(View v) {
         switch (v.getId()) {
             case R.id.Btn_Info:
-                if (!checkBlank()) { //沒有空白欄位
+                if (checkBlankOppo()) { //沒有空白欄位
                     setContentView(R.layout.activity_note_my);
                     readData();
                 } else {
@@ -141,8 +142,10 @@ public class note_my extends AppCompatActivity {
 
     }
 
+    // 取得術式資料
     private void getMethodData() {
         FirebaseDatabase.getInstance().getReference("my").addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> method_items = new ArrayList<>();
@@ -178,6 +181,7 @@ public class note_my extends AppCompatActivity {
                 listMethod.setAdapter(sa);
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
+                setListViewHeightBasedOnChildren(listMethod);
             }
 
             @Override
@@ -186,8 +190,10 @@ public class note_my extends AppCompatActivity {
         });
     }
 
+    // 取得療程計畫資料
     private void getProgramData() {
         FirebaseDatabase.getInstance().getReference("my").addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> program_items = new ArrayList<>();
@@ -224,6 +230,7 @@ public class note_my extends AppCompatActivity {
                 listProgram.setAdapter(sa);
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
+                setListViewHeightBasedOnChildren(listProgram);
             }
 
             @Override
@@ -291,9 +298,10 @@ public class note_my extends AppCompatActivity {
 
     }
 
-    // 是否有為填選欄位
+
 
     /**
+     *  是否有為填選欄位
      * @return true:沒有空白欄位
      */
     private boolean checkBlank() {
@@ -317,9 +325,24 @@ public class note_my extends AppCompatActivity {
         }
     }
 
+    private boolean checkBlankOppo() {
+        if (!edtBirth.getText().toString().trim().equals("")) {
+            return false;
+        } else if (!edtDate.getText().toString().trim().equals("")) {
+            return false;
+        } else if (!edtHeight.getText().toString().trim().equals("")) {
+            return false;
+        } else if (method.size() != 0) {
+            return false;
+        } else if (program.size() != 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     //詢問是否儲存 Dialog
     private void Leave() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage("是否未儲存離開?")
@@ -356,8 +379,8 @@ public class note_my extends AppCompatActivity {
                 myTextView.put("surgeryDate", (TextView) findViewById(R.id.txtSurgeryDate));
                 myTextView.put("surgeryMethod", (TextView) findViewById(R.id.txtSurgeryMethodName));
                 myTextView.put("cell", (TextView) findViewById(R.id.txtCellType));
-                myTextView.put("er", (TextView) findViewById(R.id.txtEr));
-                myTextView.put("pr", (TextView) findViewById(R.id.txtPr));
+                myTextView.put("er", (TextView) findViewById(R.id.txtInputEr));
+                myTextView.put("pr", (TextView) findViewById(R.id.txtInputPr));
                 myTextView.put("her", (TextView) findViewById(R.id.txtHerType));
                 myTextView.put("fish", (TextView) findViewById(R.id.txtFishType));
                 myTextView.put("program", (TextView) findViewById(R.id.txtProgramName));
@@ -374,6 +397,8 @@ public class note_my extends AppCompatActivity {
                             for (DataSnapshot ds : data.child("record").getChildren()) {
                                 str.append(ds.getValue()).append("\n");
                             }
+                            // 刪除最後一個\n
+                            str = str.deleteCharAt(str.length()-1);
                             myTextView.get(dataName).setText(str.toString());
                         } else {
                             String dataValue = Objects.requireNonNull(data.getValue()).toString();
@@ -391,5 +416,28 @@ public class note_my extends AppCompatActivity {
 
             }
         });
+    }
+
+    /**
+     * scrollView 中嵌listView造成View高度異常，根據子View高度重置listVIew高度。
+     *
+     * @param listView
+     */
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        if (listView == null) return;
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
     }
 }
