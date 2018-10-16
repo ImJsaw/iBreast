@@ -64,7 +64,6 @@
                             android:scrollHorizontally="false"
                             android:text="項目"
                             android:textAlignment="center" />
-
                         <TextView
                             android:id="@+id/PhoneNumnorth"
                             android:layout_width="105dp"
@@ -77,8 +76,6 @@
                             android:padding="5dp"
                             android:text="申請資格"
                             android:textAlignment="center" />
-
-
                         <TextView
                             android:id="@+id/Addressnorth"
                             android:layout_width="147dp"

@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/Phone"
-            android:layout_width="125dp"
+            android:layout_width="105dp"
             android:layout_height="100dp"
             android:layout_toRightOf="@id/Name"
             android:background="@drawable/cell_shape"
@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/Address"
-            android:layout_width="120dp"
+            android:layout_width="147dp"
             android:layout_height="100dp"
             android:layout_toRightOf="@id/Phone"
             android:background="@drawable/cell_shape"
