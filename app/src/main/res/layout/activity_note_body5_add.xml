@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="@string/date"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/edtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="yyyy/MM/dd"
+                android:inputType="date"
+                android:textSize="22sp" />
+
+            <ImageButton
+                android:id="@+id/imgCal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/calendar"
+                android:onClick="onClick" />
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:columnCount="2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80sp"
+                android:layout_margin="5dp"
+                android:layout_marginRight="100dp"
+                android:gravity="center"
+                android:text="症狀"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="分級"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="噁心"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtOne"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="嘔吐"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtTwo"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="腹瀉"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtThree"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="便秘"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtFour"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="掉髮"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtFive"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="疲倦"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtSix"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="食慾不振"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtSeven"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="口腔炎"
+                android:textSize="22sp" />
+
+            <EditText
+
+                android:id="@+id/edtEight"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="手足症候群"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtNine"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="尚未選擇"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="疼痛指數"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtTen"
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:inputType="none"
+                android:onClick="onClick"
+                android:text="4分"
+                android:textSize="22sp" />
+
+
+        </GridLayout>
+
+        <ImageButton
+            android:id="@+id/btnCheack"
+            android:layout_width="60dp"
+            android:layout_height="58dp"
+            android:layout_gravity="end"
+            android:background="@drawable/check" />
+    </LinearLayout>
+
+</ScrollView>

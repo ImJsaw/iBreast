@@ -127,7 +127,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".note.body.body4_add_how"
-            android:label="身體"
+            android:label="如何測量"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.body.body5_record"
+            android:label="症狀"
             android:screenOrientation="portrait" />
         <activity
             android:name=".note.mood.mood_add"

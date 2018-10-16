@@ -105,6 +105,10 @@ public class body4_add extends Fragment {
         String time = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)) + ":" + String.valueOf(calendar.get(Calendar.MINUTE));
         edtTime.setText(time);
 
+        //自動帶日期
+        String date = String.valueOf(calendar.get(Calendar.YEAR) + "/" + calendar.get(Calendar.MONTH) + "/" +calendar.get(Calendar.DAY_OF_MONTH));
+        edtDate.setText(date);
+
         // 設定小日曆選擇時間
         ImageButton selectDate = view.findViewById(R.id.imgCal);
         selectDate.setOnClickListener(imgCalOnClick);
