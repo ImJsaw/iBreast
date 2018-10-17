@@ -28,31 +28,54 @@ public class ask extends AppCompatActivity {
     private LinkedList<askAdapter.askData> mData = null;
     private askAdapter mAdapter = null;
     private ListView listView;
-    final int askCount = 3;
-    private String[] title;
-    private String[] ans ;
-
+    private ProgressDialog progressDialog;
+    private Boolean isProgressDialogShow = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        title = getResources().getStringArray(R.array.ask_title);
-        ans = getResources().getStringArray(R.array.ask_ans);
         setContentView(R.layout.activity_ask);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);//display "back" on action bar
         listView = findViewById(R.id.list_ask);
+
+        //waiting dialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("處理中,請稍候...");
+        progressDialog.show();
+        isProgressDialogShow = true;
+        //connect time out
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isProgressDialogShow) {
+                    progressDialog.dismiss();
+                    Toast.makeText(ask.this, "連線逾時", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, 5000);
 
         getData();
     }
 
     private void getData() {
         mData = new LinkedList<>();
-        for (int i = 0;i < askCount;i++){
-            askAdapter.askData a = new askAdapter.askData();
-            a.title = title[i];
-            a.text = ans[i];
-            mData.add(a);
-        }
+        FirebaseDatabase.getInstance().getReference("ask").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (int i = 0; i < dataSnapshot.getChildrenCount(); i++) {
+                    askAdapter.askData c = new askAdapter.askData();
+                    c.title = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i)).child("title").getValue()).toString();
+                    c.text = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i)).child("text").getValue()).toString();
+                    mData.add(c);
+                }
+                mAdapter.notifyDataSetChanged();
+                progressDialog.dismiss();
+                isProgressDialogShow = false;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
         //listView
         mAdapter = new askAdapter( mData, ask.this);
         listView.setAdapter(mAdapter);

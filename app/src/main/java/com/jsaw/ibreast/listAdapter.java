@@ -12,14 +12,14 @@ public class listAdapter extends BaseAdapter {
     private LinkedList<listData> mData;
     private Context mContext;
 
-    listAdapter(LinkedList<listData> mData, Context mContext) {
+    public listAdapter(LinkedList<listData> mData, Context mContext) {
         this.mData = mData;
         this.mContext = mContext;
     }
 
-    static class listData {
-        String title;
-        String url;
+    static public class listData {
+        public String title;
+        public String url;
     }
 
     @Override
