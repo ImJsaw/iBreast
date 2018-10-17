@@ -84,14 +84,14 @@
                 android:id="@+id/txtHb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="血紅色(Hb)："
+                android:text="血紅素(Hb)："
                 android:textSize="28sp" />
 
             <EditText
                 android:id="@+id/edtHb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:minWidth="100dp"
                 android:textSize="22sp" />
 

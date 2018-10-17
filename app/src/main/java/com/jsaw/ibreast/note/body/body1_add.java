@@ -3,6 +3,7 @@ package com.jsaw.ibreast.note.body;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -10,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
+import com.jsaw.ibreast.note.note_my;
 
 import java.util.Calendar;
 
@@ -91,25 +92,6 @@ public class body1_add extends Fragment {
         btnCheck.setOnClickListener(mBtnCheck);
         edtWeight.addTextChangedListener(mEdtAct);
         getHeight();
-//        // 監聽按下確認鍵寫入textView
-//        edtWeight.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                String weight = edtWeight.getText().toString();
-//                if (!weight.isEmpty() ) {
-//                    double BMI = Double.parseDouble(weight) / Math.pow(height / 100, 2);
-//                    String BMIstr = String.valueOf(BMI);
-//                    // 取小數第一位
-//                    BMIstr = BMIstr.substring(0, BMIstr.indexOf(".") + 2);
-//                    txtBMI.setText(BMIstr);
-//                    txtResult.setText(getResult(Double.parseDouble(BMIstr)));
-//                    txtAdvice.setText(getAdvice(Double.parseDouble(BMIstr)));
-//                    edtDate.clearFocus();
-//                }
-//                return false;
-//            }
-//        });
-
 
         // 設定小日曆選擇時間
         ImageButton selectDate = view.findViewById(R.id.imgCal);
@@ -259,6 +241,7 @@ public class body1_add extends Fragment {
                     height = Double.parseDouble((String) dataSnapshot.getValue());
                 } else {
                     Toast.makeText(getContext(), "請先至'記吧 > 我的'頁面輸入身高。", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent().setClass(getContext(), note_my.class));
                 }
             }
 

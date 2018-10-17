@@ -30,17 +30,7 @@ public class mood_add extends AppCompatActivity {
     private TextView txtScore;
     private String mydate;
 
-    private static class Record {
-        public String date;
-        public int score;
-        public String words;
 
-        Record(String date, int score, String words) {
-            this.date = date;
-            this.score = score;
-            this.words = words;
-        }
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +38,8 @@ public class mood_add extends AppCompatActivity {
         setContentView(R.layout.activity_mood_add);
 
         TextView edtDate = findViewById(R.id.edtDate);
+        ImageButton imgResult = findViewById(R.id.imgResult);
+        imgResult.setOnClickListener(mBtnResult);
 
         //自動帶入日期
         Date date = new Date();
@@ -56,24 +48,20 @@ public class mood_add extends AppCompatActivity {
         edtDate.setText(mydate);
     }
 
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.imgResult:
-                score = getScore();
-                if (score >= 0) {
-                    setContentView(R.layout.activity_mood_result);
-                    mood_result();
-                } else{
-                    Toast.makeText(mood_add.this, "選項請填完", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            case R.id.btnSave:
-                EditText edtWords = findViewById(R.id.edtWords);
-                saveData(mydate, score, edtWords.getText().toString());
-                break;
-
+    View.OnClickListener mBtnResult = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            score = getScore();
+            if (score >= 0) {
+                Intent intent = new Intent(mood_add.this, mood_result.class);
+                intent.putExtra("date", mydate);
+                intent.putExtra("score", score);
+                startActivity(intent);
+            } else{
+                Toast.makeText(mood_add.this, "尚未填寫完畢", Toast.LENGTH_SHORT).show();
+            }
         }
-    }
+    };
 
     // 取得分數
     public int getScore() {
@@ -118,60 +106,5 @@ public class mood_add extends AppCompatActivity {
         }
 
         return selectId1 + selectId2 + selectId3 + selectId4 + selectId5;
-    }
-
-    // 結果 message
-    private String resultMessage(Integer score) {
-        String message;
-        if (score >= 0 && score <= 5) {
-            message = "為一般正常範圍，表示身心適應狀況良好。";
-            txtScore.setTextColor(Color.GREEN);
-        } else if (score >= 6 && score <= 9) {
-            message = "輕度情緒困擾，建議找家人或朋友談談，抒發情緒。";
-            txtScore.setTextColor(Color.YELLOW);
-        } else if (score >= 10 && score <= 14) {
-            message = "中度情緒困擾，建議尋求紓壓管道或接受心理專業諮詢。";
-            txtScore.setTextColor(0xFFFF7F00); //橘色
-        } else if (score >= 15) {
-            message = "重度情緒困擾，建議諮詢精神科醫師接受進一步評估。";
-            txtScore.setTextColor(Color.RED);
-        } else {
-            return "";
-        }
-        return message;
-    }
-
-    private void mood_result() {
-        txtScore = findViewById(R.id.txtScore);
-        TextView txtResult = findViewById(R.id.txtResult);
-        txtScore.setText(String.valueOf(score));
-        txtResult.setText(resultMessage(score));
-    }
-
-    // 儲存資料
-    private void saveData(String date, int score, String words) {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser users = auth.getCurrentUser();
-        String user = users.getUid();
-        final DatabaseReference mDatabase = FirebaseDatabase.getInstance()
-                .getReference("Users")
-                .child(user);
-        final Record record = new Record(date, score, words);
-        if (!date.equals("")) {
-            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    String count = String.valueOf(dataSnapshot.child("心情").getChildrenCount() + 1);
-                    mDatabase.child("心情").child(count).setValue(record);
-                    Toast.makeText(mood_add.this, "儲存成功", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-        } else {
-            Toast.makeText(this, "儲存失敗", Toast.LENGTH_SHORT).show();
-        }
     }
 }
