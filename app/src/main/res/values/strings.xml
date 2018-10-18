@@ -43,6 +43,23 @@
     <string name="fish">FISH：</string>
     <string name="add">新增</string>
     <string name="date">日期：</string>
+    <string name="link_name">單位</string>
+    <string name="link_phone">電話</string>
+    <string name="link_address">地址</string>
+    <string name="north_area">北部</string>
+    <string name="central_area">中部</string>
+    <string name="south_area">南部</string>
+    <string name="east_area">東部及離島</string>
+    <string name="hair">假髮</string>
+    <string name="dummy_bra">胸衣義乳</string>
+    <string name="cuff">袖套</string>
+    <string name="home_service">居家服務</string>
+    <string name="private_institution">私人機關</string>
+    <string name="public_institution">公家機關</string>
+    <string name="project">項目</string>
+    <string name="qualification">申請資格</string>
+    <string name="ask_eat">飲食</string>
+    <string name="diagnosis">診斷檢查</string>
     <string-array name="spinCell">
         <item>管腔A型</item>
         <item>管腔B型</item>

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,20 +24,24 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-
 public class ask extends AppCompatActivity {
-    private LinkedList<askAdapter.askData> mData = null;
-    private askAdapter mAdapter = null;
-    private ListView listView;
+    private LinkedList<askAdapter.askData> eatData, diagnosisData;
+    private askAdapter eatAdapter, diagnosisAdapter;
+    private ListView listView_eat,listView_diagnosis;
     private ProgressDialog progressDialog;
     private Boolean isProgressDialogShow = false;
+    private Boolean isEatShow,isDiagnosisShow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);//display "back" on action bar
-        listView = findViewById(R.id.list_ask);
+        listView_eat = findViewById(R.id.list_ask);
+        listView_diagnosis = findViewById(R.id.list_diagnosis);
+
+        isEatShow = isDiagnosisShow = true;
 
         //waiting dialog
         progressDialog = new ProgressDialog(this);
@@ -53,22 +58,52 @@ public class ask extends AppCompatActivity {
                 }
             }
         }, 5000);
-
         getData();
+        LinearLayout eatShowArea = findViewById(R.id.eat_show_area);
+        LinearLayout diagnosisShowArea = findViewById(R.id.diagnosis_show_area);
+
+        eatShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isEatShow) listView_eat.setVisibility(View.GONE);
+                else listView_eat.setVisibility(View.VISIBLE);
+                isEatShow = !isEatShow;
+            }
+        });
+
+        diagnosisShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isDiagnosisShow) listView_diagnosis.setVisibility(View.GONE);
+                else listView_diagnosis.setVisibility(View.VISIBLE);
+                isDiagnosisShow = !isDiagnosisShow;
+            }
+        });
+
     }
 
     private void getData() {
-        mData = new LinkedList<>();
+        eatData = new LinkedList<>();
+        diagnosisData = new LinkedList<>();
         FirebaseDatabase.getInstance().getReference("ask").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (int i = 0; i < dataSnapshot.getChildrenCount(); i++) {
+                DataSnapshot eat = dataSnapshot.child("eat");
+                DataSnapshot diagnosis = dataSnapshot.child("diagnose");
+                for (int i = 0; i < eat.getChildrenCount(); i++) {
                     askAdapter.askData c = new askAdapter.askData();
-                    c.title = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i)).child("title").getValue()).toString();
-                    c.text = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i)).child("text").getValue()).toString();
-                    mData.add(c);
+                    c.title = Objects.requireNonNull(eat.child(String.valueOf(i)).child("title").getValue()).toString();
+                    c.text = Objects.requireNonNull(eat.child(String.valueOf(i)).child("text").getValue()).toString();
+                    eatData.add(c);
                 }
-                mAdapter.notifyDataSetChanged();
+                for (int i = 0; i < diagnosis.getChildrenCount(); i++) {
+                    askAdapter.askData c = new askAdapter.askData();
+                    c.title = Objects.requireNonNull(diagnosis.child(String.valueOf(i)).child("title").getValue()).toString();
+                    c.text = Objects.requireNonNull(diagnosis.child(String.valueOf(i)).child("text").getValue()).toString();
+                    diagnosisData.add(c);
+                }
+                diagnosisAdapter.notifyDataSetChanged();
+                eatAdapter.notifyDataSetChanged();
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
             }
@@ -77,8 +112,10 @@ public class ask extends AppCompatActivity {
             }
         });
         //listView
-        mAdapter = new askAdapter( mData, ask.this);
-        listView.setAdapter(mAdapter);
+        eatAdapter = new askAdapter( eatData, ask.this);
+        diagnosisAdapter = new askAdapter( diagnosisData, ask.this);
+        listView_eat.setAdapter(eatAdapter);
+        listView_diagnosis.setAdapter(diagnosisAdapter);
     }
 
     //action bar

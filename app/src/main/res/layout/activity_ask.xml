@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/eat_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="80dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/ask_eat"/>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/list_ask"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/diagnosis_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="80dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/diagnosis"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/list_diagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

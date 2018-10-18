@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -36,6 +38,8 @@ public class link_center extends AppCompatActivity {
     public static final ArrayList<Center> east=new ArrayList<>();
     private ProgressDialog progressDialog;
     private Boolean isProgressDialogShow = false;
+    TableLayout northTable,midTable,southTable,eastTable;
+    boolean northShow,midShow,southShow,eastShow;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +61,45 @@ public class link_center extends AppCompatActivity {
             }
         }, 5000);
         getData();
+
+        LinearLayout northShowArea = findViewById(R.id.north_showArea);
+        LinearLayout midShowArea = findViewById(R.id.mid_showArea);
+        LinearLayout southShowArea = findViewById(R.id.south_showArea);
+        LinearLayout eastShowArea = findViewById(R.id.east_showArea);
+        northShow = midShow = southShow = eastShow = true;
+
+        northShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(northShow) northTable.setVisibility(View.GONE);
+                else northTable.setVisibility(View.VISIBLE);
+                northShow = !northShow;
+            }
+        });
+        midShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(midShow) midTable.setVisibility(View.GONE);
+                else midTable.setVisibility(View.VISIBLE);
+                midShow = !midShow;
+            }
+        });
+        southShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(southShow) southTable.setVisibility(View.GONE);
+                else southTable.setVisibility(View.VISIBLE);
+                southShow = !southShow;
+            }
+        });
+        eastShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(eastShow) eastTable.setVisibility(View.GONE);
+                else eastTable.setVisibility(View.VISIBLE);
+                eastShow = !eastShow;
+            }
+        });
         Log.d("link","center getData");
     }
 
@@ -106,14 +149,14 @@ public class link_center extends AppCompatActivity {
                     else if(k==2) dataProcess(areaData,south);
                     else if(k==3) dataProcess(areaData,east);
                 }
-                TableLayout ll =  findViewById(R.id.NorthTable);
-                TableLayout cl =  findViewById(R.id.CenterTable);
-                TableLayout sl =  findViewById(R.id.SouthTable);
-                TableLayout el =  findViewById(R.id.EastTable);
-                for (int i = 0; i <north.size(); i++) addTableRow(ll,north.get(i).name,north.get(i).phone,north.get(i).address);
-                for (int i = 0; i <center.size(); i++) addTableRow(cl,center.get(i).name,center.get(i).phone,center.get(i).address);
-                for (int i = 0; i < south.size(); i++) addTableRow(sl,south.get(i).name,south.get(i).phone,south.get(i).address);
-                for (int i = 0; i <east.size(); i++) addTableRow(el,east.get(i).name,east.get(i).phone,east.get(i).address);
+                northTable =  findViewById(R.id.north_hide_table);
+                midTable =  findViewById(R.id.mid_hide_table);
+                southTable =  findViewById(R.id.south_hide_table);
+                eastTable =  findViewById(R.id.east_hide_table);
+                for (int i = 0; i <north.size(); i++) addTableRow(northTable,north.get(i).name,north.get(i).phone,north.get(i).address);
+                for (int i = 0; i <center.size(); i++) addTableRow(midTable,center.get(i).name,center.get(i).phone,center.get(i).address);
+                for (int i = 0; i < south.size(); i++) addTableRow(southTable,south.get(i).name,south.get(i).phone,south.get(i).address);
+                for (int i = 0; i <east.size(); i++) addTableRow(eastTable,east.get(i).name,east.get(i).phone,east.get(i).address);
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
             }
@@ -133,7 +176,6 @@ public class link_center extends AppCompatActivity {
                 return true;
         }
     }
-
 }
 
 

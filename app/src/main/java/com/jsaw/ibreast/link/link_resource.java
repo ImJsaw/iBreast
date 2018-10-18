@@ -3,13 +3,10 @@ package com.jsaw.ibreast.link;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -18,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -44,6 +42,8 @@ public class link_resource extends AppCompatActivity {
     public static final ArrayList<Center> home=new ArrayList<>();
     private ProgressDialog progressDialog;
     private Boolean isProgressDialogShow = false;
+    TableLayout hairTable,braTable,cuffTable,homeTable;
+    boolean hairShow,braShow,cuffShow,homeShow;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +66,44 @@ public class link_resource extends AppCompatActivity {
         }, 5000);
         getData();
         Log.d("link","resource getData");
+        LinearLayout hairShowArea = findViewById(R.id.hair_showArea);
+        LinearLayout braShowArea = findViewById(R.id.bra_showArea);
+        LinearLayout cuffShowArea = findViewById(R.id.cuff_showArea);
+        LinearLayout homeShowArea = findViewById(R.id.home_showArea);
+        hairShow = braShow = cuffShow = homeShow = true;
+
+        hairShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(hairShow) hairTable.setVisibility(View.GONE);
+                else hairTable.setVisibility(View.VISIBLE);
+                hairShow = !hairShow;
+            }
+        });
+        braShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(braShow) braTable.setVisibility(View.GONE);
+                else braTable.setVisibility(View.VISIBLE);
+                braShow = !braShow;
+            }
+        });
+        cuffShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cuffShow) cuffTable.setVisibility(View.GONE);
+                else cuffTable.setVisibility(View.VISIBLE);
+                cuffShow = !cuffShow;
+            }
+        });
+        homeShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(homeShow) homeTable.setVisibility(View.GONE);
+                else homeTable.setVisibility(View.VISIBLE);
+                homeShow = !homeShow;
+            }
+        });
     }
 
     private void addTableRow(final Context context, TableLayout tl, final String name, final String phone, final String address, final String url, final String info){
@@ -108,9 +146,6 @@ public class link_resource extends AppCompatActivity {
                     ((TextView)d.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
             }
         });
-//your code...
-
-
         tl.addView(tr);
     }
 
@@ -144,18 +179,18 @@ public class link_resource extends AppCompatActivity {
                     else if(k==3) dataProcess(areaData,home);
                 }
 
-                TableLayout ll =  findViewById(R.id.WigTable);
-                TableLayout cl =  findViewById(R.id.BraTable);
-                TableLayout sl =  findViewById(R.id.CuffTable);
-                TableLayout hl =  findViewById(R.id.HomeTable);
+                hairTable =  findViewById(R.id.hair_hide_table);
+                braTable =  findViewById(R.id.bra_hide_table);
+                cuffTable =  findViewById(R.id.cuff_hide_table);
+                homeTable =  findViewById(R.id.home_hide_table);
                 for (int i = 0; i < wig.size(); i++)
-                    addTableRow(link_resource.this,ll,wig.get(i).name,wig.get(i).phone,wig.get(i).address,wig.get(i).url,wig.get(i).info);
+                    addTableRow(link_resource.this,hairTable,wig.get(i).name,wig.get(i).phone,wig.get(i).address,wig.get(i).url,wig.get(i).info);
                 for (int i = 0; i < bra.size(); i++)
-                    addTableRow(link_resource.this,cl,bra.get(i).name,bra.get(i).phone,bra.get(i).address,bra.get(i).url,bra.get(i).info);
+                    addTableRow(link_resource.this,braTable,bra.get(i).name,bra.get(i).phone,bra.get(i).address,bra.get(i).url,bra.get(i).info);
                 for (int i = 0; i <  cuff.size(); i++)
-                    addTableRow(link_resource.this,sl,cuff.get(i).name,cuff.get(i).phone,cuff.get(i).address,cuff.get(i).url,cuff.get(i).info);
+                    addTableRow(link_resource.this,cuffTable,cuff.get(i).name,cuff.get(i).phone,cuff.get(i).address,cuff.get(i).url,cuff.get(i).info);
                 for (int i = 0; i < home.size(); i++)
-                    addTableRow(link_resource.this,hl,home.get(i).name,home.get(i).phone,home.get(i).address,home.get(i).url,home.get(i).info);
+                    addTableRow(link_resource.this,homeTable,home.get(i).name,home.get(i).phone,home.get(i).address,home.get(i).url,home.get(i).info);
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
             }

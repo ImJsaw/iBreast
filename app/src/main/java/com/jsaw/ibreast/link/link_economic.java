@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -49,6 +50,8 @@ public class link_economic extends AppCompatActivity {
     public static final ArrayList<PrivateCenter> privateCenters=new ArrayList<>();
     private ProgressDialog progressDialog;
     private Boolean isProgressDialogShow = false;
+    TableLayout publicTable,privateTable;
+    boolean publicShow,privateShow;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +74,27 @@ public class link_economic extends AppCompatActivity {
         }, 5000);
         getData();
         Log.d("link","eco getData");
+
+        LinearLayout publicShowArea = findViewById(R.id.public_showArea);
+        LinearLayout privateShowArea = findViewById(R.id.private_showArea);
+        publicShow = privateShow = true;
+
+        publicShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(publicShow) publicTable.setVisibility(View.GONE);
+                else publicTable.setVisibility(View.VISIBLE);
+                publicShow = !publicShow;
+            }
+        });
+        privateShowArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(privateShow) privateTable.setVisibility(View.GONE);
+                else privateTable.setVisibility(View.VISIBLE);
+                privateShow = !privateShow;
+            }
+        });
     }
 
     private void addPublicTableRow(final Context context, TableLayout tl, final String name, final String phone, final String address, final String url, final String info){
@@ -146,14 +170,10 @@ public class link_economic extends AppCompatActivity {
                         .setTitle(name)
                         .create();
                 d.show();
-
                 // Make the textview clickable. Must be called after show()
                 ((TextView)d.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
             }
         });
-//your code...
-
-
         tl.addView(tr);
     }
 
@@ -191,13 +211,13 @@ public class link_economic extends AppCompatActivity {
                     }
                 }
 
-                TableLayout ll =  findViewById(R.id.PublicTable);
-                TableLayout cl =  findViewById(R.id.PrivateTable);
+                publicTable =  findViewById(R.id.public_hide_table);
+                privateTable =  findViewById(R.id.private_hide_table);
                 for (int i = 0; i <publicCenters.size(); i++)
-                    addPublicTableRow(link_economic.this,ll,publicCenters.get(i).name,publicCenters.get(i).eligibility,publicCenters.get(i).unit,
+                    addPublicTableRow(link_economic.this,publicTable,publicCenters.get(i).name,publicCenters.get(i).eligibility,publicCenters.get(i).unit,
                             publicCenters.get(i).url,publicCenters.get(i).info);
                 for (int i = 0; i <privateCenters.size(); i++)
-                    addPrivateTableRow(link_economic.this, cl,privateCenters.get(i).name,privateCenters.get(i).phone,privateCenters.get(i).address,
+                    addPrivateTableRow(link_economic.this, privateTable,privateCenters.get(i).name,privateCenters.get(i).phone,privateCenters.get(i).address,
                             privateCenters.get(i).url,privateCenters.get(i).info);
                 progressDialog.dismiss();
                 isProgressDialogShow = false;

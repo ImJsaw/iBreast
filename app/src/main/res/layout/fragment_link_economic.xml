@@ -1,201 +1,153 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:tag="link_center">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <TableLayout
-                android:id="@+id/PublicTable"
+            <LinearLayout
+                android:id="@+id/public_showArea"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/row_shape">
+                android:background="@drawable/row_shape"
+                android:orientation="vertical">
 
-                <TableRow
-                    android:id="@+id/rowpubliclabel"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/row_shape"
-                    android:visibility="visible">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/northlabel"
-                            android:layout_width="382dp"
-                            android:layout_height="30dp"
-                            android:layout_span="2"
-                            android:background="@drawable/north_shape"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:scrollHorizontally="false"
-                            android:text="公家機關"
-                            android:textAlignment="center" />
-
-                    </RelativeLayout>
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/rowpublic"
+                    android:background="@drawable/row_shape">
+                    <TextView
+                        android:layout_width="382dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/north_shape"
+                        android:padding="5dp"
+                        android:scrollHorizontally="false"
+                        android:textAlignment="center"
+                        android:text="@string/public_institution"/>
+                </LinearLayout>
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/row_shape"
-                    android:visibility="visible">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:id="@+id/Namenorth"
-                            android:layout_width="130dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/top_shape"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:scrollHorizontally="false"
-                            android:text="項目"
-                            android:textAlignment="center" />
-                        <TextView
-                            android:id="@+id/PhoneNumnorth"
-                            android:layout_width="105dp"
-                            android:layout_height="30dp"
-                            android:layout_toEndOf="@id/Namenorth"
-                            android:background="@drawable/top_shape"
-                            android:ems="10"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:text="申請資格"
-                            android:textAlignment="center" />
-                        <TextView
-                            android:id="@+id/Addressnorth"
-                            android:layout_width="147dp"
-                            android:layout_height="30dp"
-                            android:layout_toEndOf="@id/PhoneNumnorth"
-                            android:background="@drawable/top_shape"
-                            android:ems="10"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:text="服務單位"
-                            android:textAlignment="center" />
+                    android:background="@drawable/row_shape">
+                    <TextView
+                        android:id="@+id/link_name_public"
+                        android:layout_width="130dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/top_shape"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:scrollHorizontally="false"
+                        android:text="@string/project"
+                        android:textAlignment="center" />
 
-                    </RelativeLayout>
-                </TableRow>
-            </TableLayout>
+                    <TextView
+                        android:id="@+id/link_phone_public"
+                        android:layout_width="105dp"
+                        android:layout_height="30dp"
+                        android:layout_toEndOf="@id/link_name_public"
+                        android:background="@drawable/top_shape"
+                        android:ems="10"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:text="@string/qualification"
+                        android:textAlignment="center" />
 
+                    <TextView
+                        android:id="@+id/link_address_public"
+                        android:layout_width="147dp"
+                        android:layout_height="30dp"
+                        android:layout_toEndOf="@id/link_phone_public"
+                        android:background="@drawable/top_shape"
+                        android:ems="10"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:text="@string/link_name"
+                        android:textAlignment="center" />
+                </RelativeLayout>
+            </LinearLayout>
             <TableLayout
-                android:id="@+id/PrivateTable"
+                android:id="@+id/public_hide_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/row_shape" />
+
+            <LinearLayout
+                android:id="@+id/private_showArea"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/row_shape">
+                android:background="@drawable/row_shape"
+                android:orientation="vertical">
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:visibility="visible">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:layout_width="382dp"
-                            android:layout_height="30dp"
-                            android:background="#FFFFFF"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:scrollHorizontally="false"
-                            android:text=""
-                            android:textAlignment="center" />
-                    </RelativeLayout>
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/rowprivatelabel"
+                    android:background="@drawable/row_shape">
+                    <TextView
+                        android:layout_width="382dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/central_shape"
+                        android:padding="5dp"
+                        android:scrollHorizontally="false"
+                        android:textAlignment="center"
+                        android:text="@string/private_institution"/>
+                </LinearLayout>
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/row_shape"
-                    android:visibility="visible">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:id="@+id/centrallabel"
-                            android:layout_width="382dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/central_shape"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:scrollHorizontally="false"
-                            android:text="私人機關"
-                            android:textAlignment="center" />
-                    </RelativeLayout>
-                </TableRow>
+                    android:background="@drawable/row_shape">
+                    <TextView
+                        android:id="@+id/link_name_private"
+                        android:layout_width="130dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/top_shape"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:scrollHorizontally="false"
+                        android:text="@string/link_name"
+                        android:textAlignment="center" />
 
-                <TableRow
-                    android:id="@+id/rowprivate"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/row_shape"
-                    android:visibility="visible">
+                    <TextView
+                        android:id="@+id/link_phone_private"
+                        android:layout_width="105dp"
+                        android:layout_height="30dp"
+                        android:layout_toEndOf="@id/link_name_private"
+                        android:background="@drawable/top_shape"
+                        android:ems="10"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:text="@string/link_phone"
+                        android:textAlignment="center" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/link_address_private"
+                        android:layout_width="147dp"
+                        android:layout_height="30dp"
+                        android:layout_toEndOf="@id/link_phone_private"
+                        android:background="@drawable/top_shape"
+                        android:ems="10"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:text="@string/link_address"
+                        android:textAlignment="center" />
+                </RelativeLayout>
+            </LinearLayout>
+            <TableLayout
+                android:id="@+id/private_hide_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/row_shape" />
 
-                        <TextView
-                            android:id="@+id/Namecentral"
-                            android:layout_width="130dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/top_shape"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:scrollHorizontally="false"
-                            android:text="項目"
-                            android:textAlignment="center" />
-
-                        <TextView
-                            android:id="@+id/PhoneNumcentral"
-                            android:layout_width="105dp"
-                            android:layout_height="30dp"
-                            android:layout_toEndOf="@id/Namecentral"
-                            android:background="@drawable/top_shape"
-                            android:ems="10"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:text="電話"
-                            android:textAlignment="center" />
-
-                        <TextView
-                            android:id="@+id/Addresscentral"
-                            android:layout_width="147dp"
-                            android:layout_height="30dp"
-                            android:layout_toEndOf="@id/PhoneNumcentral"
-                            android:background="@drawable/top_shape"
-                            android:ems="10"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"
-                            android:padding="5dp"
-                            android:text="地址"
-                            android:textAlignment="center" />
-                    </RelativeLayout>
-                </TableRow>
-            </TableLayout>
         </LinearLayout>
     </ScrollView>
+
+
+
 </FrameLayout>
