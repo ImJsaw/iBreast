@@ -147,6 +147,11 @@
             android:name=".note.mood.mood_result"
             android:label="心情"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.mood.mood_edit"
+            android:label="心情日記修改"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".note.mood.mood"/>
 
     </application>
 </manifest>

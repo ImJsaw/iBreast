@@ -8,9 +8,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,11 +30,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class mood extends AppCompatActivity {
-    private static final int[] IDS = new int[]{R.id.txtDate, R.id.txtScore, R.id.txtWords};
-    private static final String[] STRINGS = new String[]{"date", "score", "words"};
+    private static final int[] IDS = new int[]{R.id.txtDate, R.id.txtScore, R.id.imgWords, R.id.txtWords};
+    private static final String[] STRINGS = new String[]{"date", "score", "hand", "words"};
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
     private List<String> words = new LinkedList<>();
+    private TextView txtWords;
+    private ImageButton imgWords;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +82,7 @@ public class mood extends AppCompatActivity {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("date", data.child("date").getValue().toString());
                     item.put("score", data.child("score").getValue().toString());
+                    item.put("words", data.child("words").getValue().toString());
                     words.add(data.child("words").getValue().toString());
                     items.add(item);
                 }
@@ -87,7 +93,28 @@ public class mood extends AppCompatActivity {
 //                4. String[] from data帶入資料的Key
 //                5. int[] to Key的值要帶到哪個元件
                 SimpleAdapter sa = new SimpleAdapter(mood.this, items, R.layout.mood_listview_item,
-                        STRINGS, IDS);
+                        STRINGS, IDS){
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View v = super.getView(position, convertView, parent);
+//                        final HashMap<String, Object> map = (HashMap<String, Object>) this.getItem(position);
+                        txtWords = v.findViewById(R.id.txtWords);
+                        imgWords = v.findViewById(R.id.imgWords);
+                        imgWords.setTag(R.id.tag_first, txtWords.getText().toString());
+                        imgWords.setTag(R.id.tag_second, position);
+                        imgWords.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View vv) {
+                                Intent intent = new Intent(mood.this, mood_edit.class);
+                                intent.putExtra("words", vv.getTag(R.id.tag_first).toString());
+                                intent.putExtra("position", vv.getTag(R.id.tag_second).toString());
+//                                Toast.makeText(mood.this, vv.getTag(R.id.tag_first).toString(), Toast.LENGTH_SHORT).show();
+                                startActivity(intent);
+                            }
+                        });
+                        return v;
+                    }
+                };
                 listView.setAdapter(sa);
 
                 progressDialog.dismiss();

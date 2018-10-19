@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +57,7 @@ public class body4_add extends Fragment {
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
     private HashMap<String, String> data = new HashMap<>();
+    private final DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
     private static class Record {
         public String date;
@@ -153,11 +155,12 @@ public class body4_add extends Fragment {
 
         @Override
         public void afterTextChanged(Editable s) {
-            int minus1 = 0;
-            int minus2 = 0;
-            int minus3 = 0;
+            float minus1 = 0;
+            float minus2 = 0;
+            float minus3 = 0;
             if (!edtRight1.getText().toString().isEmpty() && !edtLeft1.getText().toString().isEmpty()) {
-                minus1 = Math.abs(Integer.valueOf(edtRight1.getText().toString()) - Integer.valueOf(edtLeft1.getText().toString()));
+                minus1 = Math.abs(Float.valueOf(edtRight1.getText().toString()) - Float.valueOf(edtLeft1.getText().toString()));
+                minus1 = Float.valueOf(decimalFormat.format(minus1));
                 txtMinus1.setText(String.valueOf(minus1));
             }
             else {
@@ -169,7 +172,8 @@ public class body4_add extends Fragment {
                 txtMinus1.setTextColor(Color.BLACK);
             }
             if (!edtRight2.getText().toString().isEmpty() && !edtLeft2.getText().toString().isEmpty()) {
-                minus2 = Math.abs(Integer.valueOf(edtRight2.getText().toString()) - Integer.valueOf(edtLeft2.getText().toString()));
+                minus2 = Math.abs(Float.valueOf(edtRight2.getText().toString()) - Float.valueOf(edtLeft2.getText().toString()));
+                minus2 = Float.valueOf(decimalFormat.format(minus2));
                 txtMinus2.setText(String.valueOf(minus2));
             }
             else {
@@ -181,7 +185,8 @@ public class body4_add extends Fragment {
                 txtMinus2.setTextColor(Color.BLACK);
             }
             if (!edtRight3.getText().toString().isEmpty() && !edtLeft3.getText().toString().isEmpty()) {
-                minus3 = Math.abs(Integer.valueOf(edtRight3.getText().toString()) - Integer.valueOf(edtLeft3.getText().toString()));
+                minus3 = Math.abs(Float.valueOf(edtRight3.getText().toString()) - Float.valueOf(edtLeft3.getText().toString()));
+                minus3 = Float.valueOf(decimalFormat.format(minus3));
                 txtMinus3.setText(String.valueOf(minus3));
             }
             else {

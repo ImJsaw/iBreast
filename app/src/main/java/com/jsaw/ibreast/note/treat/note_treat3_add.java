@@ -171,7 +171,7 @@ public class note_treat3_add extends Fragment implements View.OnClickListener {
 //                                    Toast.makeText(activity_note_my.this, "選中了" + map.get("item"), Toast.LENGTH_SHORT).show();
                                     item.add((String) map.get("engName"));
                                 } else {
-                                    item.remove(map.get("item"));
+                                    item.remove(map.get("engName"));
                                 }
                             }
                         });
