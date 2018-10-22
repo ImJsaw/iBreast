@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/txtPlt"
-        android:layout_width="75dp"
+        android:layout_width="0dp"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="血小板(PLT)"
@@ -41,8 +41,8 @@
 
     <ListView
         android:id="@+id/list_body"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
         android:layout_columnSpan="4" />
 </GridLayout>
 

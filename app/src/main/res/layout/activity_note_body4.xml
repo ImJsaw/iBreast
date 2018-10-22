@@ -52,9 +52,10 @@
 
         <ListView
             android:id="@+id/list_body"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
             android:layout_columnSpan="5"
-            android:layout_marginBottom="70dp" />
+             />
     </GridLayout>
 
 </HorizontalScrollView>

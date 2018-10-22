@@ -242,14 +242,13 @@
                 android:textSize="22sp" />
 
             <EditText
-                android:id="@+id/edtTen"
+                android:id="@+id/edtHurt"
                 android:layout_width="100dp"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:gravity="center"
                 android:inputType="none"
-                android:onClick="onClick"
                 android:text="4分"
                 android:textSize="22sp" />
 

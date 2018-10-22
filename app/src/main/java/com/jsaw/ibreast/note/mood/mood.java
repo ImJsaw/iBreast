@@ -35,8 +35,8 @@ public class mood extends AppCompatActivity {
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
     private List<String> words = new LinkedList<>();
-    private TextView txtWords;
     private ImageButton imgWords;
+    private List<HashMap<String, Object>> items;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class mood extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<HashMap<String, Object>> items = new ArrayList<>();
+                items = new ArrayList<>();
                 ListView listView = findViewById(R.id.list_mood);
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
@@ -93,22 +93,19 @@ public class mood extends AppCompatActivity {
 //                4. String[] from data帶入資料的Key
 //                5. int[] to Key的值要帶到哪個元件
                 SimpleAdapter sa = new SimpleAdapter(mood.this, items, R.layout.mood_listview_item,
-                        STRINGS, IDS){
+                        STRINGS, IDS) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         View v = super.getView(position, convertView, parent);
-//                        final HashMap<String, Object> map = (HashMap<String, Object>) this.getItem(position);
-                        txtWords = v.findViewById(R.id.txtWords);
                         imgWords = v.findViewById(R.id.imgWords);
-                        imgWords.setTag(R.id.tag_first, txtWords.getText().toString());
-                        imgWords.setTag(R.id.tag_second, position);
+                        imgWords.setTag(position);  // 利用tag儲存view的position位置
                         imgWords.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View vv) {
+                                int position = (int) vv.getTag();
                                 Intent intent = new Intent(mood.this, mood_edit.class);
-                                intent.putExtra("words", vv.getTag(R.id.tag_first).toString());
-                                intent.putExtra("position", vv.getTag(R.id.tag_second).toString());
-//                                Toast.makeText(mood.this, vv.getTag(R.id.tag_first).toString(), Toast.LENGTH_SHORT).show();
+                                intent.putExtra("data", items.get(position));
+                                intent.putExtra("position", position + 1);
                                 startActivity(intent);
                             }
                         });
@@ -116,7 +113,6 @@ public class mood extends AppCompatActivity {
                     }
                 };
                 listView.setAdapter(sa);
-
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
             }

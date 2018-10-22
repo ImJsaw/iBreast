@@ -52,7 +52,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
     private EditText edtSeven;
     private EditText edtEight;
     private EditText edtNine;
-    private EditText edtTen;
+    private EditText edtHurt;
 
     private static class Record {
         public String date;
@@ -123,7 +123,6 @@ public class body5_add extends Fragment implements View.OnClickListener {
     private View.OnClickListener mBtnCheck = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            setData();
 //            saveData(edtDate.getText().toString(), edtTime.getText().toString(), data);
             isProgressDialogShow = false;
             progressDialog.dismiss();
@@ -149,6 +148,15 @@ public class body5_add extends Fragment implements View.OnClickListener {
 //                顯示從目前時間開始選
 //                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
             datePickerDialog.show();
+        }
+    };
+
+    // 疼痛分數按鈕
+    private View.OnClickListener mBtnHurt = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getContext(), body5_hurt.class);
+            startActivity(intent);
         }
     };
 
@@ -180,6 +188,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
         }
     }
 
+    // 症狀分級選擇
     public void onClick(View v) {
         Intent intent = new Intent(getContext(), body5_record.class);
         switch (v.getId()) {
@@ -219,10 +228,6 @@ public class body5_add extends Fragment implements View.OnClickListener {
                 intent.putExtra("sign", "手足症候群");
                 chosenView = edtNine;
                 break;
-//            case R.id.edtTen:
-//                // 導到疼痛指數頁面
-////                intent.putExtra("sign", "疼痛指數");
-//                break;
         }
         startActivityForResult(intent, 1);
     }
@@ -238,7 +243,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
         edtSeven = view.findViewById(R.id.edtSeven);
         edtEight = view.findViewById(R.id.edtEight);
         edtNine = view.findViewById(R.id.edtNine);
-        edtTen = view.findViewById(R.id.edtTen);
+        edtHurt = view.findViewById(R.id.edtHurt);
         ImageButton btnCheck = view.findViewById(R.id.btnCheack);
         edtOne.setOnClickListener(this);
         edtTwo.setOnClickListener(this);
@@ -249,12 +254,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
         edtSeven.setOnClickListener(this);
         edtEight.setOnClickListener(this);
         edtNine.setOnClickListener(this);
-//        edtTen.setOnClickListener(this);
+        edtHurt.setOnClickListener(mBtnHurt);
         btnCheck.setOnClickListener(mBtnCheck);
     }
-
-    private void setData() {
-
-    }
-
 }

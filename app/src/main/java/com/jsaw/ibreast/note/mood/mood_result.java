@@ -21,11 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
 
-public class mood_result extends AppCompatActivity{
+public class mood_result extends AppCompatActivity {
     private TextView txtScore;
-    private TextView txtResult;
-    private EditText edtWords;
-    private ImageButton btnSave;
     private Integer score;
     private String mydate;
 
@@ -51,9 +48,7 @@ public class mood_result extends AppCompatActivity{
         mydate = intent.getStringExtra("date");
 
         txtScore = findViewById(R.id.txtScore);
-        txtResult = findViewById(R.id.txtResult);
-        edtWords = findViewById(R.id.edtWords);
-        btnSave = findViewById(R.id.btnSave);
+        TextView txtResult = findViewById(R.id.txtResult);
 
         txtScore.setText(score.toString());
         txtResult.setText(setResultMessage(score));

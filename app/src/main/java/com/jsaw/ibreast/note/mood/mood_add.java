@@ -26,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class mood_add extends AppCompatActivity {
-    private Integer score;
     private TextView txtScore;
     private String mydate;
 
@@ -51,7 +50,7 @@ public class mood_add extends AppCompatActivity {
     View.OnClickListener mBtnResult = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            score = getScore();
+            Integer score = getScore();
             if (score >= 0) {
                 Intent intent = new Intent(mood_add.this, mood_result.class);
                 intent.putExtra("date", mydate);

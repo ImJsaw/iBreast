@@ -134,8 +134,12 @@
             android:label="症狀"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".note.body.body5_hurt"
+            android:label="疼痛"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".note.mood.mood_add"
-            android:label="心情"
+            android:label="心情溫度計"
             android:parentActivityName=".note.mood.mood"
             android:screenOrientation="portrait" />
         <activity
@@ -146,7 +150,8 @@
         <activity
             android:name=".note.mood.mood_result"
             android:label="心情"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:parentActivityName=".note.mood.mood_add"/>
         <activity
             android:name=".note.mood.mood_edit"
             android:label="心情日記修改"
