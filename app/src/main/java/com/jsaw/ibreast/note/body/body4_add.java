@@ -108,7 +108,7 @@ public class body4_add extends Fragment {
         edtTime.setText(time);
 
         //自動帶日期
-        String date = String.valueOf(calendar.get(Calendar.YEAR) + "/" + calendar.get(Calendar.MONTH) + "/" +calendar.get(Calendar.DAY_OF_MONTH));
+        String date = calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
         edtDate.setText(date);
 
         // 設定小日曆選擇時間

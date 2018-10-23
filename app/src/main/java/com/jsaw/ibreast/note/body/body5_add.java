@@ -3,24 +3,17 @@ package com.jsaw.ibreast.note.body;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,32 +36,18 @@ public class body5_add extends Fragment implements View.OnClickListener {
     private EditText edtDate;
     private List<EditText> edtList = new LinkedList<>();
     private EditText chosenView;
-    private EditText edtOne;
-    private EditText edtTwo;
-    private EditText edtThree;
-    private EditText edtFour;
-    private EditText edtFive;
-    private EditText edtSix;
-    private EditText edtSeven;
-    private EditText edtEight;
-    private EditText edtNine;
     private EditText edtHurt;
 
     private static class Record {
         public String date;
         public List<String> record = new LinkedList<>();
-        Record(String date, List<EditText> edtList) {
+        Record(String date, List<EditText> edtList, EditText edtHurt) {
             for (EditText editText : edtList){
                 record.add(editText.getText().toString());
             }
+            record.add(edtHurt.getText().toString());
             this.date = date;
         }
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -80,21 +59,13 @@ public class body5_add extends Fragment implements View.OnClickListener {
 
         //自動帶日期
         Calendar calendar = Calendar.getInstance();
-        String time = String.valueOf(calendar.get(Calendar.YEAR)) + "/" + String.valueOf(calendar.get(Calendar.MONTH) + "/" + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
+        String time = calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH);
         edtDate.setText(time);
 
         // 設定小日曆選擇時間
         ImageButton selectDate = view.findViewById(R.id.imgCal);
         selectDate.setOnClickListener(imgCalOnClick);
 
-        // 儲存按鈕
-        ImageButton btnSave = view.findViewById(R.id.btnCheack);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveData(edtDate.getText().toString());
-            }
-        });
         return view;
 
     }
@@ -122,7 +93,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
     private View.OnClickListener mBtnCheck = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            saveData(edtDate.getText().toString(), edtTime.getText().toString(), data);
+            saveData(edtDate.getText().toString());
         }
     };
 
@@ -160,7 +131,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
     // 儲存資料
     private void saveData(String date) {
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
-        final Record record = new Record(date, edtList);
+        final Record record = new Record(date, edtList, edtHurt);
         if (isAllOptionsSelected()) {
             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -187,13 +158,12 @@ public class body5_add extends Fragment implements View.OnClickListener {
     // 判斷是否有未選擇選項
     private boolean isAllOptionsSelected(){
         final String notChose = "尚未選擇";
-        if (edtOne.getText().toString().equals(notChose) || edtTwo.getText().toString().equals(notChose)
-                || edtThree.getText().toString().equals(notChose) || edtFour.getText().toString().equals(notChose)
-                || edtFive.getText().toString().equals(notChose) || edtSix.getText().toString().equals(notChose)
-                || edtSeven.getText().toString().equals(notChose) || edtEight.getText().toString().equals(notChose)
-                || edtNine.getText().toString().equals(notChose)){
-            return false;
+        for (EditText editText : edtList){
+            if (editText.getText().toString().equals(notChose)){
+                return false;
+            }
         }
+
         return true;
     }
 
@@ -203,39 +173,39 @@ public class body5_add extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.edtOne:
                 intent.putExtra("sign", "噁心");
-                chosenView = edtOne;
+                chosenView = edtList.get(0);
                 break;
             case R.id.edtTwo:
                 intent.putExtra("sign", "嘔吐");
-                chosenView = edtTwo;
+                chosenView = edtList.get(1);
                 break;
             case R.id.edtThree:
                 intent.putExtra("sign", "腹瀉");
-                chosenView = edtThree;
+                chosenView = edtList.get(2);
                 break;
             case R.id.edtFour:
                 intent.putExtra("sign", "便祕");
-                chosenView = edtFour;
+                chosenView = edtList.get(3);
                 break;
             case R.id.edtFive:
                 intent.putExtra("sign", "掉髮");
-                chosenView = edtFive;
+                chosenView = edtList.get(4);
                 break;
             case R.id.edtSix:
                 intent.putExtra("sign", "疲倦");
-                chosenView = edtSix;
+                chosenView = edtList.get(5);
                 break;
             case R.id.edtSeven:
                 intent.putExtra("sign", "食慾不振");
-                chosenView = edtSeven;
+                chosenView = edtList.get(6);
                 break;
             case R.id.edtEight:
                 intent.putExtra("sign", "口腔炎");
-                chosenView = edtEight;
+                chosenView = edtList.get(7);
                 break;
             case R.id.edtNine:
                 intent.putExtra("sign", "手足症候群");
-                chosenView = edtNine;
+                chosenView = edtList.get(8);
                 break;
         }
         startActivityForResult(intent, 1);
@@ -254,28 +224,11 @@ public class body5_add extends Fragment implements View.OnClickListener {
         for (EditText edt : edtList){
             edt.setOnClickListener(this);
         }
-        edtDate = view.findViewById(R.id.edtDate);
-        edtOne = view.findViewById(R.id.edtOne);
-        edtTwo = view.findViewById(R.id.edtTwo);
-        edtThree = view.findViewById(R.id.edtThree);
-        edtFour = view.findViewById(R.id.edtFour);
-        edtFive = view.findViewById(R.id.edtFive);
-        edtSix = view.findViewById(R.id.edtSix);
-        edtSeven = view.findViewById(R.id.edtSeven);
-        edtEight = view.findViewById(R.id.edtEight);
-        edtNine = view.findViewById(R.id.edtNine);
         edtHurt = view.findViewById(R.id.edtHurt);
-        ImageButton btnCheck = view.findViewById(R.id.btnCheack);
-        edtOne.setOnClickListener(this);
-        edtTwo.setOnClickListener(this);
-        edtThree.setOnClickListener(this);
-        edtFour.setOnClickListener(this);
-        edtFive.setOnClickListener(this);
-        edtSix.setOnClickListener(this);
-        edtSeven.setOnClickListener(this);
-        edtEight.setOnClickListener(this);
-        edtNine.setOnClickListener(this);
         edtHurt.setOnClickListener(mBtnHurt);
+        edtDate = view.findViewById(R.id.edtDate);
+
+        ImageButton btnCheck = view.findViewById(R.id.btnCheack);
         btnCheck.setOnClickListener(mBtnCheck);
     }
 }
