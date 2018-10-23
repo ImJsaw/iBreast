@@ -15,7 +15,7 @@
 
         <TextView
             android:layout_width="382dp"
-            android:layout_height="80dp"
+            android:layout_height="40dp"
             android:padding="5dp"
             android:scrollHorizontally="false"
             android:textAlignment="center"
@@ -24,7 +24,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/list_ask"
+        android:id="@+id/list_eat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -37,7 +37,7 @@
 
         <TextView
             android:layout_width="382dp"
-            android:layout_height="80dp"
+            android:layout_height="40dp"
             android:padding="5dp"
             android:scrollHorizontally="false"
             android:textAlignment="center"
@@ -48,5 +48,183 @@
         android:id="@+id/list_diagnosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+    android:id="@+id/disease_show_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/row_shape"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:scrollHorizontally="false"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:text="@string/disease"/>
+</LinearLayout>
+
+    <ListView
+        android:id="@+id/list_disease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/chem_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/ask_chem"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/list_chem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:id="@+id/surgery_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/ask_surgery"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_surgery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/radiation_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/ask_radiation"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/list_radiation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:id="@+id/hormone_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/ask_hormone"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_hormone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/target_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/ask_target"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/list_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:id="@+id/other_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/other"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/track_show_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="382dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@string/ask_track"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/list_track"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
 
 </LinearLayout>

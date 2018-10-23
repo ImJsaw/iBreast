@@ -60,6 +60,14 @@
     <string name="qualification">申請資格</string>
     <string name="ask_eat">飲食</string>
     <string name="diagnosis">診斷檢查</string>
+    <string name="disease">疾病</string>
+    <string name="ask_chem">化療</string>
+    <string name="ask_surgery">手術</string>
+    <string name="ask_radiation">化療</string>
+    <string name="ask_hormone">荷爾蒙</string>
+    <string name="ask_target">標靶治療</string>
+    <string name="other">其他</string>
+    <string name="ask_track">追蹤與預後</string>
     <string-array name="spinCell">
         <item>管腔A型</item>
         <item>管腔B型</item>
