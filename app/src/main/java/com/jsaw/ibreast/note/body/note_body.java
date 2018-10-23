@@ -23,7 +23,7 @@ public class note_body extends AppCompatActivity{
     //透過下方程式碼，取得Activity中執行的個體。
     private FragmentTransaction transaction;
     private Map<Integer, Fragment> myView = new HashMap<>();
-    private int btnC = 1;
+    private int btnCount = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,48 +42,48 @@ public class note_body extends AppCompatActivity{
         //傳回被按的button
         switch (view.getId()) {
             case R.id.btn1:
-                btnC = 1;
-                setColor(btnC);
+                btnCount = 1;
+                setColor(btnCount);
                 transaction.replace(R.id.center, new note_body1());
                 break;
             case R.id.btn2:
-                btnC = 2;
-                setColor(btnC);
+                btnCount = 2;
+                setColor(btnCount);
                 transaction.replace(R.id.center, new note_body2());
                 break;
             case R.id.btn3:
-                btnC = 3;
-                setColor(btnC);
+                btnCount = 3;
+                setColor(btnCount);
                 transaction.replace(R.id.center, new note_body3());
                 break;
             case R.id.btn4:
-                btnC = 4;
-                setColor(btnC);
+                btnCount = 4;
+                setColor(btnCount);
                 transaction.replace(R.id.center, new note_body4());
                 break;
             case R.id.btn5:
-                btnC = 5;
-                setColor(btnC);
+                btnCount = 5;
+                setColor(btnCount);
                 transaction.replace(R.id.center, new note_body5());
                 break;
             case R.id.btn6:
-                btnC = 6;
-                setColor(btnC);
+                btnCount = 6;
+                setColor(btnCount);
                 transaction.replace(R.id.center, new note_body6());
                 break;
             case R.id.Btn_edit:
                 // 目前所在fragment
-                Log.d("body_main", String.valueOf(btnC));
+                Log.d("body_main", String.valueOf(btnCount));
 //                Button btnEdit = findViewById(R.id.Btn_edit);
 //                btnEdit.setText("儲存");
-                transaction.replace(R.id.center, myView.get(btnC));
+                transaction.replace(R.id.center, myView.get(btnCount));
                 break;
         }
         //呼叫commit讓變更生效。
         transaction.commit();
     }
 
-    public void setColor(int btnC) {
+    public void setColor(int btnCount) {
         int countFragment = 6;
         Button btn[] = new Button[]{findViewById(R.id.btn1), findViewById(R.id.btn2),
                 findViewById(R.id.btn3), findViewById(R.id.btn4), findViewById(R.id.btn5), findViewById(R.id.btn6)};
@@ -95,7 +95,7 @@ public class note_body extends AppCompatActivity{
                 R.drawable.body14, R.drawable.body15, R.drawable.body16);
 
         for (int i = 0; i < countFragment; i++) {
-            if (i == btnC - 1) {
+            if (i == btnCount - 1) {
                 btn[i].setBackgroundResource(chosen.get(i));
             } else {
                 btn[i].setBackgroundResource(unchosen.get(i));

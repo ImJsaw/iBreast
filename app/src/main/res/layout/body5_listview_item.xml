@@ -8,77 +8,87 @@
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="日期"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtOne"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="噁心"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtTwo"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="嘔吐"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtThree"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="腹瀉"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtFour"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="便祕"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtFive"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="掉髮"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtSix"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="疲倦"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtSeven"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="食慾不振"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtEight"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="口腔炎"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtNine"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="手足症候群"
         android:textSize="22sp" />
 
     <TextView
-        android:layout_width="110dp"
+        android:id="@+id/txtHurt"
+        android:layout_width="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="疼痛指數"

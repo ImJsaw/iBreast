@@ -73,7 +73,7 @@
 
             <EditText
                 android:id="@+id/edtOne"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -92,7 +92,7 @@
 
             <EditText
                 android:id="@+id/edtTwo"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -110,7 +110,7 @@
 
             <EditText
                 android:id="@+id/edtThree"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -129,7 +129,7 @@
 
             <EditText
                 android:id="@+id/edtFour"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -148,7 +148,7 @@
 
             <EditText
                 android:id="@+id/edtFive"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -167,7 +167,7 @@
 
             <EditText
                 android:id="@+id/edtSix"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -185,7 +185,7 @@
 
             <EditText
                 android:id="@+id/edtSeven"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -205,7 +205,7 @@
             <EditText
 
                 android:id="@+id/edtEight"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -224,7 +224,7 @@
 
             <EditText
                 android:id="@+id/edtNine"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -243,13 +243,13 @@
 
             <EditText
                 android:id="@+id/edtHurt"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_margin="5dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:gravity="center"
                 android:inputType="none"
-                android:text="4分"
+                android:text="尚未選擇"
                 android:textSize="22sp" />
 
 

@@ -8,15 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.jsaw.ibreast.R;
 
-@SuppressLint("Registered")
 public class body5_record extends AppCompatActivity {
-    private Button btnNone;
     private Button btnOne;
     private Button btnTwo;
     private Button btnThree;
@@ -125,7 +121,6 @@ public class body5_record extends AppCompatActivity {
     }
 
     private void setViews() {
-        btnNone = findViewById(R.id.btnNone);
         btnOne = findViewById(R.id.btnOne);
         btnTwo = findViewById(R.id.btnTwo);
         btnThree = findViewById(R.id.btnThree);

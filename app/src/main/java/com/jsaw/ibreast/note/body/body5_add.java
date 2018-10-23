@@ -35,13 +35,13 @@ import com.jsaw.ibreast.R;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class body5_add extends Fragment implements View.OnClickListener {
     private EditText edtDate;
-    private Boolean isProgressDialogShow = false;
-    private ProgressDialog progressDialog;
-    private HashMap<String, String> data = new HashMap<>();
+    private List<EditText> edtList = new LinkedList<>();
     private EditText chosenView;
     private EditText edtOne;
     private EditText edtTwo;
@@ -56,33 +56,19 @@ public class body5_add extends Fragment implements View.OnClickListener {
 
     private static class Record {
         public String date;
-        public String time;
-        public HashMap<String, String> record;
-
-        Record(String date, String time, HashMap<String, String> record) {
+        public List<String> record = new LinkedList<>();
+        Record(String date, List<EditText> edtList) {
+            for (EditText editText : edtList){
+                record.add(editText.getText().toString());
+            }
             this.date = date;
-            this.time = time;
-            this.record = record;
         }
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("處理中,請稍候...");
-        progressDialog.show();
-        isProgressDialogShow = true;
-        //connect time out
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (isProgressDialogShow) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getContext(), "連線逾時", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }, 5000);
+
     }
 
     @Nullable
@@ -101,9 +87,14 @@ public class body5_add extends Fragment implements View.OnClickListener {
         ImageButton selectDate = view.findViewById(R.id.imgCal);
         selectDate.setOnClickListener(imgCalOnClick);
 
-        isProgressDialogShow = false;
-        progressDialog.dismiss();
-
+        // 儲存按鈕
+        ImageButton btnSave = view.findViewById(R.id.btnCheack);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData(edtDate.getText().toString());
+            }
+        });
         return view;
 
     }
@@ -111,11 +102,19 @@ public class body5_add extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == Activity.RESULT_OK) {
-                String level = data.getStringExtra("level");
-                chosenView.setText(level);
-            }
+        switch (requestCode) {
+            case 1:  // 除了疼痛之外的症狀
+                if (resultCode == Activity.RESULT_OK) {
+                    String level = data.getStringExtra("level");
+                    chosenView.setText(level);
+                }
+                break;
+            case 2:  // 疼痛指數
+                if (resultCode == Activity.RESULT_OK) {
+                    String score = data.getStringExtra("score");
+                    edtHurt.setText(score);
+                }
+                break;
         }
     }
 
@@ -124,8 +123,6 @@ public class body5_add extends Fragment implements View.OnClickListener {
         @Override
         public void onClick(View v) {
 //            saveData(edtDate.getText().toString(), edtTime.getText().toString(), data);
-            isProgressDialogShow = false;
-            progressDialog.dismiss();
         }
     };
 
@@ -156,36 +153,48 @@ public class body5_add extends Fragment implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getContext(), body5_hurt.class);
-            startActivity(intent);
+            startActivityForResult(intent, 2);
         }
     };
 
     // 儲存資料
-    private void saveData(String date, String time, HashMap<String, String> data) {
+    private void saveData(String date) {
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
-        final Record record = new Record(date, time, data);
-        if (!date.isEmpty() && !time.isEmpty() && data.size() > 0) {
+        final Record record = new Record(date, edtList);
+        if (isAllOptionsSelected()) {
             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     FirebaseAuth auth = FirebaseAuth.getInstance();
                     FirebaseUser users = auth.getCurrentUser();
                     String user = users.getUid();
-                    String count = String.valueOf(dataSnapshot.child(user).child("手臂").getChildrenCount() + 1);
-                    mDatabase.child(user).child("手臂").child(count).setValue(record);
+                    String count = String.valueOf(dataSnapshot.child(user).child("症狀").getChildrenCount() + 1);
+                    mDatabase.child(user).child("症狀").child(count).setValue(record);
+                    startActivity(new Intent().setClass(getActivity(), note_body.class));
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-            isProgressDialogShow = false;
-            progressDialog.dismiss();
             Toast.makeText(getContext(), "儲存成功", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(getContext(), "儲存失敗", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "選項尚未選擇完畢", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // 判斷是否有未選擇選項
+    private boolean isAllOptionsSelected(){
+        final String notChose = "尚未選擇";
+        if (edtOne.getText().toString().equals(notChose) || edtTwo.getText().toString().equals(notChose)
+                || edtThree.getText().toString().equals(notChose) || edtFour.getText().toString().equals(notChose)
+                || edtFive.getText().toString().equals(notChose) || edtSix.getText().toString().equals(notChose)
+                || edtSeven.getText().toString().equals(notChose) || edtEight.getText().toString().equals(notChose)
+                || edtNine.getText().toString().equals(notChose)){
+            return false;
+        }
+        return true;
     }
 
     // 症狀分級選擇
@@ -233,6 +242,18 @@ public class body5_add extends Fragment implements View.OnClickListener {
     }
 
     private void setViews(View view) {
+        edtList.add((EditText) view.findViewById(R.id.edtOne));
+        edtList.add((EditText) view.findViewById(R.id.edtTwo));
+        edtList.add((EditText) view.findViewById(R.id.edtThree));
+        edtList.add((EditText) view.findViewById(R.id.edtFour));
+        edtList.add((EditText) view.findViewById(R.id.edtFive));
+        edtList.add((EditText) view.findViewById(R.id.edtSix));
+        edtList.add((EditText) view.findViewById(R.id.edtSeven));
+        edtList.add((EditText) view.findViewById(R.id.edtEight));
+        edtList.add((EditText) view.findViewById(R.id.edtNine));
+        for (EditText edt : edtList){
+            edt.setOnClickListener(this);
+        }
         edtDate = view.findViewById(R.id.edtDate);
         edtOne = view.findViewById(R.id.edtOne);
         edtTwo = view.findViewById(R.id.edtTwo);

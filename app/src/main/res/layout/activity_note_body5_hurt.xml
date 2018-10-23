@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,9 +13,9 @@
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="症狀："
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="@+id/txtSign"
@@ -27,10 +26,10 @@
             android:id="@+id/btn_cancel"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_column="1"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
             android:layout_row="1"
+            android:layout_column="1"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/cancel"
             android:onClick="onClick"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="嘔吐"
+            android:text="疼痛"
             android:textAllCaps="false"
             android:textColor="@android:color/holo_purple"
             android:textSize="30sp"
@@ -52,9 +51,9 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:text="疼痛評估量表"
             android:textColor="@color/red"
             android:textSize="30sp"
@@ -64,53 +63,67 @@
 
         <ImageButton
             android:id="@+id/btnFace1"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/face1"
+            android:onClick="onClick"
             app:layout_constraintEnd_toStartOf="@+id/btnFace2"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:background="@drawable/face1" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <ImageButton
             android:id="@+id/btnFace2"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/face2"
+            android:onClick="onClick"
             app:layout_constraintEnd_toStartOf="@+id/btnFace3"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <ImageButton
             android:id="@+id/btnFace3"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/face3"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
+            android:onClick="onClick"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageButton
+            android:id="@+id/btnFace4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/face4"
+            android:onClick="onClick"
+            app:layout_constraintStart_toEndOf="@+id/imageButton4"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <ImageButton
             android:id="@+id/btnFace5"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/face5"
-            app:layout_constraintStart_toEndOf="@+id/btnFace3"
+            android:onClick="onClick"
+            app:layout_constraintStart_toEndOf="@+id/btnFace4"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <ImageButton
             android:id="@+id/btnFace6"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/face6"
+            android:onClick="onClick"
             app:layout_constraintStart_toEndOf="@+id/btnFace5"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -118,8 +131,8 @@
             android:id="@+id/seekBar"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:max="9"
+            android:layout_marginTop="16dp"
+            android:max="10"
             android:progressDrawable="@drawable/seekbar_progress_drawble"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,14 +142,38 @@
             android:id="@+id/txtScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="32dp"
-            android:text="1分"
+            android:layout_marginBottom="8dp"
+            android:text="0分"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+        <ImageButton
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/store"
+            android:onClick="onClick"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtScore" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="0.1dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
     </android.support.constraint.ConstraintLayout>
 

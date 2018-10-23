@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/txtPlt"
-        android:layout_width="0dp"
+        android:layout_width="75dp"
         android:layout_margin="5dp"
         android:gravity="center"
         android:text="血小板(PLT)"
