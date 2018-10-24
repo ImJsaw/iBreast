@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/txtDate"
-            android:layout_width="80dp"
+            android:layout_width="150dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="日期"
@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/txtTime"
-            android:layout_width="110dp"
+            android:layout_width="95dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="時間"
@@ -29,14 +29,14 @@
 
         <TextView
             android:id="@+id/txtOne"
-            android:layout_width="110dp"
+            android:layout_width="125dp"
             android:gravity="center"
             android:text="(1) R/L(m)"
             android:textSize="22sp" />
 
         <TextView
             android:id="@+id/txtTwo"
-            android:layout_width="110dp"
+            android:layout_width="125dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="(2) R/L(m)"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/txtThree"
-            android:layout_width="110dp"
+            android:layout_width="125dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="(3) R/L(m)"

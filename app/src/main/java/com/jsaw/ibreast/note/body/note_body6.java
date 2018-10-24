@@ -13,6 +13,6 @@ public class note_body6 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.note_body6, container, false);
+        return inflater.inflate(R.layout.activity_note_body5, container, false);
     }
 }

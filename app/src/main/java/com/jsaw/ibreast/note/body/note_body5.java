@@ -58,7 +58,7 @@ public class note_body5 extends Fragment {
                 }
             }
         }, 2000);
-        View view = inflater.inflate(R.layout.note_body5, container, false);
+        View view = inflater.inflate(R.layout.activity_note_body5, container, false);
 
         firebaseGetData(view);
 

@@ -12,50 +12,49 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="80dp"
+            android:layout_width="150dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="日期"
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="噁心"
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="嘔吐"
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="腹瀉"
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="便祕"
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="掉髮"
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="疲倦"
@@ -69,14 +68,14 @@
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="85dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="口腔炎"
             android:textSize="22sp" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="130dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="手足症候群"
@@ -90,10 +89,12 @@
             android:textSize="22sp" />
 
         <ListView
-            android:id="@+id/list_body"
-            android:layout_height="match_parent"
+            android:id="@+id/list_body5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_columnSpan="11"
-            android:layout_marginBottom="70dp" />
+            />
+
     </GridLayout>
 
 </HorizontalScrollView>
