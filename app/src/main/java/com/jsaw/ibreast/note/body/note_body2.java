@@ -32,8 +32,9 @@ public class note_body2 extends Fragment {
     private ProgressDialog progressDialog;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_note_body2, container, false);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("處理中,請稍候...");
         progressDialog.show();
@@ -48,12 +49,6 @@ public class note_body2 extends Fragment {
                 }
             }
         }, 5000);
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_note_body2, container, false);
 
         firebaseGetData(view);
 

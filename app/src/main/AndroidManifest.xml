@@ -158,5 +158,6 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".note.mood.mood"/>
 
+
     </application>
 </manifest>

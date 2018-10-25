@@ -197,14 +197,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edtDate" />
 
-                <ListView
-                    android:id="@+id/list_method"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:divider="@null"
-                    app:layout_constraintStart_toEndOf="@id/txtSurgeryMethod"
-                    app:layout_constraintTop_toTopOf="@id/txtSurgeryMethod"
-                    tools:ignore="NestedScrolling" />
+            <ListView
+                android:id="@+id/list_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                app:layout_constraintStart_toEndOf="@id/txtSurgeryMethod"
+                app:layout_constraintTop_toTopOf="@id/txtSurgeryMethod"
+                tools:ignore="NestedScrolling" />
 
             <TextView
                 android:id="@+id/txtCell"
@@ -325,14 +325,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtFish" />
 
-                <ListView
-                    android:id="@+id/list_program"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:divider="@null"
-                    app:layout_constraintStart_toEndOf="@+id/txtTreatment"
-                    app:layout_constraintTop_toTopOf="@id/txtTreatment"
-                    tools:ignore="NestedScrolling" />
+            <ListView
+                android:id="@+id/list_program"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                app:layout_constraintStart_toEndOf="@+id/txtTreatment"
+                app:layout_constraintTop_toTopOf="@id/txtTreatment"
+                tools:ignore="NestedScrolling" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </LinearLayout>

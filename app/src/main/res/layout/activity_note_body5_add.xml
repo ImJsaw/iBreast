@@ -50,7 +50,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="80sp"
+                android:layout_width="100dp"
                 android:layout_margin="5dp"
                 android:layout_marginRight="100dp"
                 android:gravity="center"
@@ -177,7 +177,7 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="食慾不振"
@@ -216,7 +216,7 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="手足症候群"

@@ -34,12 +34,6 @@ public class note_body5 extends Fragment {
     private static final String[] STRINGS = new String[]{"date", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-//
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,7 +51,7 @@ public class note_body5 extends Fragment {
                     Toast.makeText(getContext(), "連線逾時", Toast.LENGTH_SHORT).show();
                 }
             }
-        }, 2000);
+        }, 5000);
         View view = inflater.inflate(R.layout.activity_note_body5, container, false);
 
         firebaseGetData(view);
