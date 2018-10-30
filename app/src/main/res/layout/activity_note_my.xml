@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    >
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:background="@drawable/button_shape"
-            android:shadowRadius="7"
-            android:text="@string/my"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="12dp"-->
+            <!--android:background="@drawable/button_shape"-->
+            <!--android:shadowRadius="7"-->
+            <!--android:text="@string/my"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="22sp" />-->
 
-        <Button
-            android:id="@+id/Btn_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="12dp"
-            android:gravity="center"
-            android:onClick="myClick"
-            android:shadowRadius="7"
-            android:text="@string/edit"
-            android:textSize="18sp" />
-    </FrameLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
+    <!--</FrameLayout>-->
+
+    <!--<ScrollView-->
+        <!--android:id="@+id/scrollView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:fillViewport="true"-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true">-->
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp" >
 
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/edit"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/txtBirth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/birth"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
 
             <TextView
                 android:id="@+id/txtInputBirth"
@@ -70,10 +73,10 @@
                 android:id="@+id/txtHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/height"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtBirth" />
@@ -94,7 +97,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/StopBleeding"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtHeight" />
@@ -116,7 +119,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/surgery"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtStopBleeding" />
@@ -138,7 +141,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/surgeryMethod"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtSurgery" />
@@ -158,7 +161,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/cell"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtSurgeryMethodName" />
@@ -179,7 +182,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/horm"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtCell" />
@@ -189,7 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ER:"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/txtHorm"
                 app:layout_constraintStart_toEndOf="@id/txtHorm"
@@ -210,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PR:"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@id/txtHorm"
                 app:layout_constraintTop_toBottomOf="@id/txtEr" />
@@ -232,7 +235,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/HER"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtPr" />
@@ -255,7 +258,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/fish"
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtHer" />
@@ -277,7 +280,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="我的療程："
-                android:textColor="#842b00"
+                android:textColor="@color/words"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtFish" />
@@ -293,4 +296,4 @@
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
-</LinearLayout>
+<!--</ScrollView>-->
