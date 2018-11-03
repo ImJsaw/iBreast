@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import com.jsaw.ibreast.R;
 import com.jsaw.ibreast.note.body.note_body;
+import com.jsaw.ibreast.note.food.note_food;
 import com.jsaw.ibreast.note.mood.mood;
-import com.jsaw.ibreast.note.mood.mood_add;
 import com.jsaw.ibreast.note.treat.note_treat_main;
 
 import java.util.Objects;
@@ -18,6 +18,7 @@ public class note extends AppCompatActivity {
     Button mBtnTreat;
     Button mBtnBody;
     Button mBtnMood;
+    Button mBtnFood;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,14 @@ public class note extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent().setClass(note.this, mood.class));
+            }
+        });
+
+        mBtnFood = findViewById(R.id.Btn_food);
+        mBtnFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(note.this, note_food.class));
             }
         });
     }

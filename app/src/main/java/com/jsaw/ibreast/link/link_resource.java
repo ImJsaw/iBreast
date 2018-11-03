@@ -70,7 +70,7 @@ public class link_resource extends AppCompatActivity {
         LinearLayout braShowArea = findViewById(R.id.bra_showArea);
         LinearLayout cuffShowArea = findViewById(R.id.cuff_showArea);
         LinearLayout homeShowArea = findViewById(R.id.home_showArea);
-        hairShow = braShow = cuffShow = homeShow = true;
+        hairShow = braShow = cuffShow = homeShow = false;
 
         hairShowArea.setOnClickListener(new View.OnClickListener() {
             @Override

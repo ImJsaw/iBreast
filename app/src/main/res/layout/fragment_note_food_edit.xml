@@ -1,0 +1,133 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/date"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/edtDate"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/imgCal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/calendar" />
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/food_daytable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/row_shape">
+            <TableRow
+                android:id="@+id/food_dayrow_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/row_shape"
+                android:visibility="visible">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/food_day_label"
+                        android:layout_width="382dp"
+                        android:layout_height="30dp"
+                        android:layout_span="2"
+                        android:background="@drawable/north_shape"
+                        android:inputType="textMultiLine"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:scrollHorizontally="false"
+                        android:text=""
+                        android:textAlignment="center" />
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/food_time_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/row_shape"
+                android:visibility="visible">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/c_b_cure"
+                        android:layout_width="130dp"
+                        android:layout_height="30dp"
+                        android:layout_span="2"
+                        android:background="@drawable/top_shape"
+                        android:inputType="textMultiLine"
+                        android:maxLines="5"
+                        android:padding="5dp"
+                        android:scrollHorizontally="false"
+                            android:text="時間"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/c_b_start"
+                            android:layout_width="105dp"
+                            android:layout_height="30dp"
+                            android:layout_toRightOf="@id/c_b_cure"
+                            android:background="@drawable/top_shape"
+                            android:ems="10"
+                            android:inputType="textMultiLine"
+                            android:maxLines="5"
+                            android:padding="5dp"
+                            android:text="食物"
+                            android:textAlignment="center" />
+
+
+                        <TextView
+                            android:id="@+id/food_calorie_label"
+                            android:layout_width="147dp"
+                            android:layout_height="30dp"
+                            android:layout_toRightOf="@id/c_b_start"
+                            android:background="@drawable/top_shape"
+                            android:ems="10"
+                            android:inputType="textMultiLine"
+                            android:maxLines="5"
+                            android:padding="5dp"
+                            android:text="卡洛里"
+                            android:textAlignment="center" />
+
+                    </RelativeLayout>
+                </TableRow>
+
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/addFoodDay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="新增" />
+
+        </LinearLayout>
+</ScrollView>

@@ -66,7 +66,7 @@ public class link_center extends AppCompatActivity {
         LinearLayout midShowArea = findViewById(R.id.mid_showArea);
         LinearLayout southShowArea = findViewById(R.id.south_showArea);
         LinearLayout eastShowArea = findViewById(R.id.east_showArea);
-        northShow = midShow = southShow = eastShow = true;
+        northShow = midShow = southShow = eastShow = false;
 
         northShowArea.setOnClickListener(new View.OnClickListener() {
             @Override
