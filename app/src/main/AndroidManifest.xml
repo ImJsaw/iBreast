@@ -109,6 +109,12 @@
             android:parentActivityName=".note.note"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".note.note_my_add"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/my"
+            android:parentActivityName=".note.note_my"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".note.treat.note_treat_main"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/treat"

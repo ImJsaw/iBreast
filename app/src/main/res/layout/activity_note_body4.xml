@@ -29,14 +29,14 @@
 
         <TextView
             android:id="@+id/txtOne"
-            android:layout_width="125dp"
+            android:layout_width="140dp"
             android:gravity="center"
             android:text="(1) R/L(m)"
             android:textSize="22sp" />
 
         <TextView
             android:id="@+id/txtTwo"
-            android:layout_width="125dp"
+            android:layout_width="140dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="(2) R/L(m)"
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/txtThree"
-            android:layout_width="125dp"
+            android:layout_width="140dp"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="(3) R/L(m)"
@@ -53,9 +53,8 @@
         <ListView
             android:id="@+id/list_body"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
             android:layout_columnSpan="5"
-             />
+            android:layout_rowWeight="1" />
     </GridLayout>
 
 </HorizontalScrollView>

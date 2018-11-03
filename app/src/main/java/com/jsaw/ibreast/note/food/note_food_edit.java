@@ -69,7 +69,7 @@ public class note_food_edit extends Fragment {
         ImageButton openCalender = getView().findViewById(R.id.imgCal);
         Button addRecord = getView().findViewById(R.id.addFoodDay);
 
-        Toast.makeText(getContext(),user,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(),user,Toast.LENGTH_LONG).show();
         dateText = getView().findViewById(R.id.edtDate);
         foodTable = getView().findViewById(R.id.food_daytable);
         //default day set to today

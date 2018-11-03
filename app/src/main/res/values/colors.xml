@@ -9,4 +9,6 @@
     <color name="gray">#888888</color>
     <color name="seekBarback">#EA91A3</color>
     <color name="seekBarPro">#EA6695</color>
+    <color name="words">#842b00</color>
+
 </resources>

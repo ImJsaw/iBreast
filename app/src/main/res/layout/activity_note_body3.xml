@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alignmentMode="alignBounds"
-    android:columnCount="4"
-    android:orientation="horizontal">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/txtDate"
-        android:layout_width="95dp"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:text="日期"
-        android:textSize="22sp" />
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:columnCount="4"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/txtWbc"
-        android:layout_width="75dp"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:text="白血球(WBC)"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="150dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="日期"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/txtHb"
-        android:layout_width="75dp"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:text="血紅素(Hb)"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/txtWbc"
+            android:layout_width="80dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="白血球(WBC)"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/txtPlt"
-        android:layout_width="75dp"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:text="血小板(PLT)"
-        android:textSize="22sp" />
+        <TextView
+            android:id="@+id/txtHb"
+            android:layout_width="80dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="血紅素(Hb)"
+            android:textSize="22sp" />
 
-    <ListView
-        android:id="@+id/list_body"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="4" />
-</GridLayout>
+        <TextView
+            android:id="@+id/txtPlt"
+            android:layout_width="80dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="血小板(PLT)"
+            android:textSize="22sp" />
 
+        <ListView
+            android:id="@+id/list_body"
+            android:layout_height="0dp"
+            android:layout_columnSpan="4"
+            android:layout_rowWeight="1" />
+
+    </GridLayout>
+</HorizontalScrollView>

@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/center"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:columnCount="4"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="left"
+        android:layout_width="150dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
         android:textSize="22sp" />
 
     <TextView
         android:id="@+id/txtWbc"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_margin="5dp"
-        android:gravity="left"
+        android:gravity="center"
         android:textSize="22sp" />
 
     <TextView
         android:id="@+id/txtHb"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_margin="5dp"
-        android:gravity="left"
+        android:gravity="center"
         android:textSize="22sp" />
 
     <TextView
         android:id="@+id/txtPlt"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_margin="5dp"
         android:gravity="center"
         android:textSize="22sp" />
