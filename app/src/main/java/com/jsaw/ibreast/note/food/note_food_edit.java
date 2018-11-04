@@ -215,7 +215,7 @@ public class note_food_edit extends Fragment {
     }
 
     private void addTableRow(TableLayout tl, final foodCalRecord foodData){
-        LayoutInflater inflater = LayoutInflater.from(mContext);
+        LayoutInflater inflater = LayoutInflater.from(getContext());
         TableRow tr = (TableRow)inflater.inflate(R.layout.table_note_food, tl, false);
         TextView textViewTime = tr.findViewById(R.id.TextViewTime);
         TextView textViewFood = tr.findViewById(R.id.TextViewFood);
