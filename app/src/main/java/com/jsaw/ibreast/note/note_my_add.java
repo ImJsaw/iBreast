@@ -253,8 +253,8 @@ public class note_my_add extends AppCompatActivity {
         }
         Record method_record = new Record(method);
         Record program_record = new Record(program);
-        mSavadata.child(user).child("surgeryMethod").setValue(method_record);
-        mSavadata.child(user).child("program").setValue(program_record);
+        mSavadata.child(user).child("我的").child("surgeryMethod").setValue(method_record);
+        mSavadata.child(user).child("我的").child("program").setValue(program_record);
 
         progressDialog.dismiss();
         isProgressDialogShow = false;

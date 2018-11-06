@@ -102,15 +102,14 @@ public class body2_add extends Fragment {
 
         //自動帶入時間
         Calendar calendar = Calendar.getInstance();
-        String time = String.valueOf(calendar.get(Calendar.HOUR_OF_DAY)) + ":" + String.valueOf(calendar.get(Calendar.MINUTE));
+        @SuppressLint("DefaultLocale")
+        String time = String.format("%02d:%02d", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
         edtTime.setText(time);
 
         // 設定小日曆選擇時間
         ImageButton selectDate = view.findViewById(R.id.imgCal);
         selectDate.setOnClickListener(imgCalOnClick);
 
-        ImageButton imgTime = view.findViewById(R.id.imgTime);
-        imgTime.setOnClickListener(imgTimeOnClick);
         isProgressDialogShow = false;
         progressDialog.dismiss();
 
@@ -149,20 +148,6 @@ public class body2_add extends Fragment {
 //                顯示從目前時間開始選
 //                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
             datePickerDialog.show();
-        }
-    };
-
-    private View.OnClickListener imgTimeOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Calendar calendar = Calendar.getInstance();
-            TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
-                @Override
-                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    edtTime.setText(hourOfDay + ":" + minute);
-                }
-            }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
-            timePickerDialog.show();
         }
     };
 
