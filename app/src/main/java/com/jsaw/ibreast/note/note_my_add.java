@@ -3,6 +3,7 @@ package com.jsaw.ibreast.note;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -115,8 +116,7 @@ public class note_my_add extends AppCompatActivity {
                 setData();
                 setDialog();
                 saveData();
-//                    setContentView(R.layout.activity_note_my_add); //儲存完回到 activity_note_my
-//                readData();
+                startActivity(new Intent().setClass(note_my_add.this, note_my.class)); //儲存完回到 activity_note_my
             } else {    // 欄位有空白不能儲存
                 Toast.makeText(note_my_add.this, message, Toast.LENGTH_SHORT).show();
             }
