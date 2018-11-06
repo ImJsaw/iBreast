@@ -24,7 +24,7 @@
             android:id="@+id/edtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="yyyy/MM/dd"
+            android:hint="年/月/日"
             android:inputType="date"
             android:textSize="22sp" />
 
@@ -59,11 +59,6 @@
             android:minWidth="30dp"
             android:textSize="22sp" />
 
-        <ImageButton
-            android:id="@+id/imgTime"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:background="@drawable/clock" />
     </LinearLayout>
 
     <LinearLayout
@@ -96,7 +91,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/btnCheack"
+        android:id="@+id/btnCheck"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="end|bottom"

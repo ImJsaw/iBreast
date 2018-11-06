@@ -88,7 +88,7 @@ public class body1_add extends Fragment {
         txtBMI = view.findViewById(R.id.txtBMI);
         txtResult = view.findViewById(R.id.txtResult);
         txtAdvice = view.findViewById(R.id.txtAdvice);
-        btnCheck = view.findViewById(R.id.btnCheack);
+        btnCheck = view.findViewById(R.id.btnCheck);
         btnCheck.setOnClickListener(mBtnCheck);
         edtWeight.addTextChangedListener(mEdtAct);
         getHeight();

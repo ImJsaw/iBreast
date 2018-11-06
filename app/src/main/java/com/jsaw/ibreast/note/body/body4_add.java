@@ -100,7 +100,7 @@ public class body4_add extends Fragment {
         btnCheck.setOnClickListener(mBtnCheck);
 
         btnHow = view.findViewById(R.id.btnHow);
-        btnCheck = view.findViewById(R.id.btnCheack);
+        btnCheck = view.findViewById(R.id.btnCheck);
 
         //自動帶入時間
         Calendar calendar = Calendar.getInstance();
@@ -270,7 +270,7 @@ public class body4_add extends Fragment {
         txtMinus3 = view.findViewById(R.id.txtMinus3);
         btnHow = view.findViewById(R.id.btnHow);
         btnHow.setOnClickListener(mBtnHowClick);
-        btnCheck = view.findViewById(R.id.btnCheack);
+        btnCheck = view.findViewById(R.id.btnCheck);
         edtRight1.addTextChangedListener(mEdtAct);
         edtLeft1.addTextChangedListener(mEdtAct);
         edtRight2.addTextChangedListener(mEdtAct);

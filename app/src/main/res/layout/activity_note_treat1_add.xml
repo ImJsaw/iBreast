@@ -27,7 +27,7 @@
             android:layout_toEndOf="@+id/txtDate"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:hint="yyyy/MM/dd"
+            android:hint="年/月/日"
             android:inputType="date"
             android:singleLine="true"
             android:textSize="20sp" />

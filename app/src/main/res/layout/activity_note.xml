@@ -191,7 +191,7 @@
         app:layout_constraintTop_toTopOf="@id/second_row" />
 
     <Button
-        android:id="@+id/Btn_activity"
+        android:id="@+id/Btn_back"
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:textSize="25sp"
@@ -202,7 +202,7 @@
         app:layout_constraintTop_toTopOf="@id/third_row" />
 
     <Button
-        android:id="@+id/Btn_back"
+        android:id="@+id/Btn_activity"
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:textSize="25sp"

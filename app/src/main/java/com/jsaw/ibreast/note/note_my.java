@@ -32,12 +32,13 @@ import java.util.Objects;
 public class note_my extends AppCompatActivity {
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-    
+    private Map<String, TextView> myTextView = new HashMap<>();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_my);
-        
+
         progressDialog = new ProgressDialog(note_my.this);
         progressDialog.setMessage("處理中,請稍候...");
         progressDialog.show();
@@ -52,7 +53,7 @@ public class note_my extends AppCompatActivity {
                 }
             }
         }, 5000);
-        
+
         readData();
 
         Button btn_edit = findViewById(R.id.btn_edit);
@@ -69,27 +70,17 @@ public class note_my extends AppCompatActivity {
 
     //讀取資料
     private void readData() {
-        final Map<String, TextView> myTextView = new HashMap<>();
+
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                myTextView.put("birth", (TextView) findViewById(R.id.txtInputBirth));
-                myTextView.put("height", (TextView) findViewById(R.id.txtInputHeight));
-                myTextView.put("stopBleed", (TextView) findViewById(R.id.txtInputStopBleeding));
-                myTextView.put("surgeryDate", (TextView) findViewById(R.id.txtSurgeryDate));
-                myTextView.put("surgeryMethod", (TextView) findViewById(R.id.txtSurgeryMethodName));
-                myTextView.put("cell", (TextView) findViewById(R.id.txtCellType));
-                myTextView.put("er", (TextView) findViewById(R.id.txtInputEr));
-                myTextView.put("pr", (TextView) findViewById(R.id.txtInputPr));
-                myTextView.put("her", (TextView) findViewById(R.id.txtHerType));
-                myTextView.put("fish", (TextView) findViewById(R.id.txtFishType));
-                myTextView.put("program", (TextView) findViewById(R.id.txtProgramName));
+                setMyTextView();
                 dataSnapshot = dataSnapshot.child("Users");
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
-                dataSnapshot = dataSnapshot.child(user);
+                dataSnapshot = dataSnapshot.child(user).child("我的");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     String dataName = data.getKey();
                     if (myTextView.containsKey(dataName)) {
@@ -99,7 +90,7 @@ public class note_my extends AppCompatActivity {
                                 str.append(ds.getValue()).append("\n");
                             }
                             // 刪除最後一個\n
-                            str = str.deleteCharAt(str.length()-1);
+                            str = str.deleteCharAt(str.length() - 1);
                             myTextView.get(dataName).setText(str.toString());
                         } else {
                             String dataValue = Objects.requireNonNull(data.getValue()).toString();
@@ -117,5 +108,19 @@ public class note_my extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void setMyTextView() {
+        myTextView.put("birth", (TextView) findViewById(R.id.txtInputBirth));
+        myTextView.put("height", (TextView) findViewById(R.id.txtInputHeight));
+        myTextView.put("stopBleed", (TextView) findViewById(R.id.txtInputStopBleeding));
+        myTextView.put("surgeryDate", (TextView) findViewById(R.id.txtSurgeryDate));
+        myTextView.put("surgeryMethod", (TextView) findViewById(R.id.txtSurgeryMethodName));
+        myTextView.put("cell", (TextView) findViewById(R.id.txtCellType));
+        myTextView.put("er", (TextView) findViewById(R.id.txtInputEr));
+        myTextView.put("pr", (TextView) findViewById(R.id.txtInputPr));
+        myTextView.put("her", (TextView) findViewById(R.id.txtHerType));
+        myTextView.put("fish", (TextView) findViewById(R.id.txtFishType));
+        myTextView.put("program", (TextView) findViewById(R.id.txtProgramName));
     }
 }

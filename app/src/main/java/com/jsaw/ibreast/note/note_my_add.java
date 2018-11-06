@@ -3,6 +3,7 @@ package com.jsaw.ibreast.note;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -63,7 +64,11 @@ public class note_my_add extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_my_add);
+        edtBirth = findViewById(R.id.edtBirth);
+        edtDate = findViewById(R.id.edtDate);
+        edtHeight = findViewById(R.id.edtHeight);
 
+        setDialog();
         getMethodData();
         getProgramData();
 
@@ -115,8 +120,7 @@ public class note_my_add extends AppCompatActivity {
                 setData();
                 setDialog();
                 saveData();
-//                    setContentView(R.layout.activity_note_my_add); //儲存完回到 activity_note_my
-//                readData();
+                startActivity(new Intent().setClass(note_my_add.this, note_my.class)); //儲存完回到 activity_note_my
             } else {    // 欄位有空白不能儲存
                 Toast.makeText(note_my_add.this, message, Toast.LENGTH_SHORT).show();
             }
@@ -125,7 +129,6 @@ public class note_my_add extends AppCompatActivity {
 
     // 取得術式資料
     private void getMethodData() {
-        setDialog();
         FirebaseDatabase.getInstance().getReference("my").addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
@@ -174,7 +177,6 @@ public class note_my_add extends AppCompatActivity {
 
     // 取得療程計畫資料
     private void getProgramData() {
-        setDialog();
         FirebaseDatabase.getInstance().getReference("my").addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
@@ -247,12 +249,12 @@ public class note_my_add extends AppCompatActivity {
         for (Map.Entry<String, String> entry : myMap.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            mSavadata.child(user).child(key).setValue(value);
+            mSavadata.child(user).child("我的").child(key).setValue(value);
         }
         Record method_record = new Record(method);
         Record program_record = new Record(program);
-        mSavadata.child(user).child("surgeryMethod").setValue(method_record);
-        mSavadata.child(user).child("program").setValue(program_record);
+        mSavadata.child(user).child("我的").child("surgeryMethod").setValue(method_record);
+        mSavadata.child(user).child("我的").child("program").setValue(program_record);
 
         progressDialog.dismiss();
         isProgressDialogShow = false;
@@ -267,9 +269,7 @@ public class note_my_add extends AppCompatActivity {
         Spinner spPr = findViewById(R.id.spinnerPr);
         Spinner spHer = findViewById(R.id.spinnerHer);
         Spinner spFish = findViewById(R.id.spinnerFish);
-        edtBirth = findViewById(R.id.edtBirth);
-        edtDate = findViewById(R.id.edtDate);
-        edtHeight = findViewById(R.id.edtHeight);
+
 
         myMap.put("birth", edtBirth.getText().toString());
         myMap.put("height", edtHeight.getText().toString());

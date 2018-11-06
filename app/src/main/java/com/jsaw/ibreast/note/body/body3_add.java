@@ -86,7 +86,7 @@ public class body3_add extends Fragment {
         edtWbc = view.findViewById(R.id.edtWbc);
         edtHb = view.findViewById(R.id.edtHb);
         edtPlt = view.findViewById(R.id.edtPlt);
-        btnCheck = view.findViewById(R.id.btnCheack);
+        btnCheck = view.findViewById(R.id.btnCheck);
         btnCheck.setOnClickListener(mBtnCheck);
         edtWbc.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import com.jsaw.ibreast.R;
+import com.jsaw.ibreast.note.activity.note_activity;
+import com.jsaw.ibreast.note.activity.note_activity_add;
 import com.jsaw.ibreast.note.body.note_body;
 import com.jsaw.ibreast.note.food.note_food;
 import com.jsaw.ibreast.note.mood.mood;
@@ -21,6 +23,8 @@ public class note extends AppCompatActivity {
     Button mBtnMood;
     Button mBtnFood;
     Button mBtnMove;
+    Button mBtnActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +69,7 @@ public class note extends AppCompatActivity {
                 startActivity(new Intent().setClass(note.this, note_food.class));
             }
         });
+
         mBtnMove = findViewById(R.id.Btn_sport);
         mBtnMove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,5 +78,13 @@ public class note extends AppCompatActivity {
             }
         });
 
+
+        mBtnActivity = findViewById(R.id.Btn_activity);
+        mBtnActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(note.this, note_activity_add.class));
+            }
+        });
     }
 }
