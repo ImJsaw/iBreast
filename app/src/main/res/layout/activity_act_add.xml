@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,10 +12,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="活動："
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/edtAct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:hint="請輸入活動..."
+                android:inputType="date"
+                android:minWidth="100sp"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
@@ -24,75 +49,20 @@
                 android:textSize="28sp" />
 
             <EditText
-                android:id="@+id/edtDate"
+                android:id="@+id/edtStartDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="年/月/日"
+                android:hint="開始日期"
                 android:inputType="date"
                 android:textSize="22sp" />
 
-            <ImageButton
-                android:id="@+id/imgCal"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_margin="8dp"
-                android:background="@drawable/calendar" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtWbc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="白血球(WBC)："
-                android:textSize="28sp" />
-
             <EditText
-                android:id="@+id/edtWbc"
+                android:id="@+id/edtEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:minWidth="100dp"
-                android:textSize="22sp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtWarn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="※體溫高於38度，建議到急診評估處理!!"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:visibility="invisible" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtHb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="血紅素(Hb)："
-                android:textSize="28sp" />
-
-            <EditText
-                android:id="@+id/edtHb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:minWidth="100dp"
+                android:layout_marginStart="16dp"
+                android:hint="開始日期"
+                android:inputType="date"
                 android:textSize="22sp" />
 
         </LinearLayout>
@@ -105,20 +75,79 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtPlt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="血小板(PLT)："
+                android:paddingTop="10dp"
+                android:text="時間："
                 android:textSize="28sp" />
 
             <EditText
-                android:id="@+id/edtPlt"
+                android:id="@+id/edtStartTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:hint="開始時間"
+                android:inputType="date"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtEndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:hint="結束時間"
+                android:inputType="date"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地點："
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/edtPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:hint="請輸入地點..."
+                android:inputType="textMultiLine"
                 android:minWidth="100dp"
                 android:textSize="22sp" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="備註："
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/edtRemark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:hint="請輸入文字..."
+                android:inputType="textMultiLine"
+                android:minWidth="100dp"
+                android:singleLine="false"
+                android:textSize="22sp" />
         </LinearLayout>
 
         <ImageButton

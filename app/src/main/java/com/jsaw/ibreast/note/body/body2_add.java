@@ -83,7 +83,7 @@ public class body2_add extends Fragment {
         edtDate = view.findViewById(R.id.edtDate);
         edtTemp = view.findViewById(R.id.edtTemp);
         edtTime = view.findViewById(R.id.edtTime);
-        btnCheck = view.findViewById(R.id.btnCheack);
+        btnCheck = view.findViewById(R.id.btnCheck);
         btnCheck.setOnClickListener(mBtnCheck);
         edtTemp.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

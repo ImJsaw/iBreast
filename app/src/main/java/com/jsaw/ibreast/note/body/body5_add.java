@@ -228,7 +228,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
         edtHurt.setOnClickListener(mBtnHurt);
         edtDate = view.findViewById(R.id.edtDate);
 
-        ImageButton btnCheck = view.findViewById(R.id.btnCheack);
+        ImageButton btnCheck = view.findViewById(R.id.btnCheck);
         btnCheck.setOnClickListener(mBtnCheck);
     }
 }
