@@ -70,3 +70,7 @@
 2018/11/4
 10:05
 11:45 note_food chart &database connect
+
+2018/11/6
+21:50
+22:49 complete note_sport & bigger font patch

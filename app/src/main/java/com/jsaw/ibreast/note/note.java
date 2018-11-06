@@ -9,6 +9,7 @@ import com.jsaw.ibreast.R;
 import com.jsaw.ibreast.note.body.note_body;
 import com.jsaw.ibreast.note.food.note_food;
 import com.jsaw.ibreast.note.mood.mood;
+import com.jsaw.ibreast.note.move.note_move;
 import com.jsaw.ibreast.note.treat.note_treat_main;
 
 import java.util.Objects;
@@ -19,6 +20,7 @@ public class note extends AppCompatActivity {
     Button mBtnBody;
     Button mBtnMood;
     Button mBtnFood;
+    Button mBtnMove;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,5 +65,13 @@ public class note extends AppCompatActivity {
                 startActivity(new Intent().setClass(note.this, note_food.class));
             }
         });
+        mBtnMove = findViewById(R.id.Btn_sport);
+        mBtnMove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(note.this, note_move.class));
+            }
+        });
+
     }
 }

@@ -1,4 +1,4 @@
-package com.jsaw.ibreast.note.food;
+package com.jsaw.ibreast.note.move;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +36,7 @@ import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
 
-public class note_food_overview extends Fragment {
+public class note_move_overview extends Fragment {
 
     LineChartData data = new LineChartData();
     Axis axisY = new Axis();
@@ -150,7 +151,7 @@ public class note_food_overview extends Fragment {
 
     private void getData(){
         final String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users").child(user).child("foodCal");
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users").child(user).child("moveCal");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

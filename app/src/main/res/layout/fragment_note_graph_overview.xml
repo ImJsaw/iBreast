@@ -15,14 +15,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/EditAllDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:hint="@string/note_food_hint"
-                android:inputType="date" />
-
             <ToggleButton
                 android:id="@+id/toggleWeekButton"
                 android:layout_width="0dp"
@@ -30,7 +22,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textOff="@string/month"
-                android:textOn="@string/week" />
+                android:textOn="@string/day" />
         </LinearLayout>
 
         <lecho.lib.hellocharts.view.LineChartView

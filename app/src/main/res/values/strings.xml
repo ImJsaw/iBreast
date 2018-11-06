@@ -72,6 +72,11 @@
     <string name="month">月</string>
     <string name="week">週</string>
     <string name="calender">日曆</string>
+    <string name="time">時間</string>
+    <string name="cal">卡洛里</string>
+    <string name="newAdd">新增</string>
+    <string name="duration">持續時間</string>
+    <string name="day">日</string>
     <string-array name="spinCell">
         <item>管腔A型</item>
         <item>管腔B型</item>

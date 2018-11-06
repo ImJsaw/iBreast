@@ -13,45 +13,59 @@
 
         <TextView
             android:id="@+id/TextViewTime"
-            android:layout_width="130dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/cell_shape"
             android:maxLines="5"
             android:padding="5dp"
-            android:textSize="25sp"
             android:scrollHorizontally="false"
             android:text=""
+            android:textSize="25sp"
             android:longClickable="false"
             android:clickable="false"
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/TextViewFood"
-            android:layout_width="105dp"
+            android:id="@+id/TextViewMove"
+            android:layout_width="95dp"
             android:layout_height="100dp"
             android:layout_toEndOf="@id/TextViewTime"
             android:background="@drawable/cell_shape"
             android:ems="10"
-            android:textSize="25sp"
             android:maxLines="5"
             android:longClickable="false"
             android:clickable="false"
             android:padding="5dp"
-            android:text="" />
+            android:text=""
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/TextViewMoveDuration"
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@id/TextViewMove"
+            android:background="@drawable/cell_shape"
+            android:ems="10"
+            android:maxLines="5"
+            android:longClickable="false"
+            android:clickable="false"
+            android:padding="5dp"
+            android:text=""
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/TextViewCalories"
-            android:layout_width="147dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_toEndOf="@id/TextViewFood"
+            android:layout_toEndOf="@id/TextViewMoveDuration"
             android:background="@drawable/cell_shape"
             android:ems="10"
-            android:textSize="25sp"
             android:maxLines="5"
             android:longClickable="false"
             android:clickable="false"
             android:padding="5dp"
-            android:text="" />
+            android:text=""
+            android:textSize="25sp" />
 
     </RelativeLayout>
 
