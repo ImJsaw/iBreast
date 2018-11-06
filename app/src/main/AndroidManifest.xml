@@ -163,7 +163,11 @@
             android:label="心情日記修改"
             android:screenOrientation="portrait"
             android:parentActivityName=".note.mood.mood"/>
-
+        <activity
+            android:name=".note.food.note_food"
+            android:label="飲食"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
 
     </application>
 </manifest>

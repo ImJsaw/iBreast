@@ -77,7 +77,7 @@ public class link_economic extends AppCompatActivity {
 
         LinearLayout publicShowArea = findViewById(R.id.public_showArea);
         LinearLayout privateShowArea = findViewById(R.id.private_showArea);
-        publicShow = privateShow = true;
+        publicShow = privateShow = false;
 
         publicShowArea.setOnClickListener(new View.OnClickListener() {
             @Override

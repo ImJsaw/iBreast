@@ -62,3 +62,11 @@
 
 2018/9/1
 21:53	start patch
+
+2018/11/3
+9:21
+12:12 finish note_food template
+
+2018/11/4
+10:05
+11:45 note_food chart &database connect

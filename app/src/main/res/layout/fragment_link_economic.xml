@@ -75,6 +75,7 @@
             </LinearLayout>
             <TableLayout
                 android:id="@+id/public_hide_table"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/row_shape" />
@@ -141,6 +142,7 @@
             </LinearLayout>
             <TableLayout
                 android:id="@+id/private_hide_table"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/row_shape" />

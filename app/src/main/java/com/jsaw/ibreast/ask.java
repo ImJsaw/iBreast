@@ -49,7 +49,7 @@ public class ask extends AppCompatActivity {
         listView_target = findViewById(R.id.list_target);
         listView_track = findViewById(R.id.list_track);
 
-        isEatShow = isDiagnosisShow = isDiseaseShow = isChemShow = isHormoneShow = isOtherShow = isRadiationShow = isSurgeryShow = isTargetShow = isTrackShow = true;
+        isEatShow = isDiagnosisShow = isDiseaseShow = isChemShow = isHormoneShow = isOtherShow = isRadiationShow = isSurgeryShow = isTargetShow = isTrackShow = false;
 
         //waiting dialog
         progressDialog = new ProgressDialog(this);
