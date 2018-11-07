@@ -236,8 +236,8 @@ public class body1_add extends Fragment {
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
-                if (dataSnapshot.child(user).hasChild("height")) {
-                    dataSnapshot = dataSnapshot.child(user).child("height");
+                if (dataSnapshot.child(user).child("我的").hasChild("height")) {
+                    dataSnapshot = dataSnapshot.child(user).child("我的").child("height");
                     height = Double.parseDouble((String) dataSnapshot.getValue());
                 } else {
                     Toast.makeText(getContext(), "請先至'記吧 > 我的'頁面輸入身高。", Toast.LENGTH_LONG).show();

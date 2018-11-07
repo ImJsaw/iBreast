@@ -61,7 +61,6 @@ public class mood_result extends AppCompatActivity {
                 EditText edtWords = findViewById(R.id.edtWords);
                 saveData(mydate, score, edtWords.getText().toString());
                 break;
-
         }
     }
 

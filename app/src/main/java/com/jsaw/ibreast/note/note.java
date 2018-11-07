@@ -83,7 +83,7 @@ public class note extends AppCompatActivity {
         mBtnActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent().setClass(note.this, note_activity_add.class));
+                startActivity(new Intent().setClass(note.this, note_activity.class));
             }
         });
     }
