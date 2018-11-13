@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    >
 
     <LinearLayout
         android:id="@+id/layout_showArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#d1f62323"
+        android:orientation="vertical"
+        android:background="#ea91a3"
         android:padding="10dp" >
 
         <TextView
@@ -17,24 +19,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:textColor="#162834"
-            android:textSize="20sp" />
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:id="@+id/layout_hideArea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fce4df"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/ask_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#999999"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/layout_hideArea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp" >
-
-        <TextView
-            android:id="@+id/ask_list_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#162834"
-            android:textSize="18sp" />
-
-
-    </RelativeLayout>
 </LinearLayout>
