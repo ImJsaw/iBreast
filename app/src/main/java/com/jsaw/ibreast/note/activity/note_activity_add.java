@@ -58,21 +58,49 @@ public class note_activity_add extends AppCompatActivity {
         setViews();
     }
 
-    // 確認按鈕
-    private View.OnClickListener mBtnCheck = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Map<String, String> data = new HashMap<>();
-            data.put("event", edtAct.getText().toString());
-            data.put("startDate", edtStartDate.getText().toString());
-            data.put("endDate", edtEndDate.getText().toString());
-            data.put("startTime", edtStartTime.getText().toString());
-            data.put("endTime", edtEndTime.getText().toString());
-            data.put("place", edtPlace.getText().toString());
-            data.put("remark", edtRemark.getText().toString());
-            saveData(data);
+//    // 確認按鈕
+//    private View.OnClickListener mBtnCheck = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            Map<String, String> data = new HashMap<>();
+//            data.put("event", edtAct.getText().toString());
+//            data.put("startDate", edtStartDate.getText().toString());
+//            data.put("endDate", edtEndDate.getText().toString());
+//            data.put("startTime", edtStartTime.getText().toString());
+//            data.put("endTime", edtEndTime.getText().toString());
+//            data.put("place", edtPlace.getText().toString());
+//            data.put("remark", edtRemark.getText().toString());
+//            saveData(data);
+//        }
+//    };
+//
+//    //加入行事曆按鈕
+//    private View.OnClickListener mBtnCalendar = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//
+//            createCalendar(data);
+//        }
+//    };
+
+    public void onClick(View v){
+        Map<String, String> data = new HashMap<>();
+        data.put("event", edtAct.getText().toString());
+        data.put("startDate", edtStartDate.getText().toString());
+        data.put("endDate", edtEndDate.getText().toString());
+        data.put("startTime", edtStartTime.getText().toString());
+        data.put("endTime", edtEndTime.getText().toString());
+        data.put("place", edtPlace.getText().toString());
+        data.put("remark", edtRemark.getText().toString());
+        switch (v.getId()){
+            case R.id.btnCheck:
+                saveData(data);
+                break;
+            case R.id.btnCalendar:
+                createCalendar(data);
+                break;
         }
-    };
+    }
 
     private void saveData(Map<String, String> data) {
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("Users");
@@ -86,15 +114,15 @@ public class note_activity_add extends AppCompatActivity {
                     String user = users.getUid();
                     String count = String.valueOf(dataSnapshot.child(user).child("活動").getChildrenCount() + 1);
                     mDatabase.child(user).child("活動").child(count).setValue(record);
+                    Toast.makeText(note_activity_add.this, "儲存成功", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent().setClass(note_activity_add.this, note_activity.class));
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-            Toast.makeText(note_activity_add.this, "儲存成功", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent().setClass(note_activity_add.this, note_activity.class));
-            createCalendar(data);
+
         } else {
             Toast.makeText(note_activity_add.this, "請確實填寫空格", Toast.LENGTH_SHORT).show();
         }
@@ -168,8 +196,10 @@ public class note_activity_add extends AppCompatActivity {
         edtEndTime = findViewById(R.id.edtEndTime);
         edtPlace = findViewById(R.id.edtPlace);
         edtRemark = findViewById(R.id.edtRemark);
-        ImageButton btnCheck = findViewById(R.id.btnCheck);
-        btnCheck.setOnClickListener(mBtnCheck);
+//        ImageButton btnCheck = findViewById(R.id.btnCheck);
+//        Button btnCalendar = findViewById(R.id.btnCalendar);
+//        btnCheck.setOnClickListener(mBtnCheck);
+//        btnCalendar.setOnClickListener(mBtnCalendar);
         edtStartDate.setOnFocusChangeListener(TouchListener);
         edtEndDate.setOnFocusChangeListener(TouchListener);
         edtStartTime.setOnFocusChangeListener(TouchListener);

@@ -130,6 +130,7 @@ public class body4_add extends Fragment {
             saveData(edtDate.getText().toString(), edtTime.getText().toString(), data);
             isProgressDialogShow = false;
             progressDialog.dismiss();
+            startActivity(new Intent().setClass(getContext(), note_body.class));
         }
     };
 

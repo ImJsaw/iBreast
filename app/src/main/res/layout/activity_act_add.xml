@@ -150,12 +150,24 @@
                 android:textSize="22sp" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="4dp"
+            android:text="加入行事曆"
+            android:onClick="onClick"
+            android:textSize="22sp" />
+
         <ImageButton
             android:id="@+id/btnCheck"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:onClick="onClick"
             android:layout_gravity="end|bottom"
             android:layout_margin="4dp"
             android:background="@drawable/check" />
+
     </LinearLayout>
 </ScrollView>

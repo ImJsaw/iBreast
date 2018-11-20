@@ -121,6 +121,7 @@ public class body3_add extends Fragment {
                     edtHb.getText().toString(), edtPlt.getText().toString());
             isProgressDialogShow = false;
             progressDialog.dismiss();
+            startActivity(new Intent().setClass(getContext(), note_body.class));
         }
     };
 

@@ -173,7 +173,6 @@
             android:label="運動"
             android:parentActivityName=".note.note"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".note.activity.note_activity"
             android:label="活動"
@@ -182,6 +181,11 @@
         <activity
             android:name=".note.activity.note_activity_add"
             android:label="活動"
+            android:parentActivityName=".note.activity.note_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.note_back"
+            android:label="回診"
             android:parentActivityName=".note.activity.note_activity"
             android:screenOrientation="portrait" />
     </application>

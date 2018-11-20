@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
+import com.jsaw.ibreast.note.note;
 import com.jsaw.ibreast.note.note_my;
 
 import java.util.Calendar;
@@ -147,6 +148,7 @@ public class body1_add extends Fragment {
             isProgressDialogShow = false;
             progressDialog.dismiss();
             Toast.makeText(getContext(), "儲存成功", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent().setClass(getContext(), note_body.class));
         }
     };
 

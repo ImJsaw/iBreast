@@ -6,10 +6,10 @@
 
     <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 
         <TableRow>
-
             <TextView
                 android:id="@+id/txtDate"
                 android:layout_width="wrap_content"
@@ -41,48 +41,245 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimary">
 
-        <TableRow
-            android:background="@drawable/row_shape"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible">
-
+        <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="日期"
                 android:textSize="22sp"
-                android:visibility="invisible" />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
                 android:text="12/05(一)"
                 android:textAlignment="center"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
+        <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
                 android:text="治療"
                 android:textSize="22sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="化療"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="治療資訊"
                 android:textAlignment="center"
                 android:textSize="22sp" />
         </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="體重"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="體重資訊"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="體溫"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="體溫資訊"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="手臂"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="手臂資訊"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="症狀"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="症狀資訊"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="其他"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="其他資訊"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="心情"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="心情資訊"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="備註"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:text="備註資訊"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+        </TableRow>
+
     </TableLayout>
 </LinearLayout>

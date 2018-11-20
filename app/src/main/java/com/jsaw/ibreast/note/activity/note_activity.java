@@ -73,17 +73,17 @@ public class note_activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 items = new ArrayList<>();
-                ListView listView = findViewById(R.id.list_mood);
+                ListView listView = findViewById(R.id.list_activity);
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
                 dataSnapshot = dataSnapshot.child(user).child("活動");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    data = data.child("record");
+                    DataSnapshot mRecord = data.child("record");
                     HashMap<String, Object> item = new HashMap<>();
-                    item.put("date", data.child("startDate").getValue().toString());
-                    item.put("time", data.child("startTime").getValue().toString());
-                    item.put("event", data.child("event").getValue().toString());
+                    item.put("date", mRecord.child("startDate").getValue().toString());
+                    item.put("time", mRecord.child("startTime").getValue().toString());
+                    item.put("event", mRecord.child("event").getValue().toString());
                     items.add(item);
                 }
 

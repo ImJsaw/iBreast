@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jsaw.ibreast.R;
+import com.jsaw.ibreast.note.note;
 
 import java.util.Calendar;
 
@@ -126,6 +128,7 @@ public class body2_add extends Fragment {
             isProgressDialogShow = false;
             progressDialog.dismiss();
             Toast.makeText(getContext(), "儲存成功", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent().setClass(getContext(), note_body.class));
         }
     };
 

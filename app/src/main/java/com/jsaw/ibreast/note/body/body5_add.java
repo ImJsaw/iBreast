@@ -94,6 +94,7 @@ public class body5_add extends Fragment implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             saveData(edtDate.getText().toString());
+            startActivity(new Intent().setClass(getContext(), note_body.class));
         }
     };
 

@@ -24,6 +24,7 @@ public class note extends AppCompatActivity {
     Button mBtnFood;
     Button mBtnMove;
     Button mBtnActivity;
+    Button mBtnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,14 @@ public class note extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent().setClass(note.this, note_activity.class));
+            }
+        });
+
+        mBtnBack = findViewById(R.id.Btn_back);
+        mBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(note.this, note_back.class));
             }
         });
     }
