@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:hint="開始日期"
+                android:hint="結束日期"
                 android:inputType="date"
                 android:textSize="22sp" />
 
