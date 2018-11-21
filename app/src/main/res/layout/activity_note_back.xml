@@ -10,8 +10,8 @@
         android:layout_gravity="center_horizontal">
 
         <TableRow>
+
             <TextView
-                android:id="@+id/txtDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -47,25 +47,27 @@
         android:background="@color/colorPrimary">
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@color/windowBackground"
+                android:background="#FFF9D9D3"
                 android:gravity="center"
                 android:text="日期"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:background="@color/windowBackground"
+                android:background="#FFF9D9D3"
                 android:gravity="center"
                 android:text="12/05(一)"
                 android:textAlignment="center"
@@ -74,6 +76,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,6 +90,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtTreatment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -100,6 +104,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,6 +118,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -126,6 +132,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,6 +146,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -152,6 +160,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,6 +174,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtArm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -178,6 +188,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -191,6 +202,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtSign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -204,6 +216,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -217,6 +230,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -230,6 +244,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -243,6 +258,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtMood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -256,6 +272,7 @@
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -269,6 +286,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtRemark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -282,4 +300,11 @@
         </TableRow>
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="test" />
 </LinearLayout>
