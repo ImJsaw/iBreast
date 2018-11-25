@@ -71,84 +71,143 @@ public class ask extends AppCompatActivity {
         findViewById(R.id.eat_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isEatShow) listView_eat.setVisibility(View.GONE);
-                else listView_eat.setVisibility(View.VISIBLE);
+                if(isEatShow) {
+                    listView_eat.setVisibility(View.GONE);
+                    findViewById(R.id.eat_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_eat.setVisibility(View.VISIBLE);
+                    findViewById(R.id.eat_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isEatShow = !isEatShow;
             }
         });
         findViewById(R.id.diagnosis_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isDiagnosisShow) listView_diagnosis.setVisibility(View.GONE);
-                else listView_diagnosis.setVisibility(View.VISIBLE);
+                if(isDiagnosisShow) {
+                    listView_diagnosis.setVisibility(View.GONE);
+                    findViewById(R.id.diagnosis_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_diagnosis.setVisibility(View.VISIBLE);
+                    findViewById(R.id.diagnosis_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isDiagnosisShow = !isDiagnosisShow;
             }
         });
         findViewById(R.id.disease_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isDiseaseShow) listView_disease.setVisibility(View.GONE);
-                else listView_disease.setVisibility(View.VISIBLE);
+                if(isDiseaseShow) {
+                    listView_disease.setVisibility(View.GONE);
+                    findViewById(R.id.disease_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_disease.setVisibility(View.VISIBLE);
+                    findViewById(R.id.disease_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isDiseaseShow = !isDiseaseShow;
             }
         });
         findViewById(R.id.chem_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isChemShow) listView_chem.setVisibility(View.GONE);
-                else listView_chem.setVisibility(View.VISIBLE);
+                if(isChemShow) {
+                    listView_chem.setVisibility(View.GONE);
+                    findViewById(R.id.chem_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_chem.setVisibility(View.VISIBLE);
+                    findViewById(R.id.chem_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isChemShow = !isChemShow;
             }
         });
         findViewById(R.id.hormone_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isHormoneShow) listView_hormone.setVisibility(View.GONE);
-                else listView_hormone.setVisibility(View.VISIBLE);
+                if(isHormoneShow) {
+                    listView_hormone.setVisibility(View.GONE);
+                    findViewById(R.id.hormone_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_hormone.setVisibility(View.VISIBLE);
+                    findViewById(R.id.hormone_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isHormoneShow = !isHormoneShow;
             }
         });
         findViewById(R.id.other_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isOtherShow) listView_other.setVisibility(View.GONE);
-                else listView_other.setVisibility(View.VISIBLE);
+                if(isOtherShow) {
+                    listView_other.setVisibility(View.GONE);
+                    findViewById(R.id.other_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_other.setVisibility(View.VISIBLE);
+                    findViewById(R.id.other_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isOtherShow = !isOtherShow;
             }
         });
         findViewById(R.id.radiation_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isRadiationShow) listView_radiation.setVisibility(View.GONE);
-                else listView_radiation.setVisibility(View.VISIBLE);
+                if(isRadiationShow) {
+                    listView_radiation.setVisibility(View.GONE);
+                    findViewById(R.id.radiation_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_radiation.setVisibility(View.VISIBLE);
+                    findViewById(R.id.radiation_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isRadiationShow = !isRadiationShow;
             }
         });
         findViewById(R.id.surgery_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isSurgeryShow) listView_surgery.setVisibility(View.GONE);
-                else listView_surgery.setVisibility(View.VISIBLE);
+                if(isSurgeryShow) {
+                    listView_surgery.setVisibility(View.GONE);
+                    findViewById(R.id.surgery_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_surgery.setVisibility(View.VISIBLE);
+                    findViewById(R.id.surgery_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isSurgeryShow = !isSurgeryShow;
             }
         });
         findViewById(R.id.target_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isTargetShow) listView_target.setVisibility(View.GONE);
-                else listView_target.setVisibility(View.VISIBLE);
+                if(isTargetShow) {
+                    listView_target.setVisibility(View.GONE);
+                    findViewById(R.id.target_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_target.setVisibility(View.VISIBLE);
+                    findViewById(R.id.target_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isTargetShow = !isTargetShow;
             }
         });
         findViewById(R.id.track_show_area).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isTrackShow) listView_track.setVisibility(View.GONE);
-                else listView_track.setVisibility(View.VISIBLE);
+                if(isTrackShow) {
+                    listView_track.setVisibility(View.GONE);
+                    findViewById(R.id.track_show_area).setBackgroundResource(R.drawable.ask_bg_close);
+                }
+                else {
+                    listView_track.setVisibility(View.VISIBLE);
+                    findViewById(R.id.track_show_area).setBackgroundResource(R.drawable.ask_bg_open);
+                }
                 isTrackShow = !isTrackShow;
             }
         });
-
     }
 
     private void getData() {

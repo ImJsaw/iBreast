@@ -12,7 +12,7 @@
         android:id="@+id/eat_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -37,7 +37,7 @@
         android:id="@+id/diagnosis_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -62,7 +62,7 @@
     android:id="@+id/disease_show_area"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/row_shape"
+    android:background="@drawable/ask_bg_close"
     android:orientation="vertical">
 
     <TextView
@@ -87,7 +87,7 @@
         android:id="@+id/chem_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -112,7 +112,7 @@
         android:id="@+id/surgery_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -137,7 +137,7 @@
         android:id="@+id/radiation_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -162,7 +162,7 @@
         android:id="@+id/hormone_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -187,7 +187,7 @@
         android:id="@+id/target_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -212,7 +212,7 @@
         android:id="@+id/other_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
@@ -237,7 +237,7 @@
         android:id="@+id/track_show_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/row_shape"
+        android:background="@drawable/ask_bg_close"
         android:orientation="vertical">
 
         <TextView
