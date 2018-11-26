@@ -1,310 +1,340 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:orientation="vertical">
 
-    <TableLayout
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="match_parent">
 
-        <TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
+            <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="4dp"
-                android:text="@string/date"
-                android:textSize="28sp" />
+                android:layout_gravity="center_horizontal">
 
-            <EditText
-                android:id="@+id/edtDate"
-                android:layout_width="wrap_content"
+                <TableRow>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/date"
+                        android:textSize="28sp" />
+
+                    <EditText
+                        android:id="@+id/edtDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="年/月/日"
+                        android:inputType="date"
+                        android:textSize="22sp" />
+
+                    <ImageButton
+                        android:id="@+id/imgCal"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/calendar"
+                        android:onClick="onClick" />
+                </TableRow>
+
+                <TableRow>
+
+                    <Button
+                        android:id="@+id/btn_last"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="start"
+                        android:onClick="onClick"
+                        android:text="last" />
+
+                    <Button
+                        android:id="@+id/btn_next"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="end"
+                        android:onClick="onClick"
+                        android:text="next" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:hint="年/月/日"
-                android:inputType="date"
-                android:textSize="22sp" />
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:background="@color/colorPrimary">
 
-            <ImageButton
-                android:id="@+id/imgCal"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:background="@drawable/calendar"
-                android:onClick="onClick" />
-        </TableRow>
-    </TableLayout>
+                <TableRow>
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="16dp"
-        android:background="@color/colorPrimary">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:background="#FFF9D9D3"
+                        android:gravity="center"
+                        android:text="日期"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_weight="1"
+                        android:background="#FFF9D9D3"
+                        android:gravity="center"
+                        android:text="12/05(一)"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="#FFF9D9D3"
-                android:gravity="center"
-                android:text="日期"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="#FFF9D9D3"
-                android:gravity="center"
-                android:text="12/05(一)"
-                android:textAlignment="center"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="治療"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtTreatment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="治療資訊"
+                        android:textAlignment="center"
+                        android:textSize="22sp" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="治療"
-                android:textSize="22sp" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtTreatment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="治療資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="體重"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="查無資料"
+                        android:textAlignment="center"
+                        android:textSize="22sp" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="體重"
-                android:textSize="22sp" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="體重資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="體溫"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="體溫資訊"
+                        android:textAlignment="center"
+                        android:textSize="22sp" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="體溫"
-                android:textSize="22sp" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtTemp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="體溫資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="手臂"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtArm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="手臂資訊"
+                        android:textAlignment="center"
+                        android:textSize="22sp" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="手臂"
-                android:textSize="22sp" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtArm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="手臂資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="症狀"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtSign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="症狀資訊"
+                        android:textAlignment="center"
+                        android:textSize="22sp" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="症狀"
-                android:textSize="22sp" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtSign"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="症狀資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="其他"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="其他資訊"
+                        android:textAlignment="center"
+                        android:textSize="22sp" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="其他"
-                android:textSize="22sp" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="其他資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="心情"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <TextView
+                        android:id="@+id/txtMood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="心情資訊"
+                        android:textAlignment="center"
+                        android:textSize="22sp" />
+                </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="心情"
-                android:textSize="22sp" />
+                <TableRow>
 
-            <TextView
-                android:id="@+id/txtMood"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="心情資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:text="備註"
+                        android:textSize="22sp" />
 
-        <TableRow>
+                    <EditText
+                        android:id="@+id/txtRemark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/windowBackground"
+                        android:gravity="center"
+                        android:hint="請輸入備註"
+                        android:inputType="textMultiLine"
+                        android:singleLine="false"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+                </TableRow>
+            </TableLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="備註"
-                android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/txtRemark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:background="@color/windowBackground"
-                android:gravity="center"
-                android:text="備註資訊"
-                android:textAlignment="center"
-                android:textSize="22sp" />
-        </TableRow>
-
-    </TableLayout>
-
-    <Button
-        android:id="@+id/btn_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="test" />
-</LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</HorizontalScrollView>

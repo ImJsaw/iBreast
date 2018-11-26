@@ -27,7 +27,7 @@ import java.util.List;
 
 public class note_body1 extends Fragment {
     private static final int[] IDS = new int[]{R.id.txtDate, R.id.txtWeight, R.id.txtBmi, R.id.txtResult};
-    private static final String[] STRINGS = new String[]{"Date", "Weight", "BMI", "Result"};
+    private static final String[] STRINGS = new String[]{"date", "weight", "BMI", "result"};
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
 
@@ -64,13 +64,13 @@ public class note_body1 extends Fragment {
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
-                dataSnapshot = dataSnapshot.child(user).child("weight");
+                dataSnapshot = dataSnapshot.child(user).child("體重");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("BMI", data.child("BMI").getValue().toString());
-                    item.put("Date", data.child("Date").getValue().toString());
-                    item.put("Result", data.child("Result").getValue().toString());
-                    item.put("Weight", data.child("Weight").getValue().toString());
+                    item.put("date", data.child("date").getValue().toString());
+                    item.put("result", data.child("result").getValue().toString());
+                    item.put("weight", data.child("weight").getValue().toString());
                     items.add(item);
                 }
 

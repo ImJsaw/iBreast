@@ -56,7 +56,6 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/txtScr"
             android:layout_below="@+id/txtScr"
-
             android:divider="@null" />
 
         <LinearLayout

@@ -47,15 +47,15 @@ public class body1_add extends Fragment {
 
     private static class Record {
         public String BMI;
-        public String Weight;
-        public String Result;
-        public String Date;
+        public String weight;
+        public String result;
+        public String date;
 
         Record(String bmi, String weight, String result, String date) {
             this.BMI = bmi;
-            this.Weight = weight;
-            this.Result = result;
-            this.Date = date;
+            this.weight = weight;
+            this.result = result;
+            this.date = date;
         }
     }
 
@@ -187,8 +187,8 @@ public class body1_add extends Fragment {
                     FirebaseAuth auth = FirebaseAuth.getInstance();
                     FirebaseUser users = auth.getCurrentUser();
                     String user = users.getUid();
-                    String count = String.valueOf(dataSnapshot.child(user).child("weight").getChildrenCount() + 1);
-                    mDatabase.child(user).child("weight").child(count).setValue(record);
+                    String count = String.valueOf(dataSnapshot.child(user).child("體重").getChildrenCount() + 1);
+                    mDatabase.child(user).child("體重").child(count).setValue(record);
                 }
 
                 @Override
