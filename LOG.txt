@@ -74,3 +74,7 @@
 2018/11/6
 21:50
 22:49 complete note_sport & bigger font patch
+
+2018/11/13
+16:50
+17:30 askView adjustment
