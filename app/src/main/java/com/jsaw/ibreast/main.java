@@ -118,6 +118,7 @@ public class main extends AppCompatActivity {
         switch (item.getItemId()) {
             case 1:
                 //open about page
+                aboutBox.show(this);
                 break;
             case 2:
                 //open personal page

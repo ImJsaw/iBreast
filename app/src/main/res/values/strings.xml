@@ -77,6 +77,8 @@
     <string name="newAdd">新增</string>
     <string name="duration">持續時間</string>
     <string name="day">日</string>
+    <string name="aboutContent">e粉紅護照是由國立陽明大學護理學系、乳癌防治基金會、臺科大資工學系共同合作，提供國內乳癌病友罹癌過程所需之疾病資訊、運動、復健、飲食、心情調適、自我監測、資源連結、病友分享等多項功能的智慧自我管理行動照護系統。期望乳癌病友透過e粉紅護照的使用，達到疾病有效自我管理，進而提升罹癌後生活品質。若您有任何使用上的建議，也歡迎跟我們聯繫，您的指教是我們進步的動力。 敬祝 身體健康、平安喜樂 陽明大學護理學系 侯宜菁敬上\n 聯絡信箱：evita@ym.edu.t\n聯絡電話：28267315、0919–138–835</string>
+    <string name="about">關於我們</string>
     <string-array name="spinCell">
         <item>管腔A型</item>
         <item>管腔B型</item>

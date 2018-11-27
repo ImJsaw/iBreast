@@ -78,3 +78,12 @@
 2018/11/13
 16:50
 17:30 askView adjustment
+
+2018/11/25
+22:05
+22:45	askView bg patch
+
+2018/11/27
+17:29
+18:02	add aboutBox 
+
