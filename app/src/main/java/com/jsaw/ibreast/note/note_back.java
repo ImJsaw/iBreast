@@ -123,6 +123,7 @@ public class note_back extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
+            txtDate.setText(s.toString());
             showInfo(s.toString());
         }
     };
