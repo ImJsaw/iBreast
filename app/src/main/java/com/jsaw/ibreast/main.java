@@ -107,9 +107,10 @@ public class main extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         menu.add(1, 1, 1, "關於");
-        menu.add(1, 2, 2, "個人頁面");
-        menu.add(1, 3, 3, "登出");
-        menu.add(1, 4, 4, "退出APP");
+        menu.add(1, 2, 2, "隱私權政策");
+        menu.add(1, 3, 3, "個人頁面");
+        menu.add(1, 4, 4, "登出");
+        menu.add(1, 5, 5, "退出APP");
         return true;
     }
 
@@ -121,14 +122,18 @@ public class main extends AppCompatActivity {
                 aboutBox.show(this);
                 break;
             case 2:
-                //open personal page
+                //private policy
+                privatePolicyBox.show(this);
                 break;
             case 3:
+                //open personal page
+                break;
+            case 4:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent().setClass(main.this, login.class));
                 finish();
                 break;
-            case 4:
+            case 5:
                 System.exit(0);
                 break;
         }
