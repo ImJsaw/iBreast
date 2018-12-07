@@ -107,7 +107,17 @@ public class login extends AppCompatActivity {
         btn_signUp_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(login.this, register.class));
+                //startActivity(new Intent(login.this, register.class));
+                new AlertDialog.Builder(login.this)
+                        .setTitle("提示")
+                        .setMessage("目前不開放此功能!")
+                        .setPositiveButton("確認", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .show();
+
             }
         });
 

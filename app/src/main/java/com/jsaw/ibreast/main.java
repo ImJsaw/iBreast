@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -134,10 +135,21 @@ public class main extends AppCompatActivity {
                 finish();
                 break;
             case 5:
+               // registerRequest();
                 System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void registerRequest(){
+        for (int i = 1; i <= 55 ; i++){
+            String email = i + "@jsawDev.com";
+            String password = "e8" + i/10 + "9bt1" + i%10 + "hte";
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password);
+            Log.d("generate","email : " + email + "    password : " + password);
+
+        }
     }
 
     //雙擊退出
