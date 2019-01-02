@@ -63,7 +63,7 @@
     <string name="disease">疾病</string>
     <string name="ask_chem">化療</string>
     <string name="ask_surgery">手術</string>
-    <string name="ask_radiation">化療</string>
+    <string name="ask_radiation">放射線治療</string>
     <string name="ask_hormone">荷爾蒙</string>
     <string name="ask_target">標靶治療</string>
     <string name="other">其他</string>

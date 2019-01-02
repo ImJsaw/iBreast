@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -184,16 +185,41 @@ public class note_food_edit extends Fragment {
         }
     }
 
+    private void deleteData(final int tag) {
+        final DatabaseReference dbRef = mDatabase.child(user).child("foodCal").child(yearStr).child(monthStr).child(dayStr);
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //implement delete data
+                //  **do not just delete**   json array need to be in order
+                for (int i = tag; i < dataSnapshot.getChildrenCount()-1 ; i++) {
+                    //move next data to current
+                    foodCalRecord c = new foodCalRecord();
+                    c.time = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i+1)).child("time").getValue()).toString();
+                    c.food = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i+1)).child("food").getValue()).toString();
+                    c.cal = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i+1)).child("cal").getValue()).toString();
+                    mDatabase.child(user).child("foodCal").child(yearStr).child(monthStr).child(dayStr).child(String.valueOf(i)).setValue(c);
+                    Log.d("replace","num "+i+"to" + c.time);
+                }
+                //remove the last one
+                mDatabase.child(user).child("foodCal").child(yearStr).child(monthStr).child(dayStr).child(String.valueOf(dataSnapshot.getChildrenCount()-1)).removeValue();
+                refresh();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
     private void refresh(){
         for (int i = 2; i < foodTable.getChildCount(); i++) {
             View child = foodTable.getChildAt(i);
             if (child instanceof TableRow) ((ViewGroup) child).removeAllViews();
         }
-        for (int i = 0; i <foodData.size(); i++) addTableRow(foodTable, foodData.get(i));
+        for (int i = 0; i <foodData.size(); i++) addTableRow(foodTable, foodData.get(i),i);
     }
 
     private void getData(){
-
         final DatabaseReference dbRef = mDatabase.child(user).child("foodCal").child(yearStr).child(monthStr).child(dayStr);
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -214,9 +240,10 @@ public class note_food_edit extends Fragment {
         });
     }
 
-    private void addTableRow(TableLayout tl, final foodCalRecord foodData){
+    private void addTableRow(TableLayout tl, final foodCalRecord foodData, final int index){
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        TableRow tr = (TableRow)inflater.inflate(R.layout.table_note_food, tl, false);
+        final TableRow tr = (TableRow)inflater.inflate(R.layout.table_note_food, tl, false);
+        tr.setTag(index);//save for delete data
         TextView textViewTime = tr.findViewById(R.id.TextViewTime);
         TextView textViewFood = tr.findViewById(R.id.TextViewFood);
         TextView textViewCalories = tr.findViewById(R.id.TextViewCalories);
@@ -235,6 +262,8 @@ public class note_food_edit extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 //deleteRecord
+                                deleteData(index);
+                                Log.d("clickedIndex", String.valueOf(index));
                             }
                         })
                         .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

@@ -195,7 +195,7 @@ public class note_move_edit extends Fragment {
             View child = moveTable.getChildAt(i);
             if (child instanceof TableRow) ((ViewGroup) child).removeAllViews();
         }
-        for (int i = 0; i <moveData.size(); i++) addTableRow(moveTable, moveData.get(i));
+        for (int i = 0; i <moveData.size(); i++) addTableRow(moveTable, moveData.get(i),i);
     }
 
     private void getData(){
@@ -221,9 +221,36 @@ public class note_move_edit extends Fragment {
         });
     }
 
-    private void addTableRow(TableLayout tl, final moveCalRecord moveData){
+    private void deleteData(final int tag) {
+        final DatabaseReference dbRef = mDatabase.child(user).child("moveCal").child(yearStr).child(monthStr).child(dayStr);
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //implement delete data
+                //  **do not just delete**   json array need to be in order
+                for (int i = tag; i < dataSnapshot.getChildrenCount()-1 ; i++) {
+                    //move next data to current
+                    moveCalRecord c = new moveCalRecord();
+                    c.time = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i+1)).child("time").getValue()).toString();
+                    c.move = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i+1)).child("move").getValue()).toString();
+                    c.duration = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i+1)).child("duration").getValue()).toString();
+                    c.cal = Objects.requireNonNull(dataSnapshot.child(String.valueOf(i+1)).child("cal").getValue()).toString();
+                    mDatabase.child(user).child("moveCal").child(yearStr).child(monthStr).child(dayStr).child(String.valueOf(i)).setValue(c);
+                }
+                //remove the last one
+                mDatabase.child(user).child("moveCal").child(yearStr).child(monthStr).child(dayStr).child(String.valueOf(dataSnapshot.getChildrenCount()-1)).removeValue();
+                refresh();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void addTableRow(TableLayout tl, final moveCalRecord moveData,final int index){
         LayoutInflater inflater = LayoutInflater.from(getContext());
         TableRow tr = (TableRow)inflater.inflate(R.layout.table_note_move, tl, false);
+        tr.setTag(index);//save for delete data
         TextView textViewTime = tr.findViewById(R.id.TextViewTime);
         TextView textViewMove = tr.findViewById(R.id.TextViewMove);
         TextView textViewMoveDuration = tr.findViewById(R.id.TextViewMoveDuration);
@@ -233,7 +260,7 @@ public class note_move_edit extends Fragment {
         textViewMoveDuration.setText(moveData.duration);
         textViewCalories.setText(moveData.cal);
 
-        final String s = "確定刪除"+monthStr+":"+ dayStr+"的"+moveData.move+"嗎？";
+        final String s = "確定刪除"+monthStr+"/"+ dayStr+"的"+moveData.move+"嗎？";
 
         tr.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -244,6 +271,7 @@ public class note_move_edit extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 //deleteRecord
+                                deleteData(index);
                             }
                         })
                         .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
