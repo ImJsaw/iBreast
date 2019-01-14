@@ -3,16 +3,17 @@ package com.jsaw.ibreast.note.treat;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -37,19 +38,18 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class note_treat1_add extends Fragment {
+public class treat4_add extends AppCompatActivity {
     private static final int[] IDS = new int[]{R.id.checkbox_listview, R.id.engtxt_listview, R.id.chitxt_listview};
     private static final String[] STRINGS = new String[]{"checkbox", "engName", "chiName"};
-    private EditText edtDate;
-    private EditText edtOther;
-    private CheckBox ckbOther;
+    private EditText edtStartDate;
+    private EditText edtEndDate;
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
-    private String message;
     private CheckBox checkBox;
     private List<String> item = new ArrayList<>();
-    private ImageButton btnCheck;
-
+    private EditText edtOther;
+    private CheckBox ckbOther;
+    private String message;
 
     private static class Record {
         public List<String> part;
@@ -62,24 +62,18 @@ public class note_treat1_add extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        setContentView(R.layout.activity_note_treat4_add);
         setDialog();
-        final View view = inflater.inflate(R.layout.activity_note_treat1_add, container, false);
-        edtDate = view.findViewById(R.id.edtDate);
-        edtOther = view.findViewById(R.id.edtOther);
-        btnCheck = view.findViewById(R.id.imgCheack);
-        ckbOther = view.findViewById(R.id.ckbOther);
-        btnCheck.setOnClickListener(mBtnCheck);
+        TextView txtPart = findViewById(R.id.txtPart);
+        edtStartDate = findViewById(R.id.edtStartDate);
+        edtEndDate = findViewById(R.id.edtEndDate);
+        ckbOther = findViewById(R.id.ckbOther);
+        edtOther = findViewById(R.id.edtOther);
+        txtPart.setText("處方：");
         ckbOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ckbOther.isChecked() && !edtOther.getText().toString().isEmpty()) {
+                if (ckbOther.isChecked()) {
                     item.add(edtOther.getText().toString());
                 } else {
                     item.remove(edtOther);
@@ -87,23 +81,58 @@ public class note_treat1_add extends Fragment {
             }
         });
 
-        firebaseGetData(view);
-//        設定小日曆選擇時間
-        ImageButton selectDate = view.findViewById(R.id.imgCal);
-        selectDate.setOnClickListener(imgCalOnClick);
-
-
-        return view;
+        firebaseGetData();
+        setButtons();
     }
 
-    private void firebaseGetData(final View view) {
+    public void onClick(View view) {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog;
+        switch (view.getId()) {
+            case R.id.imgCalStart:
+                datePickerDialog = new DatePickerDialog(treat4_add.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                edtStartDate.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
+                            }
+                        }, year, month, day);
+                datePickerDialog.show();
+                break;
+            case R.id.imgCalEnd:
+                datePickerDialog = new DatePickerDialog(treat4_add.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                edtEndDate.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
+                            }
+                        }, year, month, day);
+                datePickerDialog.show();
+                break;
+            case R.id.imgCheack:
+                if (checkBlank()) {
+                    saveData();
+                } else {
+                    Toast.makeText(treat4_add.this, message, Toast.LENGTH_SHORT).show();
+                }
+
+                break;
+        }
+    }
+
+    private void firebaseGetData() {
         FirebaseDatabase.getInstance().getReference("treat_add").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> items = new ArrayList<>();
-                ListView listView = view.findViewById(R.id.list_noteAdd);
+                ListView listView = findViewById(R.id.list_noteAdd);
 
-                dataSnapshot = dataSnapshot.child("treat1_add");
+                dataSnapshot = dataSnapshot.child("treat4_add");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("engName", data.child("engName").getValue().toString());
@@ -115,7 +144,7 @@ public class note_treat1_add extends Fragment {
 //                3. int resource Layout位置
 //                4. String[] from data帶入資料的Key
 //                5. int[] to Key的值要帶到哪個元件
-                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.note_list_view,
+                SimpleAdapter sa = new SimpleAdapter(treat4_add.this, items, R.layout.note_list_view,
                         STRINGS, IDS) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
@@ -150,40 +179,6 @@ public class note_treat1_add extends Fragment {
         });
     }
 
-    private View.OnClickListener mBtnCheck = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (checkBlank()) {
-                saveData();
-            } else {
-                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-            }
-        }
-    };
-
-    private View.OnClickListener imgCalOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                    new DatePickerDialog.OnDateSetListener() {
-                        @SuppressLint("SetTextI18n")
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            edtDate.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
-                        }
-                    }, year, month, day);
-//                顯示從目前時間開始選
-//                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-            datePickerDialog.show();
-
-
-        }
-    };
-
     //Save Data
     private void saveData() {
         setDialog();
@@ -195,24 +190,25 @@ public class note_treat1_add extends Fragment {
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
                 Record part_record = new Record(item);
-                String count = String.valueOf(dataSnapshot.child(user).child("化療").getChildrenCount() + 1);
-                mDatabase.child(user).child("化療").child(count).setValue(part_record);
-                mDatabase.child(user).child("化療").child(count).child("date").setValue(edtDate.getText().toString());
-                ckbOther.setChecked(false);
-                item.clear();
+                String count = String.valueOf(dataSnapshot.child(user).child("荷爾蒙").getChildrenCount() + 1);
+                mDatabase.child(user).child("荷爾蒙").child(count).setValue(part_record);
+                mDatabase.child(user).child("荷爾蒙").child(count).child("startDate").setValue(edtStartDate.getText().toString());
+                mDatabase.child(user).child("荷爾蒙").child(count).child("endDate").setValue(edtEndDate.getText().toString());
+                progressDialog.dismiss();
+                isProgressDialogShow = false;
+                Toast.makeText(treat4_add.this, "儲存成功", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent().setClass(treat4_add.this, treat4.class));
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
-        progressDialog.dismiss();
-        isProgressDialogShow = false;
-        Toast.makeText(getContext(), "儲存成功", Toast.LENGTH_SHORT).show();
     }
 
     private void setDialog() {
-        progressDialog = new ProgressDialog(getContext());
+        progressDialog = new ProgressDialog(treat4_add.this);
         progressDialog.setMessage("處理中,請稍候...");
         progressDialog.show();
         isProgressDialogShow = true;
@@ -222,20 +218,23 @@ public class note_treat1_add extends Fragment {
             public void run() {
                 if (isProgressDialogShow) {
                     progressDialog.dismiss();
-                    Toast.makeText(getContext(), "連線逾時", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(treat4_add.this, "連線逾時", Toast.LENGTH_SHORT).show();
                 }
             }
         }, 5000);
     }
 
+    // 是否有為填選欄位
+
     /**
-     * 是否有為填選欄位
-     *
      * @return true:沒有空白欄位
      */
     private boolean checkBlank() {
-        if (edtDate.getText().toString().trim().equals("")) {
-            message = "日期不可為空白";
+        if (edtStartDate.getText().toString().trim().equals("")) {
+            message = "開始日期不可為空白";
+            return false;
+        } else if (edtEndDate.getText().toString().trim().equals("")) {
+            message = "結束日期不可為空白";
             return false;
         } else if (item.size() == 0) {
             message = "請勾選部位";
@@ -267,4 +266,45 @@ public class note_treat1_add extends Fragment {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
+
+    private void setButtons() {
+        Button btn1 = findViewById(R.id.btn1);
+        Button btn2 = findViewById(R.id.btn2);
+        Button btn3 = findViewById(R.id.btn3);
+        Button btn4 = findViewById(R.id.btn4);
+        Button btn5 = findViewById(R.id.btn5);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(treat4_add.this, treat1.class));
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(treat4_add.this, treat2.class));
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(treat4_add.this, treat3.class));
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(treat4_add.this, treat4.class));
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(treat4_add.this, treat5.class));
+            }
+        });
+
+    }
 }
+
+

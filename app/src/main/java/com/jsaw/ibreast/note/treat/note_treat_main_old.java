@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class note_treat_main extends AppCompatActivity {
+public class note_treat_main_old extends AppCompatActivity {
 
     //透過下方程式碼，取得Activity中執行的個體。
     private FragmentTransaction transaction;
@@ -29,7 +29,7 @@ public class note_treat_main extends AppCompatActivity {
         transaction = getSupportFragmentManager().beginTransaction();
 
 //         first fragment is activity_note_treat1
-        transaction.replace(R.id.center, new note_treat1(), "fragment1");
+        transaction.replace(R.id.center, new note_treat1_old(), "fragment1");
         transaction.commit();
         setMyView();
 
@@ -43,27 +43,27 @@ public class note_treat_main extends AppCompatActivity {
             case R.id.btn1:
                 btnC = 1;
                 setColor(btnC);
-                transaction.replace(R.id.center, new note_treat1());
+                transaction.replace(R.id.center, new note_treat1_old());
                 break;
             case R.id.btn2:
                 btnC = 2;
                 setColor(btnC);
-                transaction.replace(R.id.center, new note_treat2());
+                transaction.replace(R.id.center, new note_treat2_old());
                 break;
             case R.id.btn3:
                 btnC = 3;
                 setColor(btnC);
-                transaction.replace(R.id.center, new note_treat3());
+                transaction.replace(R.id.center, new note_treat3_old());
                 break;
             case R.id.btn4:
                 btnC = 4;
                 setColor(btnC);
-                transaction.replace(R.id.center, new note_treat3());
+                transaction.replace(R.id.center, new note_treat4_old());
                 break;
             case R.id.btn5:
                 btnC = 5;
                 setColor(btnC);
-                transaction.replace(R.id.center, new note_treat3());
+                transaction.replace(R.id.center, new note_treat3_old());
                 break;
             case R.id.Btn_edit:
                 // 目前所在fragment
@@ -95,10 +95,10 @@ public class note_treat_main extends AppCompatActivity {
     }
 
     public void setMyView() {
-        myView.put(1, new note_treat1_add());
-        myView.put(2, new note_treat2_add());
-        myView.put(3, new note_treat3_add());
-        myView.put(4, new note_treat4_add());
-        myView.put(5, new note_treat5_add());
+        myView.put(1, new note_treat1_add_old());
+        myView.put(2, new note_treat2_add_old());
+        myView.put(3, new note_treat3_add_old());
+        myView.put(4, new note_treat4_add_old());
+        myView.put(5, new note_treat5_add_old());
     }
 }

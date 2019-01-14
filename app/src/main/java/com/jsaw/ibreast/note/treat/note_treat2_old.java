@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class note_treat2 extends Fragment {
+public class note_treat2_old extends Fragment {
     private static final int[] IDS = new int[]{R.id.txtPartName, R.id.txtStartDate, R.id.txtEndDate};
     private static final String[] STRINGS = new String[]{"partName", "startDate", "endDate"};
     private Boolean isProgressDialogShow = false;

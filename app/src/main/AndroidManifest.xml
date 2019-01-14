@@ -121,6 +121,66 @@
             android:parentActivityName=".note.note"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".note.treat.treat1"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat2"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat3"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat4"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat5"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat1_add"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat2_add"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat3_add"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat4_add"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".note.treat.treat5_add"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/treat"
+            android:parentActivityName=".note.note"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".note.body.note_body"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/body"

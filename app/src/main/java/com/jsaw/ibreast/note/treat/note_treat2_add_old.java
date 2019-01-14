@@ -3,6 +3,7 @@ package com.jsaw.ibreast.note.treat;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -38,7 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class note_treat2_add extends Fragment implements View.OnClickListener {
+public class note_treat2_add_old extends Fragment implements View.OnClickListener {
     private static final int[] IDS = new int[]{R.id.checkbox_listview, R.id.chitxt_listview};
     private static final String[] STRINGS = new String[]{"checkbox", "item"};
     private EditText edtStartDate;
@@ -209,6 +210,7 @@ public class note_treat2_add extends Fragment implements View.OnClickListener {
                 progressDialog.dismiss();
                 isProgressDialogShow = false;
                 Toast.makeText(getContext(), "儲存成功", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent().setClass(getContext(), note_treat_main.class));
             }
 
             @Override

@@ -56,7 +56,7 @@ public class note_back extends AppCompatActivity {
     private TextView txtMood;
     private TextView txtRemark;
     private EditText edtDate;
-    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/dd");
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/d");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

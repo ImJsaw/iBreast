@@ -1,106 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:orientation="vertical">
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/date"
-            android:textSize="22sp" />
+        <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-        <EditText
-            android:id="@+id/edtDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/txtDate"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="年/月/日"
-            android:inputType="date"
-            android:singleLine="true"
-            android:textSize="20sp" />
-
-        <ImageButton
-            android:id="@+id/imgCal"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_margin="8dp"
-            android:layout_toEndOf="@+id/edtDate"
-            android:background="@drawable/calendar" />
-
-        <TextView
-            android:id="@+id/txtScr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtDate"
-            android:layout_marginTop="10dp"
-            android:layout_toStartOf="@+id/edtDate"
-            android:text="處方："
-            android:textSize="22sp" />
-
-        <ListView
-            android:id="@+id/list_noteAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/txtScr"
-            android:layout_below="@+id/txtScr"
-            android:divider="@null" />
+            <!--<Button-->
+                <!--android:id="@+id/Btn_edit"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="end"-->
+                <!--android:layout_margin="12dp"-->
+                <!--android:background="@drawable/create"-->
+                <!--android:gravity="center"-->
+                <!--android:onClick="onClick"-->
+                <!--android:shadowRadius="7"-->
+                <!--android:textSize="18sp" />-->
+        <!--</FrameLayout>-->
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/list_noteAdd"
-            android:layout_below="@+id/list_noteAdd"
             android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/ckbOther"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/black" />
-
-            <TextView
-                android:id="@+id/txtOther"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其他:"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/cure1"
+                android:onClick="onClick"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/edtOther"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:inputType="text"
-                android:minWidth="100dp"
-                android:singleLine="true"
-                android:textSize="20sp"
-                tools:ignore="LabelFor" />
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/cure12"
+                android:onClick="onClick"
+                android:textSize="18sp" />
 
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/cure13"
+                android:onClick="onClick"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/cure14"
+                android:onClick="onClick"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/cure15"
+                android:onClick="onClick"
+                android:textSize="18sp" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/imgCheack"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/check" />
-    </RelativeLayout>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
 
-</ScrollView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/date"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/edtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/txtDate"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="年/月/日"
+                android:inputType="date"
+                android:singleLine="true"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/imgCal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@+id/edtDate"
+                android:background="@drawable/calendar" />
+
+            <TextView
+                android:id="@+id/txtScr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtDate"
+                android:layout_marginTop="10dp"
+                android:layout_toStartOf="@+id/edtDate"
+                android:text="處方："
+                android:textSize="22sp" />
+
+            <ListView
+                android:id="@+id/list_noteAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/txtScr"
+                android:layout_below="@+id/txtScr"
+                android:divider="@null" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/list_noteAdd"
+                android:layout_below="@+id/list_noteAdd"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ckbOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/black" />
+
+                <TextView
+                    android:id="@+id/txtOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="其他:"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edtOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:inputType="text"
+                    android:minWidth="100dp"
+                    android:singleLine="true"
+                    android:textSize="20sp"
+                    tools:ignore="LabelFor" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/imgCheack"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/check" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
 
 

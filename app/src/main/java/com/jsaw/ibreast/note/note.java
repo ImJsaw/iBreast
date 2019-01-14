@@ -13,6 +13,7 @@ import com.jsaw.ibreast.note.food.note_food;
 import com.jsaw.ibreast.note.mood.mood;
 import com.jsaw.ibreast.note.move.note_move;
 import com.jsaw.ibreast.note.treat.note_treat_main;
+import com.jsaw.ibreast.note.treat.treat1;
 
 import java.util.Objects;
 
@@ -43,7 +44,7 @@ public class note extends AppCompatActivity {
         mBtnTreat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent().setClass(note.this, note_treat_main.class));
+                startActivity(new Intent().setClass(note.this, treat1.class));
             }
         });
 

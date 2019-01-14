@@ -35,7 +35,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class note_treat4_add extends Fragment implements View.OnClickListener {
+public class note_treat4_add_old extends Fragment implements View.OnClickListener {
     private static final int[] IDS = new int[]{R.id.checkbox_listview, R.id.engtxt_listview, R.id.chitxt_listview};
     private static final String[] STRINGS = new String[]{"checkbox", "engName", "chiName"};
     private EditText edtStartDate;

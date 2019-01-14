@@ -27,7 +27,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@drawable/cure2"
+            android:background="@drawable/cure12"
             android:onClick="onClick"
             android:textSize="18sp" />
 
@@ -38,7 +38,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="@drawable/cure13"
+            android:background="@drawable/cure3"
             android:onClick="onClick"
             android:textSize="18sp" />
 
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:paddingTop="10dp"
-                android:text="部位："
+                android:text="處方："
                 android:textSize="22sp" />
 
             <ListView

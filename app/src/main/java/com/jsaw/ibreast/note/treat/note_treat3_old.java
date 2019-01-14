@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class note_treat4 extends Fragment {
+public class note_treat3_old extends Fragment {
     private static final int[] IDS = new int[]{R.id.txtPartName, R.id.txtStartDate, R.id.txtEndDate};
     private static final String[] STRINGS = new String[]{"partName", "startDate", "endDate"};
     private Boolean isProgressDialogShow = false;
@@ -70,7 +70,7 @@ public class note_treat4 extends Fragment {
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
-                dataSnapshot = dataSnapshot.child(user).child("荷爾蒙");
+                dataSnapshot = dataSnapshot.child(user).child("標靶");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("startDate", data.child("startDate").getValue().toString());

@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,9 +27,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class note_treat1 extends Fragment {
-    private static final int[] IDS = new int[]{R.id.txtDate, R.id.txtResult};
-    private static final String[] STRINGS = new String[]{"date", "part"};
+public class note_treat4_old extends Fragment {
+    private static final int[] IDS = new int[]{R.id.txtPartName, R.id.txtStartDate, R.id.txtEndDate};
+    private static final String[] STRINGS = new String[]{"partName", "startDate", "endDate"};
     private Boolean isProgressDialogShow = false;
     private ProgressDialog progressDialog;
 
@@ -53,9 +55,9 @@ public class note_treat1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_note_treat1, container, false);
-
+        View view = inflater.inflate(R.layout.activity_note_treat2, container, false);
         firebaseGetData(view);
+
         return view;
     }
 
@@ -64,22 +66,22 @@ public class note_treat1 extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<HashMap<String, Object>> items = new ArrayList<>();
-                ListView listView = view.findViewById(R.id.list_body);
+                ListView listView = view.findViewById(R.id.list_treat2);
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser users = auth.getCurrentUser();
                 String user = users.getUid();
-                dataSnapshot = dataSnapshot.child(user).child("化療");
+                dataSnapshot = dataSnapshot.child(user).child("荷爾蒙");
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
                     HashMap<String, Object> item = new HashMap<>();
-                    item.put("date", data.child("date").getValue().toString());
+                    item.put("startDate", data.child("startDate").getValue().toString());
+                    item.put("endDate", data.child("endDate").getValue().toString());
                     StringBuilder str = new StringBuilder();
                     for (DataSnapshot ds : data.child("part").getChildren()) {
-                        str.append(ds.getValue()).append("\n");
+                        str.append(ds.getValue()).append(", ");
                     }
-                    // 刪除最後一個\n
-                    str = str.deleteCharAt(str.length()-1);
-                    item.put("part", str);
-//                    }
+                    // 刪除最後一個,
+                    str = str.deleteCharAt(str.length()-2);
+                    item.put("partName", str);
                     items.add(item);
                 }
 
@@ -88,7 +90,7 @@ public class note_treat1 extends Fragment {
 //                3. int resource Layout位置
 //                4. String[] from data帶入資料的Key
 //                5. int[] to Key的值要帶到哪個元件
-                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.treat1_listview_item,
+                SimpleAdapter sa = new SimpleAdapter(getContext(), items, R.layout.treat3_listview_item,
                         STRINGS, IDS);
                 listView.setAdapter(sa);
 
@@ -102,4 +104,5 @@ public class note_treat1 extends Fragment {
             }
         });
     }
+
 }
